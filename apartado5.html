@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h4 class="min">configuracion de la red mediantet netplan</h4>
+        <ul>
+         <li>Configuración YAML: Netplan utiliza un formato de archivo YAML para facilitar la configuración de interfaces de red de manera clara y estructurada.</li>
+         <li>Integración con Daemons: Funciona junto con daemons de red como NetworkManager y systemd-networkd, permitiendo una gestión eficiente de las configuraciones de red.</li>
+         <li>Archivos de Configuración: Lee la configuración desde archivos ubicados en /etc/netplan/*.yaml, donde se pueden almacenar ajustes para todas las interfaces de red.</li>
+         <li>Generación de Archivos Específicos: Durante el arranque, Netplan genera archivos de configuración específicos para el backend elegido, transfiriendo el control de dispositivos al demonio de red correspondiente.</li>
+          <li>netplan admite dos formas de configurar la maquina: - networkmanager(para entorno de escritorio graficos) systemd-netwokd(para servidor) <br> -systemd-networkd</li>
+         <li>cuando se instala netplan deja de generarse el fichero /etc/networ/interfaces</li>
+         <img src="/assets/netplan.jpg.png" alt="">
+         </ul>
+ 
+   </div>
+ 
+   <div>
+        <h4 class="min">fichero de configuracion /etc/netplan/*.yaml</h4>
+        <p>el fichero de configuracion de netplan esta en formato <b>YAML</b> solo admite espacios y tine la capacidad de distinguir entre mayusculas y minusculas</p>
+     <nav>
+         <h6 class="men">REGLAS</h6>
+         <ul>
+             <li>cada par etiqueta/valor debe estar indentado por tres espacios a partir del comienzo de la linea</li>
+             <li>yaml no admite tabulaciones</li>
+             <li>hay que dejar espacio entre parejas de valores</li>
+             <li>por ejemplo <code>dhcp6:no
+                 addresses:[10.10.0.11/24]</code> esto no seria valido </li>
+                 <li>lo correcto es <code>dhcp6: no
+                     addresses: [10.10.0.11/24]</code> para ayudarnos con la sintaxis del fichero tenemos el comando <code>sudo netplan –debug generate </code>necesitas ser administrador</li>
+                   
+        
+                 </ul>
+     </nav>
+ <nav>
+     <h6 class="men">CONFIGURACION DE NETPLAN CON NetworkManager</h6>
+     <ul>
+         <li>la forma de decirle a netplan que el gestor de la red va a ser el administrador grafico es escribiendo el en fichero <code>/etc/netplan/*.yaml</code></li>
+     </ul>
+ </nav>
+ <nav>
+     <h5 class="men">configuracion de netplan manualmente con networkd</h5>
+     <li>si queremos empezar  a gestionar nosotros mismos la configuracion de red del equipo debemos cambiar <code>networkmanager</code> por <code>networkd</code> y despues decidir si la asignacion de la ip's van a ser mediante dhcp o mediante asignacion estatica</li>
+     <h4 class="man">CONFIGURACION MEDIANTE DHCP</h4> <br> <code>
+         network: <br>
+         version: 2 <br>
+         renderer: networkd <br>
+         ethernets: <br>
+         enp3s0: <br>
+         dhcp4: true</code></li>
+         <h4 class="man">CONFIGURACION MEDIANTE ASIGNACION ESTATICA</h4> <code> <br>
+             network: <br>
+             version: 2 <br>
+             renderer: networkd <br>
+             ethernets: <br>
+             enp3s0: <br>
+             addresses: <br>
+             - 10.10.10.2/24 <br>
+             nameservers: <br>
+             search: [mydomain, otherdomain] <br>
+             addresses: [10.10.10.1, 1.1.1.1] <br>
+             routes: <br>
+             - to: default  <br>
+             via: 10.10.10.1  <br>
+        <br><br><br><br>
+        network: <br>
+        version: 2<br>
+        renderer: networkd<br>
+        ethernets:<br>
+        ens33:<br>
+        addresses: [192.168.1.50/24]<br>
+        gateway4: 192.168.1.1<br>
+        nameservers:<br>
+        search: [mytcpip.local]<br>
+        addresses: [192.168.1.1]<br>
+ <br><br><br><br>
+ network: <br>
+  version: 2<br>
+  renderer: networkd<br>
+  ethernets:<br>
+  ens3:<br>
+  dhcp4: yes<br>
+  eno2:<br>
+  dhcp4: no<br>
+  dhcp6: no<br>
+  addresses: [10.10.0.11/24]<br>
+  gateway4: 10.10.0.1 <br>
+  routes: <br>
+  - to: 192.168.1.0/24 <br>
+  10.10.0.1 <br>
+  - to: 192.168.10.0/24 <br>
+  via: 10.10.0.1  <br>
+ </code>
+ </li>
+  </nav>
+  </div>
+ 
+  <div>
+     <h4 class="min">COMANDOS</h4>
+     <nav>
+         <UL>
+             <li><b>netplan generate: </b> se tuliza /etc/netplan para generar la configuracion necesaria para los renderizadores </li>
+             <li><b>netplan apply</b> aplica toda la configuracion para los renderizadores,reiniciandolos segun sea necesario</li>
+             <li><b>netplan try</b> aplicacr la configuracion y esperar la confirmacion del usuario retrocedera si la red esta rota o no se da confirmacion </li>
+ 
+         </UL>
+     </nav>
+  </div>
+ <div>
+     <h4 class="min">EJEMPLOS DE CONFIGURACIONES EN NETPLAN</h4>
+       <H5 class="men"><b>varias tarjetas configuradas mediante dhcp</b></H5>
+       <P>se puede lograr el enrutamiento exacto desado a traves de DHCP especificando una metrica para las rutas recuperadas a traves de DHCP lo que garantiza <br>
+      que se prefieran algunas rutas sobre otras.en este ejemplo se prefiere <b><code> 'enp0s3' a 'enp0s8'</code></b>ya que tiene una metrica de ruta mas baja
+     <code>network; <br> 
+         version: 2 <br>
+         ethernet  <br>
+         enp0s3: <br>
+         dhcp4: yes <br>
+         dhcp4-overrides: <br>
+         route-metric: 100 <br>
+         enp0s8:: <br>
+         dhcp4: yes <br>
+         dhcp4-overrides: <br>
+         route-metric: 200 <br></code></P>
+ <h5 class="men">uso de varias direcciones con varias puertas de enlace</h5>
+  <p>las interfaces con multiples direcciones se pueden configurar con multiples puertas de enlace 
+     <code> <br>
+         network: <br>
+         version: 2 <br>
+         renderer: networkd <br>
+         ethernets: <br>
+         enp3s0: <br>
+          addresses: <br>      
+         - 10.0.0.10/24<br>
+         - 11.0.0.11/24<br>
+         routes:<br>
+         - to: default<br>
+         via: 10.0.0.1<br>
+         metric: 200<br>
+         - to: default<br>
+         via: 11.0.0.1<br>
+         metric: 300</code><br>Configuramos rutas individuales por defecto (o 0.0.0.0/0) utilizando la dirección de la
+         puerta de enlace para la subred. El metricvalor debe ajustarse para que el enrutamiento
+         ocurra como se esperaba.
+         Se puede usar DHCP para recibir una de las direcciones IP para la interfaz. En este caso,
+         la ruta predeterminada para esa dirección se configurará automáticamente con un
+         metricvalor de 100.
+         </p>
+ </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h2 class="mon">Deteccion de las tarjetas de red</h2>
+        <nav>
+         <ol>
+             <li>deteccion de las targetas de red (comando) <b>¨dmesg | grep eth¨</b> con este comando mostramos lo que el kernel mostro <br>
+             al arrancar el sistema   para ello con el comando <b>grep</b> filtramos las lineas de texto que contengan <b>eth</b>  </li>
+             <li>comando <b>lsmod</b> con este comprobamos todos los modulos cargados por el kernel </li> 
+             <li><b>mensajes cargados en el kernel</b> se guardan en el fichero /var/log/dmesg y el  comando <b>dmesg</b> muestra solo una parte de los mensajes los cuales se encuentran en la memoria RAM </li>
+            <li><b>para wifi</b> utilizamos el siguiente comando <b>dmesg | grep wlo</b>  se muestra  el dispositivo de la tarjeta wifi</li> 
+         </ol>
+        </nav>
+ </div>
+ <div>
+     <h2 class="mon">configuracion a bajo nivel mediante comandos</h2>
+     <nav>
+         <ul>
+             <li>configuracion de la red con <b>ifconfig,route e ip es lo que se denomina configuracion a bajo nivel "ojo" estas configuraciones  no se mantiene al reiniciar el sistema (a menos que se ejecute en un scrip)</b> 
+                 <li>los comandos <b>ifconfig y route </b> estan en deshuso <br> y han sido sustituidos por el comando <b>ip(paquete iproute)</li>
+                     
+                       <li></b>"utilizaremos estos comandos para obtener informacion de la red y no para configurarla " solo se puede utilizar en ocaciones como el mapeo logico de un dispositivo de red  <br>
+                         configuracion de interfaces ejecutamos el siguiente comando <b>ifconfig</b></li> 
+                         <li>as interfaces activas llevan la palabra <b>(UP) y la inactiva (NO LO LLEVAN)</b> para las "inactivas" ejecutamos <b>ifconfig -a</b></li>
+                            <li>para ver un estadistica de la informacion enviada y recibida por la interfaces  activas o todas <b>(ifconfig-s)</b></li>
+                               <li> datos de la interfaz <b>(ifconfig eth0)</b></li>           
+               
+                           <li> para mostrar la tabla <b>ARP</b> usamos el comando <B>arp -n</B> la opcion -n hace que se muestren todos los datos de forma numerica y no se intente hacer una traducion de IP a nombre "mas rapido" <br>
+                          y la opcion <b>-a</b> muestra la misma informacion con otro tipo de formato de salida</li>
+                       <li><b>MOSTRAR LAS TABLAS DE ENRUTAMIENTO</b> usamos el comando <b>route -n</b></li>  
+                        <li>el omando <b>ip</b> para obtener la informacion de la red  asi para ver la lista de tarjetas que hay instaladas en el sistema,con su mac y si estan activa o no el comando es <b>ip link show - ip address show</b> es lo mismo </li>
+         
+          
+             </ul>
+     </nav>
+ </div>
+</body>
+</html>
