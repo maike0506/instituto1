@@ -39,6 +39,9 @@
  .tablaip{
     background-color: black;
  }
+ .min{
+    border: 2px solid black;
+ }
     </style>
 </head>
 <body>
@@ -272,7 +275,7 @@ que usaremos en tareas de diagnostico de conectividad y validez de los protocolo
 </tr>
 </table>
  <ul>
-    <h4>CARECTERISTICAS DE LAS OPCIONES  pre-up, up, post-up, pre-down, down y post-down  </h4>
+    <h4 class="min">CARECTERISTICAS DE LAS OPCIONES  pre-up, up, post-up, pre-down, down y post-down  </h4>
         <li>son opcionales</li>
         <li>son opciones validad para cualquier familia y metodo</li>
         <li>pueden repetirse cuantas veces queramos</li>
@@ -370,7 +373,7 @@ que usaremos en tareas de diagnostico de conectividad y validez de los protocolo
   </div>
 
   <div>
-       <h4>fichero de configuracion /etc/netplan/*.yaml</h4>
+       <h4 class="min">fichero de configuracion /etc/netplan/*.yaml</h4>
        <p>el fichero de configuracion de netplan esta en formato <b>YAML</b> solo admite espacios y tine la capacidad de distinguir entre mayusculas y minusculas</p>
     <nav>
         <h6>REGLAS</h6>
@@ -450,7 +453,7 @@ network: <br>
  </div>
 
  <div>
-    <h4>COMANDOS</h4>
+    <h4 class="min">COMANDOS</h4>
     <nav>
         <UL>
             <li><b>netplan generate: </b> se tuliza /etc/netplan para generar la configuracion necesaria para los renderizadores </li>
@@ -461,7 +464,7 @@ network: <br>
     </nav>
  </div>
 <div>
-    <h4>EJEMPLOS DE CONFIGURACIONES EN NETPLAN</h4>
+    <h4 class="min">EJEMPLOS DE CONFIGURACIONES EN NETPLAN</h4>
       <H5><b>varias tarjetas configuradas mediante dhcp</b></H5>
       <P>se puede lograr el enrutamiento exacto desado a traves de DHCP especificando una metrica para las rutas recuperadas a traves de DHCP lo que garantiza <br>
      que se prefieran algunas rutas sobre otras.en este ejemplo se prefiere <b><code> 'enp0s3' a 'enp0s8'</code></b>ya que tiene una metrica de ruta mas baja
@@ -502,7 +505,7 @@ network: <br>
         </p>
 </div>
 <div>
-    <h4>NUEVAS HERRAMIENTAS Y COMANDOS DE RED</h4>
+    <h4 class="min">NUEVAS HERRAMIENTAS Y COMANDOS DE RED</h4>
       <p>El propósito de iproute2 es reemplazar el conjunto de herramientas que componen las
         net-tools y pasar a ser él quien se encargue de configurar las interfaces de red, la tabla de
         rutas y gestionar la tabla ARP.</p>
@@ -712,7 +715,7 @@ $ sudo ip address add 192.168.1.1/24 dev eth0
      
 </div>
 <div>
-    <h4>anadir ua interfaz virtual(alias)</h4>
+    <h4 class="min">anadir ua interfaz virtual(alias)</h4>
     <ul>
         <li><b>comando antiguo</b> ifconfig ens33:1 10.0.0.1/8</li>
         <li><b>comando actual</b> ip addr add 10.0.0.1/8 dev  ens33 label ens33:redeszone</li>
@@ -731,19 +734,19 @@ $ sudo ip address add 192.168.1.1/24 dev eth0
         comandos se permiten ejecutar.</p>
 </div>
 <div>
-    <h4>activar/desactivar el modo promiscuo de la tarjeta de red </h4>
+    <h4 class="min">activar/desactivar el modo promiscuo de la tarjeta de red </h4>
     <code>$ sudo ip link set dev eth0 promisc on <br>
         $ sudo ip link set dev eth0 promisc of</code>
 </div>
 <div>
-    <h4>cambiar la MAC de una interfaz de red</h4>
+    <h4 class="min">cambiar la MAC de una interfaz de red</h4>
     <p>Tanto con ifconfig como con iproute2 hay que deshabilitar la tarjeta de red antes de
         cambiar la MAC y luego volver a activarla.</p>
         <code>$ sudo ifconfig eth1 hw ether 08:00:27:75:2a:67 <br>
             $ sudo ip link set dev eth1 address 08:00:27:75:2a:67</code>
 </div>
 <div>
-    <h4>ver las entradas en la tabla ARP</h4>
+    <h4 class="min">ver las entradas en la tabla ARP</h4>
     <code>arp -n ip neigh show</code>
 </div>
 
@@ -758,7 +761,7 @@ $ sudo ip address add 192.168.1.1/24 dev eth0
     ip neigh add 192.168.0.1 lladdr 00:11:22:33:44:55 nud permanent dev ens33</p>
 </div>
 <div>
-    <h4>quitar una entrada de ARP</h4>
+    <h4 class="min">quitar una entrada de ARP</h4>
     <p>ip neigh del 192.168.0.1 lladdr 00:11:22:33:44:55 nud permanent dev ens33 <br>
         Para ejecutar la ayuda de «ip neigh» y ver todos los comandos que podemos ejecutar,
         simplemente basta con poner: <br></p>
@@ -770,7 +773,7 @@ $ sudo ip address add 192.168.1.1/24 dev eth0
 </div>
 
 <div>
-    <h4>Comandos "ip route" para configurar rutas</h4> 
+    <h4 class="min">Comandos "ip route" para configurar rutas</h4> 
     <p>El comando «ip route» nos permitirá configurar la tabla de enrutamiento principal del <br>
         sistema operativo, y también las tablas de enrutamiento adicionales que configuremos en <br>
         el sistema operativo. A continuación, tenéis algunos ejemplos de uso con únicamente el <br>
@@ -789,7 +792,7 @@ $ sudo ip address add 192.168.1.1/24 dev eth0
 </div>
 
 <div>
-    <h4>listado de comandos basicos de <b>ss</b></h4>
+    <h4 class="min">listado de comandos basicos de <b>ss</b></h4>
     <p>ss se utiliza para volcar estadísticas sobre sockets. Permite mostrar información similar a <br>
         netstat. ss muestra más información TCP y estado que otras herramientas. A continuación <br>
         mostramos una serie de ejemplos con el comando ss y en algunos casos su equivalente <br>
@@ -850,7 +853,7 @@ ss dst 123.1.2.100:http
 </div>
 
 <div>
-    <h4>El nombre del equipo /etc/hostname</h4>
+    <h4 class="min">El nombre del equipo /etc/hostname</h4>
     <p>El fichero /etc/hostname establece el nombre del ordenador local, el cual es leído durante <br>
         el arranque del sistema. Debería contener una simple línea con el nombre de la máquina. <br>
         Este nombre no puede superar los 64 caracteres de longitud, y se recomienda que esté <br>
@@ -859,7 +862,7 @@ ss dst 123.1.2.100:http
 </div>
 
 <div>
-    <h4>Hacer un equipo que sea enrutador</h4>
+    <h4 class="min">Hacer un equipo que sea enrutador</h4>
     <p>Una de las posibilidades que nos ofrece GNU/Linux es la de poder actuar como enrutador, <br>
         es decir, recibir paquetes, decidir la ruta de estos y reenviarlos por cualquiera de las <br>
         interfaces de red existentes. Para hacerlo necesitamos modificar el parámetro del kernel
@@ -867,7 +870,7 @@ ss dst 123.1.2.100:http
 </div>
 
 <div>
-    <h4>el fichero de configuracion /etc/sysctl.conf</h4>
+    <h4 class="min">el fichero de configuracion /etc/sysctl.conf</h4>
     <p>El fichero de configuración /etc/sysctl.conf se utiliza para ipestablecer algunos
         parámetros del kernel y que estos se mantengan entre sucesivos arranques del
         sistema, es decir, que los cambios sean persistentes. Esto es equivalente a cambiar
@@ -896,7 +899,7 @@ ss dst 123.1.2.100:http
 </div>
 
 <div>
-    <h4>configuracion NAT</h4>
+    <h4 class="min">configuracion NAT</h4>
     <p></p>
     <ol>
         <li> <b>activacion del bit de forward</b> para que un equipo haga nat primero tiene que enrutar</li>
@@ -985,7 +988,7 @@ se servicio desde Internet tendremos que escribir en el navegador: <br><br><code
     </ol>
 </div>
 <div>
-    <h4>Guardar reglas iptables</h4>
+    <h4 class="min">Guardar reglas iptables</h4>
     <ol>
         <li><b>utilizacion del paquete iptables-persistent</b><br>Lo mas actual es utilizar el paquete iptables-persistent guardará las reglas que hayamos
             configurado <br> <code>sudo apt-get install iptables-persistent</code> <br><br> Para añadir nuevas reglas y queden persistentes se deben añadir al fichero
