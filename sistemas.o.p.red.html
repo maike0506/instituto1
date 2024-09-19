@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sistemas operativos en Red</title>
+    <style>
+    
+        #left-half, .right-half{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            height: 100%;
+
+        }
+
+        #right-half{  */esto es el margen de lado derecho
+            right:0;
+            background-color: rgb(118, 0, 139);
+        }
+        #left-half{  */esto es el margen de lado izquierdo
+
+            left: 0;
+            background-color: black;
+            color: white;
+            animation: slideIn 4s ease-in-out;
+        
+        }
+        @keyframes slideIn {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+
+    
+}
+.titulo{
+    border: 15px solid darkcyan;
+    border-radius: 24px 10px 24px 10px;
+    text-align: center;
+    font-size: 30px;
+    width: 200px;
+    box-shadow: rgb(100, 0, 100) 10px  10px 20px 10px;
+}
+.INDICE {
+   color: yellow;
+ animation: slade-down 6s  ease-in-out;
+ box-shadow: rgb(118, 0, 139) 10px 10px 20px 10px;
+ text-shadow: 3px 3px 5px ;
+}
+@keyframes slade-down{
+    from{
+        transform: translateY(-100%);
+    }to{
+        transform: translateY(0);
+    }
+}
+    </style>
+
+
+
+
+
+
+</head>
+<body>
+<div id="right-half">
+
+
+
+
+
+
+
+
+
+
+</div>
+<div id="left-half">
+    <p class="titulo"> TEMA 1</p>
+      <br><br><br><br><br>
+    <div class="INDICE">
+        <h5>INDICE DE TEMARIO</h5>
+     
+        <nav>
+            <ul>
+                <li>1:</li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        
+        </nav>
+        
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+</div>
+</body>
+</html>

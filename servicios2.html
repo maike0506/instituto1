@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            background-color: beige;
+            color: black;
+        }
+        .boton2{
+            border: 2px solid white;
+            width: 50px;
+        }
+ .section4{
+    border-color: black;
+    border-width: 5px;
+    border-style: solid;
+    width: auto;
+    height: auto;
+ }
+ .titulo{
+    background-color: aqua;
+    font-size: 24px;
+ }
+ .sector1{
+    background-color:;
+    font-size: 24px;
+ }
+ .sector2{
+    background-color: ;
+    font-size: 24px;
+ }
+
+ .tabla{
+    background-color: black;
+ }
+ .tablaip{
+    background-color: black;
+ }
+    </style>
+</head>
+<body>
+ 
+    <div class="#section1">
+       <h2 class="section1/serviciosenred">Deteccion de las tarjetas de red</h2>
+       <nav>
+        <ol>
+            <li>deteccion de las targetas de red (comando) <b>¨dmesg | grep eth¨</b> con este comando mostramos lo que el kernel mostro <br>
+            al arrancar el sistema   para ello con el comando <b>grep</b> filtramos las lineas de texto que contengan <b>eth</b>  </li>
+            <li>comando <b>lsmod</b> con este comprobamos todos los modulos cargados por el kernel </li> 
+            <li><b>mensajes cargados en el kernel</b> se guardan en el fichero /var/log/dmesg y el  comando <b>dmesg</b> muestra solo una parte de los mensajes los cuales se encuentran en la memoria RAM </li>
+           <li><b>para wifi</b> utilizamos el siguiente comando <b>dmesg | grep wlo</b>  se muestra  el dispositivo de la tarjeta wifi</li> 
+        </ol>
+       </nav>
+</div>
+<div class="section2">
+    <h2>configuracion a bajo nivel mediante comandos</h2>
+    <nav>
+        <ul>
+            <li>configuracion de la red con <b>ifconfig,route e ip es lo que se denomina configuracion a bajo nivel "ojo" estas configuraciones  no se mantiene al reiniciar el sistema (a menos que se ejecute en un scrip)</b> 
+                <li>los comandos <b>ifconfig y route </b> estan en deshuso <br> y han sido sustituidos por el comando <b>ip(paquete iproute)</li>
+                    
+                      <li></b>"utilizaremos estos comandos para obtener informacion de la red y no para configurarla " solo se puede utilizar en ocaciones como el mapeo logico de un dispositivo de red  <br>
+                        configuracion de interfaces ejecutamos el siguiente comando <b>ifconfig</b></li> 
+                        <li>as interfaces activas llevan la palabra <b>(UP) y la inactiva (NO LO LLEVAN)</b> para las "inactivas" ejecutamos <b>ifconfig -a</b></li>
+                           <li>para ver un estadistica de la informacion enviada y recibida por la interfaces  activas o todas <b>(ifconfig-s)</b></li>
+                              <li> datos de la interfaz <b>(ifconfig eth0)</b></li>           
+              
+                          <li> para mostrar la tabla <b>ARP</b> usamos el comando <B>arp -n</B> la opcion -n hace que se muestren todos los datos de forma numerica y no se intente hacer una traducion de IP a nombre "mas rapido" <br>
+                         y la opcion <b>-a</b> muestra la misma informacion con otro tipo de formato de salida</li>
+                      <li><b>MOSTRAR LAS TABLAS DE ENRUTAMIENTO</b> usamos el comando <b>route -n</b></li>  
+                       <li>el omando <b>ip</b> para obtener la informacion de la red  asi para ver la lista de tarjetas que hay instaladas en el sistema,con su mac y si estan activa o no el comando es <b>ip link show - ip address show</b> es lo mismo </li>
+        
+         
+            </ul>
+    </nav>
+</div>
+
+<div class="section3">
+    <h2>configuracion de las tarjetas a bajo nivel a traves de ifconfig</h2>
+    <p>ifconfig e ip para configurar las tarjetas de red</p>
+ <ul>
+    <h6>este metodo se utiliza cuando no es posible mediante otros modos</h6>
+    <li>comando <b>ifconfig</b> para asignar una IP a una targeta de red <b>ifconfig intefaz dirección-ip netmask máscara [up]</b></li>
+ 
+   <li> <b>UP</b> se le pone al final para activar la tarjeta y <b>down</b> para desactivarla <b>ejemplos</b>"# ifconfig eth0 192.168.0.2 netmask 255.255.255.0 up"</li>
+   <li>comando para activar o desactivar la <b>targeta de red</b> "ifconfig interfaz { up | down }"  "ifconfig interfaz eth0 down" "ifconfig interfaz eth0 UP" </li>
+</ul>
+</div>
+
+<div class="section4">
+  <table class="tabla">
+    <tr>
+        <td class="titulo">comando</td>
+        <td class="titulo">funcion</td>
+        <td class="titulo">sintaxis</td>
+    </tr>
+    <tr>
+        <td class="sector1">ip</td>
+        <td class="sector2">-mismas funciones que ifconfig,route y arp <br>
+         - Para cambiar la ip es necesario borrar la anterior <br>
+         - el comando ip para activar y desactivar la targeta de red</td>
+        
+        <td>
+             -ip address add dirección-ip/prefijo dev interfaz <br>
+            -ip address add 192.168.0.2/24 dev eth0 <br>
+            -ip address del dirección-ip/prefijo dev interfaz(borrar direcion ip) <br>
+            - # ip address del 192.168.0.2/24 dev eth0 (AGREGAR)
+            -ip link set (interfaz) { up | down }(para activar o descativar t.red)
+           
+
+        </td>
+    </tr>
+    
+    <tr>
+    <td class="sector1">ifconfig</td>
+     <td class="sector2">-configuracion a bajo nivel "configuraciones <br>
+    que no se mantiene al reiniciar el sistema <br> -configuracion(no)  informacion(si)
+ <br>-para ver si las interfaces estan activas aparece al final la palabra UP(activa) o DOWN(inactiva)</td>
+
+     <td> -ifconfig intefaz dirección-ip netmask máscara [up] <br>
+       - ifconfig eth0 192.168.0.2 netmask 255.255.255.0 up <br>
+       -ifconfig interfaz { up | down } <br>
+       - ifconfig eth0 down <br>
+      - ifconfig eth0 up
+    </td>
+
+
+    <tr>
+        <td class="sector1">route</td>
+        <td class="sector2"> </td>
+
+    </tr>
+          <td class="sector1">arp</td>     
+  
+    <tr>
+        <td class="sector1">ifup</td>
+        <td class="sector2">es el encargado de relacionar una interfaz fisica con una interfaz logica</td>
+        <td><code>iface config_name> address_family> method_name></code> <br>config_name: sera un nombre logico de interfaz de red <br>
+         addres_family: contendra un valor inet para especificar una configuracion ipv4  o ipv6 o ipx <br>
+        method_name: indica el metodo de configuracion de la interfaz y depende del valor de address_family:para el caso de la familia inet <br>
+    los metodos son: <b>loopback</b> :usado solo para la interfaz lo (bucle local) <br>
+    <b>static</b> usado para asignar una direccion ip fija <b>dhcp</b> usado para asignar una direccion dinamica <br>
+- las dos primeras lineas del fichero /etc/network/interfaces deben ser <code> iface lo inet loopback</code> las cuales activan la interfaz lo(bucle local) <br>
+que usaremos en tareas de diagnostico de conectividad y validez de los protocolos de comunicacion.</td>
+<!-falta  algunas cosas sobre un fichero solo eso--->
+  
+</table>
+</div>
+<br><br><br><br><br>
+<div>
+    <h2>METODO STATIC</h2>
+    <p>usado para asignar una ip fija a una  interfaz de red tiene las siguientes opciones</p>
+    <table class="tabla">
+         <tr class="static">
+            <td class="sector1">opcion</td>
+            <td class="sector1">ejemplo</td>
+            <td class="sector1">significado</td>
+      </tr>
+       <tr>
+         <td>address direccion ip</td>
+         <td>address
+            192.168.10.15 </td>
+         <td>Establece la dirección IP. (obligatorio)</td>
+</tr>
+<tr>
+ <td>netmask mascara</td>
+ <td>netmask <br>255.255.255.0</td>
+ <td>establece la mascara de la direcion IP (obligatorio)</td>
+</tr>
+
+<tr>
+    <td>gateway direccion ip </td>
+    <td>gateway 192.168.10.1</td>
+    <td>Establece la puerta de enlace. En un equipo sólo
+        puede haber una puerta de enlace, o lo que es lo
+        mismo, sólo puede haber una regla por defecto de
+        enrutamiento. Esta opción se asociará a la línea
+        iface cuya ip se corresponde con la ip de salida de
+        la regla por defecto en la tabla de enrutamiento </td>
+
+</tr>
+
+
+<tr>
+    <td>network direccion-ip-de-red</td>
+    <td>network <br> 192.168.10.0</td>
+    <td> establece la direccion de la red a la que pertenece la direccion ip</td>
+</tr>
+
+
+<tr>
+    <td>broadcast direccion-IP-DE-broadcast</td>
+    <td> broadcast <BR>192.168.10.255</BR></td>
+    <td>establece la direccion de broadcast de la red</td>
+</tr>
+
+
+
+<tr>
+    <td>hwaddress tipo-interfaz direccion-MAC</td>
+    <td>hwassress ether 00:01:04:1b:2C:1F </td>
+    <td>Establece la dirección MAC de la tarjeta. Para las
+        tarjetas ethernet se debe poner la palabra ether
+        como tipo de la interfaz.</td>
+</tr>
+
+
+
+
+<tr>
+    <td>pre-up comando</td>
+    <td>pre-up echo..</td>
+    <td>Ejecuta comando antes de que la tarjeta se
+        configure con el comando ifup. Si el comando falla,
+        ifup aborta, imprime un mensaje de error y la tarjeta
+        no se marca como configurada.</td>
+</tr>
+
+<tr>
+    <td>up comando</td>
+    <td>up sleep 2 ; route
+        add...</td>
+    <td>Ejecuta comando durante la configuración de la
+        tarjeta con el comando ifup. </td>
+</tr>
+
+
+
+<tr>
+    <td>post-up comando</td>
+    <td>post-up route
+        add..</td>
+    <td>Ejecuta comando después de que la tarjeta se
+        configure con el comando ifup. Si el comando falla,
+        ifup aborta, imprime un mensaje de error y la tarjeta
+        no se marca como configurada aunque haya sido
+        configurada.</td>
+</tr>
+
+
+
+<tr>
+    <td>pre-down comando</td>
+    <td>pre-down route
+        del..</td>
+    <td>Ejecuta comando antes de que la tarjeta se
+        desconfigure con el comando ifdown. Si el comando
+        falla, ifdown aborta, imprime un mensaje de error y
+        la tarjeta se marca como desconfigurada aunque no haya sido desconfigurada</td>
+</tr>
+
+
+<tr>
+    
+    <td>down comando</td>
+    <td>down sleep 2 ;
+        route del..</td>
+    <td>Ejecuta comando durante la desconfiguración de la
+        tarjeta con el comando ifdown.</td>
+</tr>
+
+<tr>
+    <td>post-down comando </td>
+    <td>post-down echo</td>
+    <td>Ejecuta comando después de que la tarjeta se
+        desconfigure con el comando ifdown. Si el comando
+        falla, ifdown aborta, imprime un mensaje de error y
+        la tarjeta no se marca como desconfigurada.</td>
+</tr>
+</table>
+ <ul>
+    <h4>CARECTERISTICAS DE LAS OPCIONES  pre-up, up, post-up, pre-down, down y post-down  </h4>
+        <li>son opcionales</li>
+        <li>son opciones validad para cualquier familia y metodo</li>
+        <li>pueden repetirse cuantas veces queramos</li>
+        <li>se ejecutan cada una en su momento y dentro del mismo tipo en el orden de aparicion en el fichero</li>
+        <li>Se puede asegurar que siempre se ejecute correctamente el comando, ya que a
+            este le podemos añadir el sufijo "|| true" creando una lista condicional OR (true es
+            un comando que no hace nada y tiene como código de salida el valor 0, false es el
+            comando contrario, es decir, tiene como código de salida el valor 1, y tampoco
+            hace nada).</li>
+ 
+</ul>
+<ul>
+   <h3>otra manera de ejecutar comandos "cuando una tarjeta de red se esta activando o desactivando"</h3>
+     <p>consiste en introducir scripst dentro de cualquiera de los directorios </p>
+     <li>/etc/network/if-down.d</li>
+     <li>/etc/network/if-post-down.d</li>
+     <li>/etc/network/if-pre-up.d</li>
+     <li>/etc/network/if-up.d</li>
+</ul>
+
+<ul>
+     <h3>metodo dhcp</h3>
+      <p>usado para asignar una ip dinamicamente a la interfaz de red  tiene las siguientes opciones :</p>
+     <li>hwaddress</li>
+     <li>pre-up, up, post-up</li>
+     <li>pre-down, down, post-down</li>
+    <p>para mas informacion sobre el fichero /etc/network/interfaces podemos acceder a <code>man interfaces</code> </p>
+</ul>
+ <div>
+    <p>a continuacion se describen los tres comandos relacionados con el demonio networking y su fichero de configuracion /etc/network/interfaces para activar y desactivar interfaces de red</p>
+<table>
+    <tr>
+         <td>comando</td>
+         <td>funcion</td>
+         <td>sintaxis</td>
+
+
+    </tr>
+
+    <tr>
+        <td>ifup</td>
+        <td>sirve para activar una interfaz de red</td>
+        <td><code>ifup [opción...] interfaz-física[=interfaz-lógica]...</code> si ejecutamos las instrucion <code># ifup eth1</code> se activa la interfaz fisica eth1 con la configuracion de la interfaz logica del mismo nombre es decir eth1 <br>
+            Si quisiéramos activar la interfaz eth2 con la configuración de la interfaz lógica de nombre
+            oficina, ejecutaríamos <code># ifup eth2=oficina</code> También es posible levantar todas las tarjetas que se hayan especificado en las líneas
+            auto de /etc/network/interfaces <code># ifup -a</code>            </td>
+         
+    </tr>
+
+    <tr>
+        <td>ifdown</td>
+        <td>es la encargada de desconfigurar las interfaces de red</td>
+        <td><code>ifdown [opción...] interfaz-física</code> <b>para desactivar la interfaz fisica eth0 ejecutamos <code># ifdown eth0</code></b>todas las interfaces activas pueden desconfigurarse ejecutando <b><code># ifdown -a</code></b></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+
+    <tr>
+        <td>ifquery</td>
+        <td>permite consultar las opciones de configuracion de una interfaz fisica que este activa o de una interfaz logica del fichero /etc/nerwork/interfaces lo cual no es necesario que este asociada a una interfaz fisica</td>
+        <td><b><code># ifquery eth0</code></b></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+ </div>
+
+  <div>
+     <h4>PASOS PARA MODIFICAR LA CONFIGURACION DE LA TARJETA DE RED</h4> 
+    <ol>
+         <li>Desactivar la interfaz física de red ejecutando ifdown. Se desconfigurará en base a
+            los parámetros que haya en el fichero /etc/network/interfaces para su interfaz lógica
+            asociada.</li>
+         <li>Editar el fichero /etc/network/interfaces.</li>
+         <li>Activar la tarjeta física de red ejecutando ifup. Se configurará en base a los
+            parámetros que haya en el fichero /etc/network/interfaces para la interfaz lógica
+            asociada.</li>
+    
+    </ol>
+  </div>
+  
+  <div>
+       <h4>configuracion de la red mediantet netplan</h4>
+       <ul>
+        <li>Configuración YAML: Netplan utiliza un formato de archivo YAML para facilitar la configuración de interfaces de red de manera clara y estructurada.</li>
+        <li>Integración con Daemons: Funciona junto con daemons de red como NetworkManager y systemd-networkd, permitiendo una gestión eficiente de las configuraciones de red.</li>
+        <li>Archivos de Configuración: Lee la configuración desde archivos ubicados en /etc/netplan/*.yaml, donde se pueden almacenar ajustes para todas las interfaces de red.</li>
+        <li>Generación de Archivos Específicos: Durante el arranque, Netplan genera archivos de configuración específicos para el backend elegido, transfiriendo el control de dispositivos al demonio de red correspondiente.</li>
+         <li>netplan admite dos formas de configurar la maquina: - networkmanager(para entorno de escritorio graficos) systemd-netwokd(para servidor) <br> -systemd-networkd</li>
+        <li>cuando se instala netplan deja de generarse el fichero /etc/networ/interfaces</li>
+        <img src="/assets/netplan.jpg.png" alt="">
+        </ul>
+
+  </div>
+
+  <div>
+       <h4>fichero de configuracion /etc/netplan/*.yaml</h4>
+       <p>el fichero de configuracion de netplan esta en formato <b>YAML</b> solo admite espacios y tine la capacidad de distinguir entre mayusculas y minusculas</p>
+    <nav>
+        <h6>REGLAS</h6>
+        <ul>
+            <li>cada par etiqueta/valor debe estar indentado por tres espacios a partir del comienzo de la linea</li>
+            <li>yaml no admite tabulaciones</li>
+            <li>hay que dejar espacio entre parejas de valores</li>
+            <li>por ejemplo <code>dhcp6:no
+                addresses:[10.10.0.11/24]</code> esto no seria valido </li>
+                <li>lo correcto es <code>dhcp6: no
+                    addresses: [10.10.0.11/24]</code> para ayudarnos con la sintaxis del fichero tenemos el comando <code>sudo netplan –debug generate </code>necesitas ser administrador</li>
+                  
+       
+                </ul>
+    </nav>
+<nav>
+    <h6>CONFIGURACION DE NETPLAN CON NetworkManager</h6>
+    <ul>
+        <li>la forma de decirle a netplan que el gestor de la red va a ser el administrador grafico es escribiendo el en fichero <code>/etc/netplan/*.yaml</code></li>
+    </ul>
+</nav>
+<nav>
+    <h5>configuracion de netplan manualmente con networkd</h5>
+    <li>si queremos empezar  a gestionar nosotros mismos la configuracion de red del equipo debemos cambiar <code>networkmanager</code> por <code>networkd</code> y despues decidir si la asignacion de la ip's van a ser mediante dhcp o mediante asignacion estatica</li>
+     <li><B>CONFIGURACION MEDIANTE DHCP</B> <code> <br>
+        network: <br>
+        version: 2 <br>
+        renderer: networkd <br>
+        ethernets: <br>
+        enp3s0: <br>
+        dhcp4: true</code></li>
+        <li><b>CONFIGURACION MEDIANTE ASIGNACION ESTATICA</b> <code> <br>
+            network: <br>
+            version: 2 <br>
+            renderer: networkd <br>
+            ethernets: <br>
+            enp3s0: <br>
+            addresses: <br>
+            - 10.10.10.2/24 <br>
+            nameservers: <br>
+            search: [mydomain, otherdomain] <br>
+            addresses: [10.10.10.1, 1.1.1.1] <br>
+            routes: <br>
+            - to: default  <br>
+            via: 10.10.10.1  <br>
+       <br><br><br><br>
+       network: <br>
+       version: 2<br>
+       renderer: networkd<br>
+       ethernets:<br>
+       ens33:<br>
+       addresses: [192.168.1.50/24]<br>
+       gateway4: 192.168.1.1<br>
+       nameservers:<br>
+       search: [mytcpip.local]<br>
+       addresses: [192.168.1.1]<br>
+<br><br><br><br>
+network: <br>
+ version: 2<br>
+ renderer: networkd<br>
+ ethernets:<br>
+ ens3:<br>
+ dhcp4: yes<br>
+ eno2:<br>
+ dhcp4: no<br>
+ dhcp6: no<br>
+ addresses: [10.10.0.11/24]<br>
+ gateway4: 10.10.0.1 <br>
+ routes: <br>
+ - to: 192.168.1.0/24 <br>
+ 10.10.0.1 <br>
+ - to: 192.168.10.0/24 <br>
+ via: 10.10.0.1  <br>
+</code>
+</li>
+ </nav>
+ </div>
+
+ <div>
+    <h4>COMANDOS</h4>
+    <nav>
+        <UL>
+            <li><b>netplan generate: </b> se tuliza /etc/netplan para generar la configuracion necesaria para los renderizadores </li>
+            <li><b>netplan apply</b> aplica toda la configuracion para los renderizadores,reiniciandolos segun sea necesario</li>
+            <li><b>netplan try</b> aplicacr la configuracion y esperar la confirmacion del usuario retrocedera si la red esta rota o no se da confirmacion </li>
+
+        </UL>
+    </nav>
+ </div>
+<div>
+    <h4>EJEMPLOS DE CONFIGURACIONES EN NETPLAN</h4>
+      <H5><b>varias tarjetas configuradas mediante dhcp</b></H5>
+      <P>se puede lograr el enrutamiento exacto desado a traves de DHCP especificando una metrica para las rutas recuperadas a traves de DHCP lo que garantiza <br>
+     que se prefieran algunas rutas sobre otras.en este ejemplo se prefiere <b><code> 'enp0s3' a 'enp0s8'</code></b>ya que tiene una metrica de ruta mas baja
+    <code>network; <br> 
+        version: 2 <br>
+        ethernet  <br>
+        enp0s3: <br>
+        dhcp4: yes <br>
+        dhcp4-overrides: <br>
+        route-metric: 100 <br>
+        enp0s8:: <br>
+        dhcp4: yes <br>
+        dhcp4-overrides: <br>
+        route-metric: 200 <br></code></P>
+<h5>uso de varias direcciones con varias puertas de enlace</h5>
+ <p>las interfaces con multiples direcciones se pueden configurar con multiples puertas de enlace 
+    <code> <br>
+        network: <br>
+        version: 2 <br>
+        renderer: networkd <br>
+        ethernets: <br>
+        enp3s0: <br>
+         addresses: <br>      
+        - 10.0.0.10/24<br>
+        - 11.0.0.11/24<br>
+        routes:<br>
+        - to: default<br>
+        via: 10.0.0.1<br>
+        metric: 200<br>
+        - to: default<br>
+        via: 11.0.0.1<br>
+        metric: 300</code><br>Configuramos rutas individuales por defecto (o 0.0.0.0/0) utilizando la dirección de la
+        puerta de enlace para la subred. El metricvalor debe ajustarse para que el enrutamiento
+        ocurra como se esperaba.
+        Se puede usar DHCP para recibir una de las direcciones IP para la interfaz. En este caso,
+        la ruta predeterminada para esa dirección se configurará automáticamente con un
+        metricvalor de 100.
+        </p>
+</div>
+<div>
+    <h4>NUEVAS HERRAMIENTAS Y COMANDOS DE RED</h4>
+      <p>El propósito de iproute2 es reemplazar el conjunto de herramientas que componen las
+        net-tools y pasar a ser él quien se encargue de configurar las interfaces de red, la tabla de
+        rutas y gestionar la tabla ARP.</p>
+    <h4>comado <b>ip</b></h4>
+    <P>la herramienta pricipal de iproute2 es el comando «ip», con el que podremos ver y
+        configurar direcciones IP, ver y configurar tablas de enrutamiento, ver y configurar túneles
+        IP, y también ver y configurar la interfaz física.
+        La sintaxis que debemos utilizar con este comando es la siguiente: <code>ip [ OPCIONES ] OBJETO [ COMANDO ]
+        </code> <br> -Los «OBJETOS» que tenemos en ip son los siguientes, y son los que podremos ver y
+        configurar los enlaces físicos, direcciones ip, rutas y más</P>
+        
+ </div>
+ <table class="tablaip">
+    <tr>
+        <td>comando</td>
+        <td>funcion</td>
+    </tr>
+        <tr>
+          <td>link</td>
+            <td>nos sirve para configurar las interfaces de red físicas o lógicas, por ejemplo,
+                para ver el estado de todas las interfaces de red.</td>
+        </tr>
+
+        <tr>
+            <td>address</td>
+              <td>permite ver y configurar las direcciones IPv4 y IPv6 asociadas a las
+                diferentes interfaces de red. Cada interfaz debe tener al menos, una dirección IP
+                configurada</td>
+          </tr>
+  
+
+          <tr>
+            <td>addrlabel</td>
+              <td> permite añadir una etiqueta</td>
+          </tr>
+  
+
+
+          <tr>
+            <td>neighbour</td>
+              <td>permite ver los enlaces de vecindad, es decir, se puede ver la tabla ARP
+                del sistema operativo.</td>
+          </tr>
+  
+          <tr>
+            <td>rule</td>
+              <td> permite ver y configurar políticas de enrutado y cambiarlas, esto se utiliza
+                sobre todo cuando vas a configurar varias tablas de enrutamiento.</td>
+          </tr>
+  
+          <tr>
+            <td>route</td>
+              <td>permite ver y configurar las tablas de enrutamiento, tanto de la tabla de
+                enrutamiento principal, como de las «secundarias» que configures.</td>
+          </tr>
+
+          <tr>
+            <td>tunnel</td>
+              <td> permite ver los túneles IP y también configurarlos</td>
+          </tr>
+  
+          <tr>
+            <td>maddr</td>
+              <td> permite ver y configurar las direcciones multienlace.
+            </td>
+          </tr>
+  
+          <tr>
+            <td>mroute</td>
+              <td>: permite ver y configurar la tabla de enrutamiento multicast</td>
+          </tr>
+  
+          <tr>
+            <td>mrule</td>
+              <td>permite ver y configurar políticas de enrutamiento de direcciones multicast</td>
+          </tr>
+
+          <tr>
+            <td>monitor</td>
+              <td>permite monitorizar el estado de las tarjetas de red de manera continua,
+                también direcciones IP y rutas.</td>
+          </tr>
+
+          
+          <tr>
+            <td>ntable</td>
+              <td> gestiona el caché de neighbour (ARP)</td>
+          </tr>
+
+
+          <tr>
+            <td>tuntap</td>
+              <td>gestiona las interfaces TUN/TAP, orientado a las VPN como OpenVPN o
+                WireGuard.</td>
+          </tr>
+
+          <tr>
+            <td>maddress</td>
+              <td>configuración de las direcciones multicast</td>
+          </tr>
+
+          
+          <tr>
+            <td>xfrm</td>
+              <td>gestiona las políticas IPsec</td>
+          </tr>
+
+          
+          <tr>
+            <td>netns</td>
+              <td>administrar espacios de nombres de red</td>
+          </tr>
+  
+          <tr>
+            <td>l2tp</td>
+              <td> configuración de L2TP</td>
+          </tr>
+  
+          
+          <tr>
+            <td>tcp_metrics</td>
+              <td>gestiona métricas TCP.</td>
+          </tr>
+  
+  
+          <tr>
+            <td>token</td>
+              <td> gestiona los identificadores con token de las interfaces</td>
+          </tr>
+  </table>
+   <div>
+    <h4>Mostrar dispositivos de red y su configuracion</h4>
+      <ul>
+        <li><b>comando antiguo</b> ifconfig</li>
+        <li><b>comando actual</b>ip addr show / ip link show</li>
+      </ul>
+      <p>Con el comando ip, tenemos dos comandos parecidos, uno de ellos nos mostrará toda la
+        información a nivel de direccionamiento IP <b>(ip addr show)</b>, y el otro nos mostrará el estado
+        de la interfaz física <b>(ip link show)</b><br>estos comandos son inportantes por podremos ver toda la informacion de direccionamiento IP,mascara de subred <br>
+     ademas podremos ver como tenemos configurada la interfaz fisica, el MTU que tenemos configurado e incluso si esta o no habilitada esta interfaz de red 
+     <code>sudo ifconfig -a <br>
+        Con iproute2, el siguiente comando nos da una salida similar a ifconfig.<br>
+        $ sudo ip addr list<br>
+        o también:<br>
+        $ sudo ip addr show<br>
+        Con el siguiente, vemos la información en capa 2 (data link layer) del Modelo OSI:<br>
+        $ sudo ip link show</code></p>
+   </div>
+   <div>
+    <h4>Activar una interfaz de red</h4>
+     <ul>
+        <li><b>comando antiguo</b> ifconfig ens33 up</li>
+        <li><b>comando actual</b>ip link set ens33 up</li>
+     </ul>
+     <p><code>$ sudo ifconfig eth0 up <br>
+        $ sudo ip link set eth0 up</code></p>
+   </div>
+
+ <div>
+    <H4>Desactivar una interfaz de red</H4>
+     <ul>
+        <li><b>comando antiguo</b> ifconfig ens33 down</li>
+        <li><b>comando actual</b>ip link set ens33 downm</li>
+     </ul>
+     <p><code>sudo ifconfig eth0 down <br>
+        $ sudo ip link set eth0 down
+        </code></p>
+ </div>
+<div>
+    <h4>Configurar una direccion IP en una interfaz</h4>
+    <ul>
+        <li><b>comando antiguo</b> iifconfig ens33 192.168.1.1/24</li>
+        <li><b>comadno actual</b> ip addr add 192.168.1.1/24 dev ens33</li>
+    </ul>
+    <p>con este comando estaremos indicando que queremos poner una direccion ip y una mascara de subred especifica a una interfaz que nosotros hemos definifo  <br>
+    <code>
+        Con ifconfig: <br>
+$ sudo ifconfig eth0 192.168.1.1/24<br>
+o también:<br>
+$ sudo ifconfig eth0 192.168.1.1 netmask 255.255.255.0<br>
+Con iproute2:<br>
+$ sudo ip address add 192.168.1.1/24 dev eth0
+
+    </code></p>
+</div>
+<div>
+    <h4>condigurar varias direcciones IP en una interfaz</h4>
+    <p><b>iproute2</b> permite asignar multiples direcciones IPv4 a una interfaz cosa que no es posible hacer mediante <b>ifconfig</b></p>
+ <code>$ sudo ip addr add 10.0.0.1/24 broadcast 10.0.0.255 dev eth1 <br>
+    $ sudo ip addr add 10.0.0.2/24 broadcast 10.0.0.255 dev eth1 <br>
+    29
+    $ sudo ip addr add 10.0.0.3/24 broadcast 10.0.0.255 dev eth1</code>
+
+
+</div>
+
+<div>
+        <h4>eliminar una direccion IP de una interfaz</h4>
+        <ul>
+            <li><b>comando antiguo</b>no soportada habia que poner 0.0.0.0 a la interfaz</li>
+            <li><b>comando actual </b> ip addr 192.168.1.1 dev ens33</li>
+            
+        </ul>
+        <p>en el caso de ip, es tan facil como sustituir el <b>add</b> para configurar una IP por <b>del</b> para eliminarla (delete)</p>
+        <code>$ sudo ifconfig eth0 0.0.0.0 <br>
+            $ sudo ip addr del 192.168.1.1/24 dev eth0</code>
+     
+</div>
+<div>
+    <h4>anadir ua interfaz virtual(alias)</h4>
+    <ul>
+        <li><b>comando antiguo</b> ifconfig ens33:1 10.0.0.1/8</li>
+        <li><b>comando actual</b> ip addr add 10.0.0.1/8 dev  ens33 label ens33:redeszone</li>
+    </ul>
+    <p>En todas las interfaz físicas tenemos la posibilidad de configurar interfaces virtuales para
+        otro tipo de usocs, esto también se le conoce como «alias». <br>
+        Con ip, simplemente tenemos que poner la IP de siempre, pero con «label ens33:1» o el
+        alias que queramos. <br>
+        Mientras que con «ifconfig» no es necesario poner ningún tipo de «label», en el caso de
+        «ip» sí tendremos que colocarlo a modo de etiqueta, además, la parte positiva de este
+        label es que podremos nombrar la interfaz de red virtual recién creada como nosotros
+        queramos, no es necesario que siga la sintaxis ens33:1 o lo que sea, podremos poner un
+        nombre. <br> <br>
+        Para ejecutar la ayuda de «ip addr» y ver todos los comandos que podemos ejecutar,
+        simplemente basta con poner: <br> <code>ip addr help</code> <br>Debemos recordar que la ayuda de «ip» es realmente útil y nos permitirá saber qué
+        comandos se permiten ejecutar.</p>
+</div>
+<div>
+    <h4>activar/desactivar el modo promiscuo de la tarjeta de red </h4>
+    <code>$ sudo ip link set dev eth0 promisc on <br>
+        $ sudo ip link set dev eth0 promisc of</code>
+</div>
+<div>
+    <h4>cambiar la MAC de una interfaz de red</h4>
+    <p>Tanto con ifconfig como con iproute2 hay que deshabilitar la tarjeta de red antes de
+        cambiar la MAC y luego volver a activarla.</p>
+        <code>$ sudo ifconfig eth1 hw ether 08:00:27:75:2a:67 <br>
+            $ sudo ip link set dev eth1 address 08:00:27:75:2a:67</code>
+</div>
+<div>
+    <h4>ver las entradas en la tabla ARP</h4>
+    <code>arp -n ip neigh show</code>
+</div>
+
+<div>
+   <h4>anadir una entrada en la tabla ARP</h4>
+   <ul>
+    <li><b>comando antiguo</b> arp -i eth0 -s 192.168.0.1  00:11:22:33:44:55</li>
+    <li><b>comando actual</b>. ip neigh add 192.168.0.1 lladdr 00:11:22:33:44:55 nud permanent dev
+        ens33 </li>
+   </ul>
+ <p>En el caso de iproute2, tenemos que usar el objeto «neigh», tal y como podéis ver: <br>
+    ip neigh add 192.168.0.1 lladdr 00:11:22:33:44:55 nud permanent dev ens33</p>
+</div>
+<div>
+    <h4>quitar una entrada de ARP</h4>
+    <p>ip neigh del 192.168.0.1 lladdr 00:11:22:33:44:55 nud permanent dev ens33 <br>
+        Para ejecutar la ayuda de «ip neigh» y ver todos los comandos que podemos ejecutar,
+        simplemente basta con poner: <br></p>
+    <code>ip neigh help</code>
+    <p>las posibilidades de iproute2 con ip link, ip addr y ip neigh sonn <br>
+        casi infinitas, además, la sintaxis es muy intuitiva, pareciéndose muchísimo a los routers <br>
+        Cisco que tan conocidos son en el mundo de las redes.
+        </p>
+</div>
+
+<div>
+    <h4>Comandos "ip route" para configurar rutas</h4> 
+    <p>El comando «ip route» nos permitirá configurar la tabla de enrutamiento principal del <br>
+        sistema operativo, y también las tablas de enrutamiento adicionales que configuremos en <br>
+        el sistema operativo. A continuación, tenéis algunos ejemplos de uso con únicamente el <br>
+        comando ip route, sin utilizar el antiguo «route» que teníamos con la suite de «ifconfig»</p>
+    <ul>
+        <li><b>Ver la tabla de rutas</b><code>$ sudo ip route show</code></li>
+        <li><b>Anadir una ruta en la tabla de enrutamiento</b> <br><code>ip route add 10.8.0.0/24 via 192.168.1.2 dev eth0</code></li>
+        <li><b>borrar una ruta en la tabla de enrutamiento</b> <br><code>ip route del 10.8.0.0/24 via 192.168.1.2 dev eth0</code></li>
+        <li><b>cambiar una ruta en la tabla de enrutamiento</b> <br><code>ip route chg 10.8.0.0/24 via 192.168.1.3 dev eth0</code></li>
+       <li><b>Agregar la puerta de enlace predeterminada(gateway)</b> <br><code>ip route add default via 192.168.1.1 dev eth0</code></li>
+       <li><b>Borrar la puerta de enlace predeterminada(gateway)</b> <br><code>ip route del default via 192.168.1.254 dev eth0</code></li>
+       <li><b>ver el estado de la tabla de enrutamiento pirncipal</b><code>ip route show ip route list</code> <br></li>
+    
+  
+    </ul>
+</div>
+
+<div>
+    <h4>listado de comandos basicos de <b>ss</b></h4>
+    <p>ss se utiliza para volcar estadísticas sobre sockets. Permite mostrar información similar a <br>
+        netstat. ss muestra más información TCP y estado que otras herramientas. A continuación <br>
+        mostramos una serie de ejemplos con el comando ss y en algunos casos su equivalente <br>
+        con netstat</p>
+    <ol type="a">
+        <li><b>Ver estadisticas de sockets a la escucha</b> con "net-tools" <br><code>$ sudo netstat
+            <br>o también: <br>$ sudo netstat -l</code> <br><br>
+        <code><b>con iproute2</b> <br>$ sudo ss
+            <br>o también:
+            <br>$ sudo ss -l</code> <br> <br> 
+           <b>ver estadisticas de sockets TCP a la escuch sin resolucion de nombres</b>
+        <code>
+          <br>$ sudo netstat -ltn
+        </code>
+        <br><br>
+        <code>
+            $ sudo ss -ltn
+
+
+        </code>
+        
+        
+        
+        </li>
+        <li><b>mostrar conexiones ssh estableciddas</b><br><code># ss -o state established '( dport = :ssh or sport = :ssh)'</code></li>
+        <li><b>mostrar conexiones HTTP establecidas</b> <br><code>ss -o state established '( dport = :http or sport = :http )'</code></li>
+        <li><b>Hacer coincidir direcciones remotas y puertos</b>ss dst ADDRESS_PATTERN <br><code>## Mostrar todos los puertos conectados de forma remota desde 192.168.1.5##
+            ss dst 192.168.1.5</code> <br> <br> <code>## Mostrar todos los puertos conectados de forma remota desde 192.168.1.5:http##
+                ss dst 192.168.1.5:http <br>
+                ss dst 192.168.1.5:smtp <br>
+                ss dst 192.168.1.5:443</code> <br><br>
+             <code>
+                Mostrar conexiones realizadas por una ip en el puerto http hacia nuestra máquina <br>
+ss dst 123.1.2.100:http
+             </code> <br><br><br>        
+               <code>
+                Es posible mostrar todas las conexiones realizadas por cualquier máquina, por el puerto
+                http por ejemplo: <br><br>
+                # ss dst *:http
+               </code>
+            
+            
+            
+            </li> 
+        <li><b>Mostrar el numero y el tipo de conexiones activas</b><code> <br>ss -ant | awk '{print $NF}' | grep -v '[a-z]' | sort | uniq -c</code></li>
+         <li><b>Listar todos los puertos a la escucha junto con el PID del programa</b><br><code>ss -tlnp</code></li>   
+         <li><b>Mostrar un resumen del estado de los sockets</b><br><code># ss -s</code></li>
+    
+    </ol>
+    <h4>Hacer persistenetes todos los cambios en IPs y rutas</h4>
+    <p>Si reiniciamos el servidor, todos los cambios que hayamos hecho en el sistema operativo <br>
+        con el comando «ip» no se guardarán al reiniciar el servidor, por tanto, debemos hacer <br>
+        persistentes estos cambios. Dependiendo del sistema operativo, se hace de una forma u <br>
+        otra. Lo primero que debemos hacer es editar el fichero de configuración ubicado en <br>
+        «/etc/network/interfaces» o en sistemas mas modernos que utilicen <br>
+        netplan /etc/netplan/*.yaml, en esos ficheros es donde podremos poner todas las <br>
+        direcciones IP y las rutas y reglas que nosotros deseemos.</p>
+</div>
+
+<div>
+    <h4>El nombre del equipo /etc/hostname</h4>
+    <p>El fichero /etc/hostname establece el nombre del ordenador local, el cual es leído durante <br>
+        el arranque del sistema. Debería contener una simple línea con el nombre de la máquina. <br>
+        Este nombre no puede superar los 64 caracteres de longitud, y se recomienda que esté <br>
+        formado por caracteres ASCII de 7 bits, en minúscula y sin espacios ni puntos</p>
+   
+</div>
+
+<div>
+    <h4>Hacer un equipo que sea enrutador</h4>
+    <p>Una de las posibilidades que nos ofrece GNU/Linux es la de poder actuar como enrutador, <br>
+        es decir, recibir paquetes, decidir la ruta de estos y reenviarlos por cualquiera de las <br>
+        interfaces de red existentes. Para hacerlo necesitamos modificar el parámetro del kernel
+        denominado ip_forward.</p>
+</div>
+
+<div>
+    <h4>el fichero de configuracion /etc/sysctl.conf</h4>
+    <p>El fichero de configuración /etc/sysctl.conf se utiliza para ipestablecer algunos
+        parámetros del kernel y que estos se mantengan entre sucesivos arranques del
+        sistema, es decir, que los cambios sean persistentes. Esto es equivalente a cambiar
+        valores en los archivos del directorio virtual /proc/sys, sólo que con este último
+        método los cambios se pierden al apagar el sistema.  <br><br>El nombre completo del parámetro que debemos modificar para que el equipo funcione
+        como router se denomina net.ipv4.ip_forward, y su valor debe ser 1. Para que este
+        cambio se mantenga al reiniciar el sistema, editamos el fichero /etc/sysctl.conf, buscamos
+        el parámetro, y cambiamos el valor cero por el valor uno: <code>net.ipv4.ip_forward = 1</code> <br><br>Tras este cambio reiniciamos el sistema y el equipo ya funcionará a partir de ahora como
+        router; pero podemos hacer el cambio en caliente y ahorrarnos el reinicio. Hay varias
+        formas de hacer esto: <br>
+        Directamente poniendo el 1 en el fichero del directorio /proc/sys que se encarga de este
+        parámetro. La forma de descubrir el fichero relacionado con un parámetro concreto del
+        fichero /etc/sysctl.conf es siempre la misma. Todos los ficheros están en /proc/sys, y los
+        puntos del parámetro separan directorios hasta el último que separa el nombre del fichero,
+        de esta manera, el fichero que buscamos es el /proc/sys/net/ipv4/ip_forward. Podemos
+        escribir un 1 de la siguiente forma, sin necesidad de abrirlo con un editor: <code># echo 1 > /proc/sys/net/ipv4/ip_forward</code> <br><br>
+        -Con el comando sysctl podemos cambiar el valor de los parámetros del kernel de la
+        siguiente manera: <br><code># sysctl -w net.ipv4.ip_forward=1</code> <br>El cambio anterior con -w no sería persistente <br><br>
+        También podemos cargar todos los parámetros del fichero /etc/sysctl.conf ejecutando: <br><code># sysctl -p</code> <br><br>Otros usos del comando sysctl son los siguientes:
+        <br><br>Para ver todos los parámetros <br> <code># sysctl -a</code> <br><br>Para ver sólo los parámetros que contengan una expresión regular <br><code># sysctl -a --patter net.ipv4</code> <br> 
+        Para ver un parámetro concreto: <br>
+<code># sysctl net.ipv4.ip_forward</code>
+
+        </p>
+
+</div>
+
+<div>
+    <h4>configuracion NAT</h4>
+    <p></p>
+    <ol>
+        <li> <b>activacion del bit de forward</b> para que un equipo haga nat primero tiene que enrutar</li>
+        <li><b>postrouting</b> Todos los equipos de la red 192.168.3.0/24 están interconectados entre sí, pero en
+            principio no tienen acceso a Internet puesto que sus direcciones IP son privadas y por
+            tanto no son accesibles desde Internet (ningún equipo contestaría a sus peticiones). El
+            37
+            equipo que tiene dos interfeces de red sí tiene acceso a Internet ya que la interfaz de red
+            eth0 tiene una dirección IP pública, además pertenece a la red 192.168.3.0/24 ya que está
+            conectado a través de la interfaz de red eth1 con dirección IP 192.168.3.254 <br><br>El equipo con dos interfaces de red puede funcionar como dispositivo de NAT (source
+            NAT), aceptando paquetes provenientes del resto de equipos de la red 192.168.3.0/24
+            que entren por eth1 con destino a cualquier equipo de Internet. Tal como se describe en el
+            ejemplo inicial de SNAT, el dispositivo de NAT debe cambiar la dirección IP origen, pero
+            esto se hace justo antes de enviar el paquete a Internet y por tanto habrá que definirlo en
+            la cadena POSTROUTING.</li>
+        <li><b>source nat (estatico) con iptables</b>La regla que hay que poner para que se haga SNAT de todos los equipos de la red
+            192.168.3.0/24 es tan simple como <br> <code>iptables -t nat -A POSTROUTING -s 192.168.3.0/24 -o eth0 -j SNAT --to 80.58.1.14
+            </code><br><b>explicacion de los parametros;</b>
+            • -A POSTROUTING: Añade (Add) una regla a la cadena POSTROUTING <br>
+            • -s 192.168.3.0/24: Se aplica a los paquetes que tengan como dirección origen
+            (source) la 192.168.3.0/24 <br>
+            • -o eth0: Se aplica a los paquetes que salgan (out-interface) por eth0 <br>
+            • -j SNAT --to 80.58.1.14 (--to aquí es equivalente a --to-source): Cambia la dirección
+            de origen por la 80.58.1.14 </li>
+        <li><b>source nat(dianmico)</b>Podríamos tener un caso similar al anterior, pero en el que la dirección IP pública del
+            equipo que se conecta a Internet fuese dinámica, por lo que no la sabríamos a priori y no
+            sería posible definirla en una regla como la anterior. En ese caso la regla de iptables a
+            utilizar sería: <br><code>iptables -t nat -A POSTROUTING -s 192.168.3.0/24 -o eth0 -j MASQUERADE</code> <br>Donde el único cambio se refiere a la acción (parámetro -j), en este caso es
+            MASQUERADE, que cambia la dirección origen por la que tenga la interfaz de salida
+            (eth0). <br> <br> MASQUERADE podría funcionar también si la dirección IP de eth0 fuese estática, pero en
+            ese caso se recomienda utilizar SNAT. <br> <br> Para comprobar que el router realiza NAT podemos utilizar el comando: <br> <code>iptables -L -t nat -nv</code></li>
+        
+            <li><b>Prerouting</b>(Todo lo que se explica en este punto no se hace con la seguridad en mente, sino
+                simplemente para explicar algunas cosas que se pueden hacer con PREROUTING. En
+                una implementación real, esto tendría que ir combinado con un cortafuegos y un esquema
+                de red diferente). <br>
+                Para realizar una conexión cliente-servidor entre dos equipos de Internet hay que
+                especificar completamente lo que se denomina socket de Internet, que queda definido con
+                lo siguiente  <br>
+                • Protocolo (normalmente TCP o UDP) <br>
+                • Dirección IP equipo cliente <br>
+                • Puerto equipo cliente <br>
+                • Dirección IP equipo servidor <br>
+                • Puerto equipo servidor <br>
+                Si volvemos a nuestro problema, el único equipo de la red local que es accesible desde
+                Internet es el dispositivo de NAT a través de su dirección IP pública 80.58.1.14, ya que
+                sería el único con el que un equipo de Internet podría establecer un socket y por tanto
+                sería el único equipo de la red que podría alojar servicios. Todo esto cambia si utilizamos
+                NAT, ya que en el equipo que tiene las dos interfaces de red podemos cambiar la
+                dirección IP destino (DNAT) de una petición que llegue de Internet y mandarla a un equipo
+                de la red local <br>
+                Supongamos que instalamos un servidor web en un equipo de la red local con dirección IP
+                192.168.3.2 y queremos que sea accesible desde Internet, tendremos que modificar las
+                peticiones que lleguen al puerto 80/tcp des equipo que tiene la dirección IP pública y que
+                cambie la dirección IP destino 80.58.1.14 por 192.168.3.2, esto se hace con la siguiente
+                regla: <br><br> <code>iptables -t nat -A PREROUTING -p tcp --dport 80 -i eth0 -j DNAT --to 192.168.3.2
+                </code> <br>Explicación de los parámetros: <br>
+                • -A PREROUTING: Añade (Add) una regla a la cadena PREROUTING <br>
+                • -p tcp: Especifica el (p)rotocolo de transporte (tcp en este caso) <br>
+                • --dport 80 (equivalente a --destination-port 80): Puerto destino 80 (ligada al <br>
+                parámentro anterior) <br>
+                • -i eth0: Especifica eth0 como interfaz de entrada (in-interface) <br>
+    
+                • -j DNAT --to 192.168.3.2 (--to aquí es equivalente a --to-destination): Cambia la <br>
+                dirección IP destino (inicialmente 80.58.1.14) a 192.168.3.2 <br><br>
+            
+                Es lógico que haya que hacerlo en la cadena PREROUTING, porque las reglas de esta
+                cadena se aplican antes de tomar la decisión de enrutamiento, así se tomará la decisión
+                de encaminamiento con la nueva dirección IP destino. <br><br>
+                Para otros servicios bastaría con poner el protocolo y puerto adecuados, aunque el caso
+                del servicio ftp es más complicado y necesitaría una discusión mas detallada. La principal
+                limitación de utilizar DNAT con una sola dirección pública es que no es posible poner más
+                de un servicio en el mismo puerto, ya que sólo se puede hacer DNAT a un equipo de la
+                red local (el socket debe estar totalmente determinado). <br><br>
+                Hay algunos servicios que permiten utilizar puertos diferentes a los estándar, como por
+                ejemplo http, ya que podemos acceder a un servidor web que esté en un puerto diferente
+                al 80/tcp, simplemente especificándolo en el navegador. Como iptables nos permite no
+                sólo modificar la dirección IP destino sino también el puerto destino, podríamos poner un
+                segundo servidor web en el equipo 192.168.3.3 y añadir la siguiente regla: <br><br><code>iptables -t nat -A PREROUTING -p tcp --dport 880 -i eth0 -j DNAT --to 192.168.3.3:80</code> <br>
+                Donde hemos especificado el puerto destino 880 (que no es un puerto estándar para
+ningún servicio) y cambiamos tanto la IP destino como el puerto destino con --to
+192.168.3.3:80. <br><br>
+Para acceder a e <br>
+se servicio desde Internet tendremos que escribir en el navegador: <br><br><code>http://80.58.1.14:880</code></li>
+    
+    </ol>
+</div>
+<div>
+    <h4>Guardar reglas iptables</h4>
+    <ol>
+        <li><b>utilizacion del paquete iptables-persistent</b><br>Lo mas actual es utilizar el paquete iptables-persistent guardará las reglas que hayamos
+            configurado <br> <code>sudo apt-get install iptables-persistent</code> <br><br> Para añadir nuevas reglas y queden persistentes se deben añadir al fichero
+            /etc/iptables/rules.v4. <br> <code>sudo nano /etc/iptables/rules.v4 </code>
+            </li>
+    </ol>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="boton2">
+    <a href="serviciosenred.html">volver</a>
+</div>
+
+</body>
+</html>

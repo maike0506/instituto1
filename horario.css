@@ -1,0 +1,57 @@
+*{
+  background-color: bisque;
+}
+h1{
+    border-style: solid;
+    border-color:black;
+    border-width: 5px;
+    width: 350px;
+    box-shadow: rgb(132, 0, 255) 10px 10px 20px;
+}
+.day{
+    background-color:yellow;
+    color: black;
+    font-size: 24px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-style: italic;
+}
+.tabla1{
+    width: 100px;
+    height: 100;
+    border-style: solid;
+    border-color: black;
+   margin:auto;
+   border-width: 5px;
+  
+}
+
+.tabla2{
+    background-color: yellow;
+}
+.tabla3{
+    background-color: chocolate;
+}
+.tabla4{
+    background-color: green;
+}
+.tabla5{
+    background-color:  blue;
+}
+.tabla6{
+    background-color: rebeccapurple;
+
+}
+.tabla7{
+    background-color: saddlebrown;
+
+}
+.time{
+    background-color: aqua;
+}
+.a{
+    background-color: aqua;
+    text-align: center;
+    font-size: 24px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-style: italic;
+}

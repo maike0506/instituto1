@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento de CSS</title>
+    <style>
+      *{
+        background-color: white;
+       animation: color-change s ease-in-out
+      }
+      @keyframes color-change{
+        from{
+          background-color:;
+        }to{
+          background-color:;
+        }
+      }
+       p:int-child(4){
+        color: red;
+       }
+       
+
+        h1{ 
+            background-color: red;
+
+
+
+        }
+        @keyframes slide-right{
+           from{
+            transform:translateX(-100%);
+
+           }
+           to{
+            transform:translateX(0;);
+           }
+            
+        }
+        .titulo{
+
+        animation:slide-right 2s ease-in-out;
+        }
+        h3{
+            background-color: blueviolet;
+            color: white;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        @keyframes slide-down{
+            from{
+                transform: translateY(-100%);
+            } to{
+                transform: translateY(0);
+            }
+
+        }
+           
+        .desplazamiento{
+            animation:slide-down 2s ease-in-out;
+        }
+       @keyframes rotate{
+        from{
+            transform: rotate(0deg)
+        } to{
+            transform: rotate(360deg)
+        }
+       }
+    .rotacion {
+        animation: rotate s linear infinite;
+    }
+
+    @keyframes color-change{
+        from{
+         backgroup-color: red;
+        } to{
+            background-color:yellow;
+        } 
+    }
+    .cambiar{
+        animation: color-change 2s infinite;
+    }
+    
+@keyframes scale-up {
+    from{
+        transform: scale(1);
+    } to{
+        transform: scale(1.5);
+    }
+}
+
+.escala {
+    animation: scale-up 3s ease-in-out;
+}
+@keyframes fade-in {
+    from{
+        opacity: 0;
+    } to{
+        opacity: 1;
+    }
+}
+.transparencia{
+    animation: fade-in 3s ease-in;
+}
+@keyframes bounce {
+    0%,20%,50%,80%,100%{
+        transform: translateY(0)
+    }40%{
+        transform:translateY(-30px)
+    } 60%{
+        transform: translateY(-15px);
+    }
+   
+    
+
+}
+.dificil{
+    animation: bounce 3s infinite ;
+}
+h5{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: red;
+}
+
+    </style>
+</head>
+<body>
+    <h1 class="titulo">tipos de animaciones</h1>
+    <article>
+        <section>
+            <h4>desplazamiento horizontal</h4>
+          <code>
+            @keyframes slide-right { <br>
+                from { <br>
+                  transform: translateX(-100%); <br>
+                } <br>
+                to { <br>
+                  transform: translateX(0); <br>
+                } <br>
+              } <br>
+              
+              .element { <br>
+                 animation: slide-right 2s ease-in-out; <br>
+              } <br>
+</section>
+          </code>
+</article>
+<article>
+    <section>
+        <h3 class="desplazamiento">desplazamiento vertical</h3>
+        <code>
+            @keyframes slide-down { <br>
+                from { <br>
+                     transform: translateY(-100%); <br>
+                to {  <br>
+                  transform: translateY(0); <br>
+                } <br>
+              } <br>
+              
+              .element { <br> 
+                animation: slide-down 2s ease-in-out; <br>
+              } 
+        </code>
+           
+    </section>
+</article>
+<article>
+    <section>
+        <h3 class="rotacion">rotacion</h3>
+       <code>
+        @keyframes rotate { <br>
+            from { <br>
+              transform: rotate(0deg); <br>
+            } <br> 
+            to { <br>
+              transform: rotate(360deg); <br>
+            } <br>
+          } <br>
+          
+          .element { <br>
+            animation: rotate 1s linear infinite; <br>
+          } <br>
+          
+       </code>
+    </section>
+</article>
+<article>
+    <section>
+        <h3 class="cambiar">cambiar color</h3> <br>
+        <code>
+            @keyframes color-change { <br>
+                from { <br>
+                  background-color: red; <br>
+                } <br>
+                to {  <br>
+                  background-color: blue; <br>
+                } <br>
+              } <br>
+              
+              .element { <br>
+                animation: color-change 3s infinite; <br>
+              } <br>
+        </code>
+    </section>
+</article>
+<article>
+    <section>
+     <h3 class="escala">escala1</h3>
+    <code>
+        @keyframes scale-up { <br>
+            from { <br>
+              transform: scale(1); <br>
+            } <br>
+            to { <br>
+              transform: scale(1.5); <br>
+            } <br>
+          } <br>
+          
+          .element { <br>
+             animation: scale-up 1s ease-in-out; <br> 
+          } <br>
+          
+    </code>
+    </section>
+</article>
+<article>
+    <section>
+    <h3 class="transparencia">transperencia</h3>
+   <code>
+    @keyframes fade-in { <br>
+        from { <br> 
+          opacity: 0; <br>
+        } <br>
+        to { <br>
+          opacity: 1; <br>
+        } <br>
+      } <br>
+      
+      .element { <br>
+        animation: fade-in 2s ease-in; <br>
+      } <br>
+      
+   </code>
+    </section>
+</article>
+<article>
+    <section>
+ <h3 class="dificil">movimiento rebote</h3>
+ <code>
+    @keyframes bounce { <br>
+        0%, 20%, 50%, 80%, 100% { <br>
+      transform: translateY(0); <br>
+        } <br>
+        40% { <br>
+          transform: translateY(-30px); <br>
+        } <br>
+        60% { <br>
+          transform: translateY(-15px); <br>
+        } <br>
+      } <br>
+      
+      .element { <br>
+        animation: bounce 2s infinite; <br>
+      } <br>
+ </code>
+ <article>
+  <section>
+    <h3>DESPLAZAMIENTO DEL LADO DERECHO A SU SITIO</h3>
+    <code>
+      @keyframes slideIn { <br>
+        0% { <br>
+            transform: translateX(100%); <br>
+            opacity: 0; <br>
+        } <br>
+        100% { <br>
+            transform: translateX(0); <br>
+            opacity: 1; <br>
+        } <br>
+    } <br>
+    </code>
+  </section>
+ </article>
+  
+ </section>
+</article>
+<h5>TIPOS DE ATRIBUTOS</h5> 
+ <ul>
+  <li>id</li> <br>
+  <p>solo se utilizan una vez</p>
+   <li>class</li> <br>
+   <p>se utilizan en casi todos los casos para nombrar los valores</p> <br>
+   <li>seudo clases</li> <br>
+   <p>son herramientas especiales  de css que nos permite referirnos a alguna clase  o id de forma mas precisa
+    por ejemplo  <code> h2 .p</code> con este codigo estamos refiriendonos a todos los parrafos que pertenecen a h2 
+   </p>
+ </ul>
+  <h3>TIPOS DE SEUDO CLASES</h3>
+  <ul>
+    <li>:nth-child(valor)</li>
+    <p>este seudo clase seleciona un elemento de una lista de elementos hermanos</p>
+    <li>:first-child</li>
+    <p>este selecciona el primer elemento de una lista de elementos hermanos</p>
+    <li>:last-child</li>
+    <p>este seleciona el <li>:only-child</li>
+    <p>este seultimo elemento un"""""""</p>
+    lecciona un elemento cuando es el unico hijo de otro elemento  </p>
+    <li>first-of-type</li>
+    <p>este seleciona el primer elemento de una lista de elemenos del mismo tipo</p>
+   <li>not</li>
+   <p class="mi texto 4">este seleciona los elemeneto que no  coinciden con el selector entre parentesis</p>
+  
+  </ul>
+
+
+<h2>tamano</h2>
+  <h5>width </h5>
+  <p>esta propiedad de clara el ancho de un elemento el valor se puede especificaar en pixeles porcentaje, o con la palabra auto </p>
+  <h5>height</h5>
+  <p>esta propiedad declara la altura de un elemeneto  """""""""""</p>
+  <h5>overflow</h5>
+  <p>esta propiedad especifica como se mostrarar el contenido que desborda el elmento los valores disponibles son <b>visible</b>,<b>hidden</b> contenido que no entra dentro de la caja 
+  <b>scroll</b> muestra barras laterales para desplazare el contenido <b>auto</b>deja que el navegador decida que hacer con el contenido </p>
+   <h5>overflow-x</h5>
+   <p>esta proidad especifica como se mostrar el contenido que desborda el elemento horizpontalmente acepta los mismo valores que la propiedad <b>overflow</b></p>
+   <h5>overflow-5</h5>
+   <p>esta poriedad especifica como se mostrar el contenido que desborda el elemento vcerticalmente acepta los mismo valores que la poriedad <b>overflow</b></p>
+   <h5>overflow-wrap</h5>
+   <p>esta poriedad indica si una palabra deberia ser dividida en un punto arbitrario cuando no hay suficiente espacio para mostrarla en la linea los valores disponibles son <b>normal</b>
+    la linea sera divida naturalmente y <b>break-word</b> las palabras se dividiran en puntos arbitrarios para acomodar la linea de texto en el espacio disponible</p>
+   <p><b>CON ESTAS PROPIEDADES PODEMOS DETERMINANR COMO SE MOSTRARA EL CONTENIDO CUANDO  NO HAY SUFICIENTE ESPACIO DISPONIBLE </b> por ejemplo podemos ocultar el texto que desborda el 
+  elemento asignado  el valor <b>hidden</b> a la propiedad <b>overflow</b></p>
+   <p>si queremos que el usuario pueda ver el texto que se ha ocultado, podemos asignar el valor <b>scroll</b> y forzar al navegador a mostrar barrras laterales para desplazar el contenido</p>
+   
+   <h5>MARGIN</h5>
+   <p>esta propiedad declara el margen de un elemento el margen es el espacio que hay alrededor de la caja   puede rebir <b>4 valores derecho,inferior e izquierdo </b>  
+  en ese orden y separados por un espacio tambien se puede utiliar el valor <b>auto</b>  </p>
+    
+  <h5>padding</h5>
+  <p>esta propiedad declara el relleno de un elemento el relleno es el espacio entre el contenido del elemento y los limites de su caja 
+    los valores se declaran  de la misma forma que lo hacemos para la propiedad margin</p>
+  <h5>background-color</h5>
+   <p>esta propiedad asigna un fondo de coor a un elemtento</p>
+   <h5>background-image</h5>
+   <p>esta poriedad asigna una o varias imagenes al fondo de un elemento  la URL del archivo se declara con la funcio <b>url</b>
+ si se quiere mas de una  imagen  se separa por una coma
+</p>
+  <h5>background-position</h5>
+  <p>esta pro[iedad declara la posicon de comienzo de una imagen de fondo los valores se pueden especificar en procentaje, pixeles o usando
+    una combinacion de las palabra <b>center,left,right,top y bottom</b>
+  </p>
+  <h5>background-size</h5>
+  <p>esta propiedad delcara el tama;o de la imagen de fondo  los valores se expresan en pixeles o porcentajes o utilizando paralabra claves
+    como oover y contain  <b>cover</b> expande la imagen hasta que su ancho o su altura cubren el area del elemento <b>contain</b>estira la imagen para 
+    ocupar toda el area del elemento
+  </p>
+  <h5>background-repeat</h5>
+  <p>esta propiedad determina como se distribuye la image n de fondo usando cuatro palabras clave <b>repeat,repeat-x,no-repeat</b>la palabra
+  repeat  repide la imagen en el eje vertical y horizontal  y el x y y lo hacen solo en el eje horizontal o vertical </p>
+
+  <h5>background-origin</h5>
+  <p>esta propiedd determina si la imgen de fondo se posicionara considerando el borde, el relleno o el contenido del area del elemento los valores disponibles son  <b>border-box, 
+    paddig-box y content-box
+  </b></p>
+
+  <h5>background-clip</h5>
+  <p>esta propiedad declara el area a cubir por el fondo usando los valores <b>border-box. padding-box y content-box</b>el primer valor corta la imagen al borde de la caja del elemento 
+   el segundo  corta el relleno de la caja y el tercero corta la imagen del alrededor</p>
+   <h5>background-attachment</h5>
+   <p>esta proiedad determinan si la imagen es estatica o se desplaza con el  resto de los elemenesto susando dos valores <b>scroll y fired</b> el scroll 
+  hacfe  que la imegen se desplace con la pagina  y el fixed fija la imagen de fondo  en su lugar original</p>
+
+  <h5>background</h5>
+  <p>esta propiedad nos permite declara todos los atributos del fondo al mismo tiempo</p>
+
+ <h3>BORDES</h3>
+  <p>por defecto los navegadores no muestran ningun borde, pero podemos usar las siguientes porpiedades para definirlo</p>
+   <h5>border-width</h5>
+   <p>esta propiedad define el ancho del borde acepta cuatro valores por defecto <b>border-top-width , border-bootom-width , border-left-width y border-right-width</b></p>
+ <h5>border-style</h5>
+ <p>esta propiedes define el estili del borde acepta cuatro valores  <b>todos lo valores que voy diciendo van en el siguiente orden que es
+  el superior,derecho,inferio e izquierdo en ese orden </b> los valores son los siguientes <b>none,hidden,dotted,dashed,solid,double,groove,ridge,inset y outset</b>el valor 
+por defecto es <b>none</b> lo que significa que no se mostrara a menos que le mostremos algun valor se puede asignar los valores de forma independiente 
+ <b>border-top-style , border-botton-style  , border-left-style y border-right-style-</b></p>
+<h5>border-color</h5>
+<p>esta propiedad define el color del borde y va acompanado con los anteriores valores por ejemplo <b>border-top-color</b>
+</p>
+<h5>border</h5>
+<p>esta propiedad no spermite declarar todos los atributos del borde al mismo tiempo se utiliza el <b>dashed</b>para las lineas discontinuasa</p>
+<h5>border-radius</h5>
+<p>esta propiedad define el radio del circulo virtual que el navegador  acepta los cuatro valores anteriores como el izquierdo 
+</p> 
+<h5>outline-width</h5>
+<p>esta propiedad define el ancho del brode acepta volores en cualqueira de las unidades disponibles </p>
+<h5>outline-style</h5>
+<p>esta propiedad define el estiloo del borde los vallores disponibles son <b>none,auto,dorred,solid,double,groove,ridge,inset y outset
+<h5>outline-color</h5>
+<p>esta propiedad drgine el color del borde</p>
+<h5>autline-offset</h5>
+<p>esta propiedad deifne el desplazamiento de la caja que se dibujara  acepta valores de las unidades disponibles</p>
+<h5>outline</h5>
+<p>esta propiedad permite espicificar el ancho estilo y volor del borde al mismo timepo </p>
+<h5>border-image-source</h5>
+<p>esta propiedad determina la imagen que se usara para crear el borde  la URL del archivo se declara con <b>URL</b>
+</p>
+<h5>border=image-width</h5>
+<p>esta propiedad define el ancho del borde </p>
+<h5>border-image-repeat</h5>
+<p>esta propiedad define como se usa  la imagen para genera el vorde los valores disponibles son los siguientes</p>
+<ul>
+  <li>repeat</li>
+  <li>round</li>
+  <li>stretch</li>
+  <li>space</li>
+</ul>
+<h5>border-image-slice</h5>
+<p>esta propiedad define como se va a cortar la imagen para representar las esquinas del borde se le debe asignar cuatro valores para los cuatro trozos de la imagen</p>
+<h5>border-image-outset</h5>
+<p>esta propiedad define el desplazamiento del borde</p>
+<h5>border-image</h5>
+<p>esta propiedad nos permite especificar todos los atributos del borde al mismo tiempo</p>
+
+<div class="sombras">
+  <ul>
+    <li><b>box-shadow: Esta propiedad genera una sombra desde la caja del elemento acepta hasta seis valores podemos declarar el <br>
+    el desplazamiento horizontal y vertical de la sombra, el radio de difuminado, el valor de propagacion ,el color de la sombra y tambien podemos incluir el valor <b>inset</b>para indicar que la sombra debera proyactar dentro de la caja</li>
+    <li><b>Text-shadown</b> : esta propiedad genera una sombra desde un texto acepta hasta cuatro valores podemos declarar el desplazamiento horizontal y vertical, el radio de difuminado y color de sombra</li>
+    <li>la propiedad <b>box-shadown</b> necesita al menos tres valores para poder determinar el color y el desplazamiento de la sombra . el desplazamiento puede tener valores positivos o valores negativos  <br>
+    los valores <b>negativos</b>posicionan  la sombra a la izquierda y encima del elemento, mientra que los <b>positivos</b> crean una sombra a  la derecha y debajo del elemento el valor <b>0 </b> <br>
+  ubica a  la  sombra detras del elemento y ofrece la posiblidad degenerar un efecto de difuminado a su alrededor  </li>
+    
+  </ul>
+</div>
+<div class="gradientes">
+
+  <ul>
+    <li><b>linear-gradient</b> (posicion,angulo,colores) esta funcion crea un gradiente lineal el atributo posicion determina el lado o la esquina desde la cual comienza el gradiente y se declara con lo valores <br>
+     <ol>
+      <li>top</li>
+      <li> to bottom</li>
+      <li> to left</li>
+      <li> to right</li>
+      <p>donde ponemos la direccion tambien podemos poner los grados  tambien le podemos asignar el valor de transparent</p>
+      <code>
+        backgroun: linear-gradient(to bottom,primer color,segundo color)
+      </code>
+      <p>el atributo angulo define la direccion del gradiente y se puede declarar en la unidades <b>deg(grados),grad(gra21diantes) , ras(radiantes)</b> primero va el bangroup y luego el linear-gradient</p>
+</ol>
+    <li><b>radial-gradiente</b> (posicion,forma,colores,extension) esta funcion crea un gradiente radial </li>
+    <ol>
+      <li>el atributo <b>POSICION</b> indica el origen del gradiente y se puede declara en pixeles, en porcentajes o en combinancion e valores como <br>
+      center,top,bottom,left y right</li>
+       <li>el atributo FORMA determina la forma del gradiente y se declara con los valores  circle y ellipse </li>
+        <li>el atributo colores  es la lista de los colores que participan en el gradiente separados por la coma </li>
+        <li>el atributo EXTENSION determina la forma que el gradiente va a adquirir con los valores <b>: closest-side closest-corner farthest-side farthest-corner </b></li>
+    
+      </ol>
+
+  </ul>
+</div>
+<div class="filtros">
+
+<h5>filter</h5>
+<p>para asignar un filtro a un elemenento y las siguiente funciones para rearlo </p>
+<ul>
+  <li>blur(valor): esta funcion produce un efecto de difuminado acepta valores en <b>px</b></li>
+  <li>grayscale(value): esta funcion convierte los colores de la imagen en una escala de grises acepta numeros decimales</li>
+  <li>drop-shadown(x,y,tamano,color): esta funcion genera una sombra los atributos x e y se determinan la distancia entre la sombra y la imagen <br>
+     <ol>
+      <li>atributo TAMANO:especifica el tama;o de la sombra </li>
+      <li>atributo COLOR:declara su color</li>
+     </ol>
+  </li>
+  <li>sepia(valor)</li>
+  <li>brightness(valor)</li>
+  <li>contrast(valor)</li>
+  <li>hue-rotate(valor)</li>
+  <li>invert(valor)<cv /li>
+  <li>saturate(valor)</li>
+  <li>opacity(valor)</li>
+  <li></li>
+</ul>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  </html> 
+  </body>
