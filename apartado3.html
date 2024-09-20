@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <header> 3. Configuración a bajo nivel. Mediante comandos</header>
+ <p>Es posible hacer una configuración de la red con los comandos ifconfig, route e ip, es lo
+  que se denomina configuración a bajo nivel, pero el inconveniente de este tipo
+  configuraciones es que no se mantienen al reiniciar el sistema, a menos que se
+  ejecuten desde un script en el arranque. <br>
+  Los comandos ifconfig y route (paquete net-tools) están hoy en día en desuso y han
+  sido sustituidos por el comando ip (paquete iproute). <br>
+  Usaremos estos comandos para obtener información de la red y no para configurarla
+  salvo en situaciones especiales como por ejemplo en el caso del mapeo lógico de un
+  dispositivo de red. <br>
+  Para ver la configuración de las interfaces de red activas ejecutamos:</p><br>
+   <code># ifconfig</code> <br>
+   <p>Se podrían ver todas las interfaces de red que tiene el sistema, tanto las activas (llevan la
+    palabra UP) como las inactivas (no llevan la palabra UP), para lo cual, ejecutamos</p> <br>
+     <code># ifconfig -a</code> <br>
+     <p>Podemos ver una estadística de la información enviada y recibida por las interfaces
+      activas o todas:
+      </p> <br>
+        <code># ifconfig -s</code> <br><br>
+<p> Podemos ver los datos de una interfaz concreta</p> <br>
+<code># ifconfig eth0</code> <br>
+<p>Para mostrar la tabla arp usamos el comando arp:</p>
+<code># arp -n</code>
+<p>La opción -n hace que se muestren todos los datos de forma numérica y no se intente
+  hacer traducción de IP a nombre; esto hace, generalmente, que el comando funcione más
+  rápido que obviando la opción. <br>
+  La opción -a muestra la misma información con otro tipo de formato de salida.
+  Para mostrar las tablas de enrutamiento usamos el comando route:</p>
+
+<code># route -n</code> <br>
+<p>También se puede utilizar la orden ip para obtener la información de la red. Así, para ver la
+  lista de tarjetas que hay instaladas en el sistema, con su dirección MAC y si están activas
+  o no, ejecutamos:     </p>
+  <code># ip link show</code> <br>
+  <p>El parámetro show puede suprimirse, en la orden anterior y en las sucesivas, se asume
+    por defecto. <br>
+    Para ver las direcciones IP de las tarjetas:</p>
+<code># ip address show / es lo mismo que ip a</code>
+<h3>Configurafcion de las tarjetas a bajo nivel a traves ifconfig</h3>
+<p>En este anexo se va a resumir cómo se pueden utilizar los comandos ifconfig e ip para
+  configurar las tarjetas de red. <br>
+  Este método se utiliza cuando no es posible mediante otros modos. <br>
+  La sintaxis resumida de ifconfig para asignar una IP a un tarjeta de red es la siguiente:</p>
+<code>ifconfig intefaz dirección-ip netmask máscara [up]</code> <br>
+<p>Si se especifica up al final del comando, entonces la tarjeta se levanta a la vez que se le
+  asigna la dirección IP. Por ejemplo:</p> <br>
+<code># ifconfig eth0 192.168.0.2 netmask 255.255.255.0 up</code> <br>
+<p>Con los siguientes comandos se activa o desactiva la tarjeta de red:</p> <br>
+<code>ifconfig (interfaz) { up | down }</code> <br>
+
+<h3>3.2. Configuración de las tarjetas a bajo nivel a través de ip</h3>
+<p>El comando ip realiza las mismas funciones que los comandos ifconfig, route y arp a la
+  vez. Para poner una dirección IP, la sintaxis resumida sería</p> <br>
+<code>ip address add dirección-ip/prefijo dev interfaz <br> <br>
+  # ip address add 192.168.0.2/24 dev eth0</code>
+<p>Si queremos cambiar de IP es necesario borrar previamente la dirección anterior para no
+  asignar dos direcciones. La sintaxis para borrar una dirección IP es:</p> <br>
+<code>ip address del dirección-ip/prefijo dev interfaz
+  # ip address del 192.168.0.2/24 dev eth0 <br></code> <br>
+<p>Por último falta ver la sintaxis del comando ip para activar y desactivar la tarjeta de red:</p> <br>
+<code>ip link set interfaz { up | down } <br>
+  # ip link set eth0 down <br>
+  # ip link set eth0 up</code>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

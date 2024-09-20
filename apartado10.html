@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h4 class="min">configuracion NAT</h4>
+        <p></p>
+        <ol>
+            <li> <b>activacion del bit de forward</b> para que un equipo haga nat primero tiene que enrutar</li>
+            <li><b>postrouting</b> Todos los equipos de la red 192.168.3.0/24 están interconectados entre sí, pero en
+                principio no tienen acceso a Internet puesto que sus direcciones IP son privadas y por
+                tanto no son accesibles desde Internet (ningún equipo contestaría a sus peticiones). El
+                37
+                equipo que tiene dos interfeces de red sí tiene acceso a Internet ya que la interfaz de red
+                eth0 tiene una dirección IP pública, además pertenece a la red 192.168.3.0/24 ya que está
+                conectado a través de la interfaz de red eth1 con dirección IP 192.168.3.254 <br><br>El equipo con dos interfaces de red puede funcionar como dispositivo de NAT (source
+                NAT), aceptando paquetes provenientes del resto de equipos de la red 192.168.3.0/24
+                que entren por eth1 con destino a cualquier equipo de Internet. Tal como se describe en el
+                ejemplo inicial de SNAT, el dispositivo de NAT debe cambiar la dirección IP origen, pero
+                esto se hace justo antes de enviar el paquete a Internet y por tanto habrá que definirlo en
+                la cadena POSTROUTING.</li>
+            <li><b>source nat (estatico) con iptables</b>La regla que hay que poner para que se haga SNAT de todos los equipos de la red
+                192.168.3.0/24 es tan simple como <br> <code>iptables -t nat -A POSTROUTING -s 192.168.3.0/24 -o eth0 -j SNAT --to 80.58.1.14
+                </code><br><b>explicacion de los parametros;</b>
+                • -A POSTROUTING: Añade (Add) una regla a la cadena POSTROUTING <br>
+                • -s 192.168.3.0/24: Se aplica a los paquetes que tengan como dirección origen
+                (source) la 192.168.3.0/24 <br>
+                • -o eth0: Se aplica a los paquetes que salgan (out-interface) por eth0 <br>
+                • -j SNAT --to 80.58.1.14 (--to aquí es equivalente a --to-source): Cambia la dirección
+                de origen por la 80.58.1.14 </li>
+            <li><b>source nat(dianmico)</b>Podríamos tener un caso similar al anterior, pero en el que la dirección IP pública del
+                equipo que se conecta a Internet fuese dinámica, por lo que no la sabríamos a priori y no
+                sería posible definirla en una regla como la anterior. En ese caso la regla de iptables a
+                utilizar sería: <br><code>iptables -t nat -A POSTROUTING -s 192.168.3.0/24 -o eth0 -j MASQUERADE</code> <br>Donde el único cambio se refiere a la acción (parámetro -j), en este caso es
+                MASQUERADE, que cambia la dirección origen por la que tenga la interfaz de salida
+                (eth0). <br> <br> MASQUERADE podría funcionar también si la dirección IP de eth0 fuese estática, pero en
+                ese caso se recomienda utilizar SNAT. <br> <br> Para comprobar que el router realiza NAT podemos utilizar el comando: <br> <code>iptables -L -t nat -nv</code></li>
+            
+                <li><b>Prerouting</b>(Todo lo que se explica en este punto no se hace con la seguridad en mente, sino
+                    simplemente para explicar algunas cosas que se pueden hacer con PREROUTING. En
+                    una implementación real, esto tendría que ir combinado con un cortafuegos y un esquema
+                    de red diferente). <br>
+                    Para realizar una conexión cliente-servidor entre dos equipos de Internet hay que
+                    especificar completamente lo que se denomina socket de Internet, que queda definido con
+                    lo siguiente  <br>
+                    • Protocolo (normalmente TCP o UDP) <br>
+                    • Dirección IP equipo cliente <br>
+                    • Puerto equipo cliente <br>
+                    • Dirección IP equipo servidor <br>
+                    • Puerto equipo servidor <br>
+                    Si volvemos a nuestro problema, el único equipo de la red local que es accesible desde
+                    Internet es el dispositivo de NAT a través de su dirección IP pública 80.58.1.14, ya que
+                    sería el único con el que un equipo de Internet podría establecer un socket y por tanto
+                    sería el único equipo de la red que podría alojar servicios. Todo esto cambia si utilizamos
+                    NAT, ya que en el equipo que tiene las dos interfaces de red podemos cambiar la
+                    dirección IP destino (DNAT) de una petición que llegue de Internet y mandarla a un equipo
+                    de la red local <br>
+                    Supongamos que instalamos un servidor web en un equipo de la red local con dirección IP
+                    192.168.3.2 y queremos que sea accesible desde Internet, tendremos que modificar las
+                    peticiones que lleguen al puerto 80/tcp des equipo que tiene la dirección IP pública y que
+                    cambie la dirección IP destino 80.58.1.14 por 192.168.3.2, esto se hace con la siguiente
+                    regla: <br><br> <code>iptables -t nat -A PREROUTING -p tcp --dport 80 -i eth0 -j DNAT --to 192.168.3.2
+                    </code> <br>Explicación de los parámetros: <br>
+                    • -A PREROUTING: Añade (Add) una regla a la cadena PREROUTING <br>
+                    • -p tcp: Especifica el (p)rotocolo de transporte (tcp en este caso) <br>
+                    • --dport 80 (equivalente a --destination-port 80): Puerto destino 80 (ligada al <br>
+                    parámentro anterior) <br>
+                    • -i eth0: Especifica eth0 como interfaz de entrada (in-interface) <br>
+        
+                    • -j DNAT --to 192.168.3.2 (--to aquí es equivalente a --to-destination): Cambia la <br>
+                    dirección IP destino (inicialmente 80.58.1.14) a 192.168.3.2 <br><br>
+                
+                    Es lógico que haya que hacerlo en la cadena PREROUTING, porque las reglas de esta
+                    cadena se aplican antes de tomar la decisión de enrutamiento, así se tomará la decisión
+                    de encaminamiento con la nueva dirección IP destino. <br><br>
+                    Para otros servicios bastaría con poner el protocolo y puerto adecuados, aunque el caso
+                    del servicio ftp es más complicado y necesitaría una discusión mas detallada. La principal
+                    limitación de utilizar DNAT con una sola dirección pública es que no es posible poner más
+                    de un servicio en el mismo puerto, ya que sólo se puede hacer DNAT a un equipo de la
+                    red local (el socket debe estar totalmente determinado). <br><br>
+                    Hay algunos servicios que permiten utilizar puertos diferentes a los estándar, como por
+                    ejemplo http, ya que podemos acceder a un servidor web que esté en un puerto diferente
+                    al 80/tcp, simplemente especificándolo en el navegador. Como iptables nos permite no
+                    sólo modificar la dirección IP destino sino también el puerto destino, podríamos poner un
+                    segundo servidor web en el equipo 192.168.3.3 y añadir la siguiente regla: <br><br><code>iptables -t nat -A PREROUTING -p tcp --dport 880 -i eth0 -j DNAT --to 192.168.3.3:80</code> <br>
+                    Donde hemos especificado el puerto destino 880 (que no es un puerto estándar para
+    ningún servicio) y cambiamos tanto la IP destino como el puerto destino con --to
+    192.168.3.3:80. <br><br>
+    Para acceder a e <br>
+    se servicio desde Internet tendremos que escribir en el navegador: <br><br><code>http://80.58.1.14:880</code></li>
+        
+        </ol>
+    </div>
+</body>
+</html>

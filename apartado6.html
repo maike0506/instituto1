@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h4 class="min">NUEVAS HERRAMIENTAS Y COMANDOS DE RED</h4>
+          <p>El propósito de iproute2 es reemplazar el conjunto de herramientas que componen las
+            net-tools y pasar a ser él quien se encargue de configurar las interfaces de red, la tabla de
+            rutas y gestionar la tabla ARP.</p>
+        <h4 class="min">comado <b>ip</b></h4>
+        <P>la herramienta pricipal de iproute2 es el comando «ip», con el que podremos ver y
+            configurar direcciones IP, ver y configurar tablas de enrutamiento, ver y configurar túneles
+            IP, y también ver y configurar la interfaz física.
+            La sintaxis que debemos utilizar con este comando es la siguiente: <code>ip [ OPCIONES ] OBJETO [ COMANDO ]
+            </code> <br> -Los «OBJETOS» que tenemos en ip son los siguientes, y son los que podremos ver y
+            configurar los enlaces físicos, direcciones ip, rutas y más</P>
+            
+     </div>
+     <table class="tablaip">
+        <tr>
+            <td>comando</td>
+            <td>funcion</td>
+        </tr>
+            <tr>
+              <td>link</td>
+                <td>nos sirve para configurar las interfaces de red físicas o lógicas, por ejemplo,
+                    para ver el estado de todas las interfaces de red.</td>
+            </tr>
+    
+            <tr>
+                <td>address</td>
+                  <td>permite ver y configurar las direcciones IPv4 y IPv6 asociadas a las
+                    diferentes interfaces de red. Cada interfaz debe tener al menos, una dirección IP
+                    configurada</td>
+              </tr>
+      
+    
+              <tr>
+                <td>addrlabel</td>
+                  <td> permite añadir una etiqueta</td>
+              </tr>
+      
+    
+    
+              <tr>
+                <td>neighbour</td>
+                  <td>permite ver los enlaces de vecindad, es decir, se puede ver la tabla ARP
+                    del sistema operativo.</td>
+              </tr>
+      
+              <tr>
+                <td>rule</td>
+                  <td> permite ver y configurar políticas de enrutado y cambiarlas, esto se utiliza
+                    sobre todo cuando vas a configurar varias tablas de enrutamiento.</td>
+              </tr>
+      
+              <tr>
+                <td>route</td>
+                  <td>permite ver y configurar las tablas de enrutamiento, tanto de la tabla de
+                    enrutamiento principal, como de las «secundarias» que configures.</td>
+              </tr>
+    
+              <tr>
+                <td>tunnel</td>
+                  <td> permite ver los túneles IP y también configurarlos</td>
+              </tr>
+      
+              <tr>
+                <td>maddr</td>
+                  <td> permite ver y configurar las direcciones multienlace.
+                </td>
+              </tr>
+      
+              <tr>
+                <td>mroute</td>
+                  <td>: permite ver y configurar la tabla de enrutamiento multicast</td>
+              </tr>
+      
+              <tr>
+                <td>mrule</td>
+                  <td>permite ver y configurar políticas de enrutamiento de direcciones multicast</td>
+              </tr>
+    
+              <tr>
+                <td>monitor</td>
+                  <td>permite monitorizar el estado de las tarjetas de red de manera continua,
+                    también direcciones IP y rutas.</td>
+              </tr>
+    
+              
+              <tr>
+                <td>ntable</td>
+                  <td> gestiona el caché de neighbour (ARP)</td>
+              </tr>
+    
+    
+              <tr>
+                <td>tuntap</td>
+                  <td>gestiona las interfaces TUN/TAP, orientado a las VPN como OpenVPN o
+                    WireGuard.</td>
+              </tr>
+    
+              <tr>
+                <td>maddress</td>
+                  <td>configuración de las direcciones multicast</td>
+              </tr>
+    
+              
+              <tr>
+                <td>xfrm</td>
+                  <td>gestiona las políticas IPsec</td>
+              </tr>
+    
+              
+              <tr>
+                <td>netns</td>
+                  <td>administrar espacios de nombres de red</td>
+              </tr>
+      
+              <tr>
+                <td>l2tp</td>
+                  <td> configuración de L2TP</td>
+              </tr>
+      
+              
+              <tr>
+                <td>tcp_metrics</td>
+                  <td>gestiona métricas TCP.</td>
+              </tr>
+      
+      
+              <tr>
+                <td>token</td>
+                  <td> gestiona los identificadores con token de las interfaces</td>
+              </tr>
+      </table>
+       <div>
+        <h4 class="min">Mostrar dispositivos de red y su configuracion</h4>
+          <ul>
+            <li><b>comando antiguo</b> ifconfig</li>
+            <li><b>comando actual</b>ip addr show / ip link show</li>
+          </ul>
+          <p>Con el comando ip, tenemos dos comandos parecidos, uno de ellos nos mostrará toda la
+            información a nivel de direccionamiento IP <b>(ip addr show)</b>, y el otro nos mostrará el estado
+            de la interfaz física <b>(ip link show)</b><br>estos comandos son inportantes por podremos ver toda la informacion de direccionamiento IP,mascara de subred <br>
+         ademas podremos ver como tenemos configurada la interfaz fisica, el MTU que tenemos configurado e incluso si esta o no habilitada esta interfaz de red 
+         <code>sudo ifconfig -a <br>
+            Con iproute2, el siguiente comando nos da una salida similar a ifconfig.<br>
+            $ sudo ip addr list<br>
+            o también:<br>
+            $ sudo ip addr show<br>
+            Con el siguiente, vemos la información en capa 2 (data link layer) del Modelo OSI:<br>
+            $ sudo ip link show</code></p>
+       </div>
+       <div>
+        <h4 class="min">Activar una interfaz de red</h4>
+         <ul>
+            <li><b>comando antiguo</b> ifconfig ens33 up</li>
+            <li><b>comando actual</b>ip link set ens33 up</li>
+         </ul>
+         <p><code>$ sudo ifconfig eth0 up <br>
+            $ sudo ip link set eth0 up</code></p>
+       </div>
+    
+     <div>
+        <H4 class="min">Desactivar una interfaz de red</H4>
+         <ul>
+            <li><b>comando antiguo</b> ifconfig ens33 down</li>
+            <li><b>comando actual</b>ip link set ens33 downm</li>
+         </ul>
+         <p><code>sudo ifconfig eth0 down <br>
+            $ sudo ip link set eth0 down
+            </code></p>
+     </div>
+    <div>
+        <h4 class="min">Configurar una direccion IP en una interfaz</h4>
+        <ul>
+            <li><b>comando antiguo</b> iifconfig ens33 192.168.1.1/24</li>
+            <li><b>comadno actual</b> ip addr add 192.168.1.1/24 dev ens33</li>
+        </ul>
+        <p>con este comando estaremos indicando que queremos poner una direccion ip y una mascara de subred especifica a una interfaz que nosotros hemos definifo  <br>
+        <code>
+            Con ifconfig: <br>
+    $ sudo ifconfig eth0 192.168.1.1/24<br>
+    o también:<br>
+    $ sudo ifconfig eth0 192.168.1.1 netmask 255.255.255.0<br>
+    Con iproute2:<br>
+    $ sudo ip address add 192.168.1.1/24 dev eth0
+    
+        </code></p>
+    </div>
+    <div>
+        <h4 class="min">condigurar varias direcciones IP en una interfaz</h4>
+        <p><b>iproute2</b> permite asignar multiples direcciones IPv4 a una interfaz cosa que no es posible hacer mediante <b>ifconfig</b></p>
+     <code>$ sudo ip addr add 10.0.0.1/24 broadcast 10.0.0.255 dev eth1 <br>
+        $ sudo ip addr add 10.0.0.2/24 broadcast 10.0.0.255 dev eth1 <br>
+        29
+        $ sudo ip addr add 10.0.0.3/24 broadcast 10.0.0.255 dev eth1</code>
+    
+    
+    </div>
+    
+    <div>
+            <h4 class="min">eliminar una direccion IP de una interfaz</h4>
+            <ul>
+                <li><b>comando antiguo</b>no soportada habia que poner 0.0.0.0 a la interfaz</li>
+                <li><b>comando actual </b> ip addr 192.168.1.1 dev ens33</li>
+                
+            </ul>
+            <p>en el caso de ip, es tan facil como sustituir el <b>add</b> para configurar una IP por <b>del</b> para eliminarla (delete)</p>
+            <code>$ sudo ifconfig eth0 0.0.0.0 <br>
+                $ sudo ip addr del 192.168.1.1/24 dev eth0</code>
+         
+    </div>
+    <div>
+        <h4 class="min">anadir ua interfaz virtual(alias)</h4>
+        <ul>
+            <li><b>comando antiguo</b> ifconfig ens33:1 10.0.0.1/8</li>
+            <li><b>comando actual</b> ip addr add 10.0.0.1/8 dev  ens33 label ens33:redeszone</li>
+        </ul>
+        <p>En todas las interfaz físicas tenemos la posibilidad de configurar interfaces virtuales para
+            otro tipo de usocs, esto también se le conoce como «alias». <br>
+            Con ip, simplemente tenemos que poner la IP de siempre, pero con «label ens33:1» o el
+            alias que queramos. <br>
+            Mientras que con «ifconfig» no es necesario poner ningún tipo de «label», en el caso de
+            «ip» sí tendremos que colocarlo a modo de etiqueta, además, la parte positiva de este
+            label es que podremos nombrar la interfaz de red virtual recién creada como nosotros
+            queramos, no es necesario que siga la sintaxis ens33:1 o lo que sea, podremos poner un
+            nombre. <br> <br>
+            Para ejecutar la ayuda de «ip addr» y ver todos los comandos que podemos ejecutar,
+            simplemente basta con poner: <br> <code>ip addr help</code> <br>Debemos recordar que la ayuda de «ip» es realmente útil y nos permitirá saber qué
+            comandos se permiten ejecutar.</p>
+    </div>
+    <div>
+        <h4 class="min">activar/desactivar el modo promiscuo de la tarjeta de red </h4>
+        <code>$ sudo ip link set dev eth0 promisc on <br>
+            $ sudo ip link set dev eth0 promisc of</code>
+    </div>
+    <div>
+        <h4 class="min">cambiar la MAC de una interfaz de red</h4>
+        <p>Tanto con ifconfig como con iproute2 hay que deshabilitar la tarjeta de red antes de
+            cambiar la MAC y luego volver a activarla.</p>
+            <code>$ sudo ifconfig eth1 hw ether 08:00:27:75:2a:67 <br>
+                $ sudo ip link set dev eth1 address 08:00:27:75:2a:67</code>
+    </div>
+    <div>
+        <h4 class="min">ver las entradas en la tabla ARP</h4>
+        <code>arp -n ip neigh show</code>
+    </div>
+    
+    <div>
+       <h4 class="min">anadir una entrada en la tabla ARP</h4>
+       <ul>
+        <li><b>comando antiguo</b> arp -i eth0 -s 192.168.0.1  00:11:22:33:44:55</li>
+        <li><b>comando actual</b>. ip neigh add 192.168.0.1 lladdr 00:11:22:33:44:55 nud permanent dev
+            ens33 </li>
+       </ul>
+     <p>En el caso de iproute2, tenemos que usar el objeto «neigh», tal y como podéis ver: <br>
+        ip neigh add 192.168.0.1 lladdr 00:11:22:33:44:55 nud permanent dev ens33</p>
+    </div>
+    <div>
+        <h4 class="min">quitar una entrada de ARP</h4>
+        <p>ip neigh del 192.168.0.1 lladdr 00:11:22:33:44:55 nud permanent dev ens33 <br>
+            Para ejecutar la ayuda de «ip neigh» y ver todos los comandos que podemos ejecutar,
+            simplemente basta con poner: <br></p>
+        <code>ip neigh help</code>
+        <p>las posibilidades de iproute2 con ip link, ip addr y ip neigh sonn <br>
+            casi infinitas, además, la sintaxis es muy intuitiva, pareciéndose muchísimo a los routers <br>
+            Cisco que tan conocidos son en el mundo de las redes.
+            </p>
+    </div>
+    
+    <div>
+        <h4 class="min">Comandos "ip route" para configurar rutas</h4> 
+        <p>El comando «ip route» nos permitirá configurar la tabla de enrutamiento principal del <br>
+            sistema operativo, y también las tablas de enrutamiento adicionales que configuremos en <br>
+            el sistema operativo. A continuación, tenéis algunos ejemplos de uso con únicamente el <br>
+            comando ip route, sin utilizar el antiguo «route» que teníamos con la suite de «ifconfig»</p>
+        <ul>
+            <li><b>Ver la tabla de rutas</b><code>$ sudo ip route show</code></li>
+            <li><b>Anadir una ruta en la tabla de enrutamiento</b> <br><code>ip route add 10.8.0.0/24 via 192.168.1.2 dev eth0</code></li>
+            <li><b>borrar una ruta en la tabla de enrutamiento</b> <br><code>ip route del 10.8.0.0/24 via 192.168.1.2 dev eth0</code></li>
+            <li><b>cambiar una ruta en la tabla de enrutamiento</b> <br><code>ip route chg 10.8.0.0/24 via 192.168.1.3 dev eth0</code></li>
+           <li><b>Agregar la puerta de enlace predeterminada(gateway)</b> <br><code>ip route add default via 192.168.1.1 dev eth0</code></li>
+           <li><b>Borrar la puerta de enlace predeterminada(gateway)</b> <br><code>ip route del default via 192.168.1.254 dev eth0</code></li>
+           <li><b>ver el estado de la tabla de enrutamiento pirncipal</b><code>ip route show ip route list</code> <br></li>
+        
+      
+        </ul>
+    </div>
+    
+    <div>
+        <h4 class="min">listado de comandos basicos de <b>ss</b></h4>
+        <p>ss se utiliza para volcar estadísticas sobre sockets. Permite mostrar información similar a <br>
+            netstat. ss muestra más información TCP y estado que otras herramientas. A continuación <br>
+            mostramos una serie de ejemplos con el comando ss y en algunos casos su equivalente <br>
+            con netstat</p>
+        <ol type="a">
+            <li><b>Ver estadisticas de sockets a la escucha</b> con "net-tools" <br><code>$ sudo netstat
+                <br>o también: <br>$ sudo netstat -l</code> <br><br>
+            <code><b>con iproute2</b> <br>$ sudo ss
+                <br>o también:
+                <br>$ sudo ss -l</code> <br> <br> 
+               <b>ver estadisticas de sockets TCP a la escuch sin resolucion de nombres</b>
+            <code>
+              <br>$ sudo netstat -ltn
+            </code>
+            <br><br>
+            <code>
+                $ sudo ss -ltn
+    
+    
+            </code>
+            
+            
+            
+            </li>
+            <li><b>mostrar conexiones ssh estableciddas</b><br><code># ss -o state established '( dport = :ssh or sport = :ssh)'</code></li>
+            <li><b>mostrar conexiones HTTP establecidas</b> <br><code>ss -o state established '( dport = :http or sport = :http )'</code></li>
+            <li><b>Hacer coincidir direcciones remotas y puertos</b>ss dst ADDRESS_PATTERN <br><code>## Mostrar todos los puertos conectados de forma remota desde 192.168.1.5##
+                ss dst 192.168.1.5</code> <br> <br> <code>## Mostrar todos los puertos conectados de forma remota desde 192.168.1.5:http##
+                    ss dst 192.168.1.5:http <br>
+                    ss dst 192.168.1.5:smtp <br>
+                    ss dst 192.168.1.5:443</code> <br><br>
+                 <code>
+                    Mostrar conexiones realizadas por una ip en el puerto http hacia nuestra máquina <br>
+    ss dst 123.1.2.100:http
+                 </code> <br><br><br>        
+                   <code>
+                    Es posible mostrar todas las conexiones realizadas por cualquier máquina, por el puerto
+                    http por ejemplo: <br><br>
+                    # ss dst *:http
+                   </code>
+                
+                
+                
+                </li> 
+            <li><b>Mostrar el numero y el tipo de conexiones activas</b><code> <br>ss -ant | awk '{print $NF}' | grep -v '[a-z]' | sort | uniq -c</code></li>
+             <li><b>Listar todos los puertos a la escucha junto con el PID del programa</b><br><code>ss -tlnp</code></li>   
+             <li><b>Mostrar un resumen del estado de los sockets</b><br><code># ss -s</code></li>
+        
+        </ol>
+        <h4 class="min">Hacer persistenetes todos los cambios en IPs y rutas</h4>
+        <p>Si reiniciamos el servidor, todos los cambios que hayamos hecho en el sistema operativo <br>
+            con el comando «ip» no se guardarán al reiniciar el servidor, por tanto, debemos hacer <br>
+            persistentes estos cambios. Dependiendo del sistema operativo, se hace de una forma u <br>
+            otra. Lo primero que debemos hacer es editar el fichero de configuración ubicado en <br>
+            «/etc/network/interfaces» o en sistemas mas modernos que utilicen <br>
+            netplan /etc/netplan/*.yaml, en esos ficheros es donde podremos poner todas las <br>
+            direcciones IP y las rutas y reglas que nosotros deseemos.</p>
+    </div>
+</body>
+</html>
