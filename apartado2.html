@@ -1,15 +1,24 @@
-<!DOCTYPE html>
+w<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .mon{
+            border: 2px solid black;
+        }
+        .lot{
+            font-size: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
 </head>
 <body>
     <div>
         <h2 class="mon">Deteccion de las tarjetas de red</h2>
         <nav>
-         <ol>
+         <ol class="lot">
              <li>deteccion de las targetas de red (comando) <b>¨dmesg | grep eth¨</b> con este comando mostramos lo que el kernel mostro <br>
              al arrancar el sistema   para ello con el comando <b>grep</b> filtramos las lineas de texto que contengan <b>eth</b>  </li>
              <li>comando <b>lsmod</b> con este comprobamos todos los modulos cargados por el kernel </li> 
@@ -21,7 +30,7 @@
  <div>
      <h2 class="mon">configuracion a bajo nivel mediante comandos</h2>
      <nav>
-         <ul>
+         <ul class="lot">
              <li>configuracion de la red con <b>ifconfig,route e ip es lo que se denomina configuracion a bajo nivel "ojo" estas configuraciones  no se mantiene al reiniciar el sistema (a menos que se ejecute en un scrip)</b> 
                  <li>los comandos <b>ifconfig y route </b> estan en deshuso <br> y han sido sustituidos por el comando <b>ip(paquete iproute)</li>
                      
