@@ -447,7 +447,7 @@ const bb = document.querySelector("#bb");
 const OPTION_THREE_bb = "3"; 
 
 bb.onclick = function() {
-  let name = prompt("elige '1'ip addr add [IP] dev [interfaz] for [interfaz:alias]  \n '2'ip addr add [IP/fijo] dev [interfaz] label [alias]   \n'3' ip addr add [IP/Máscara] dev [interfaz] label [interfaz:alias]   " ); // Prompt vacío
+  let name = prompt("elige '1'ip addr add [IP] dev [interfaz] for [interfaz:alias]  \n '2'ip addr del [IP/fijo] dev [interfaz] label [alias]   \n'3' ip addr add [IP/Máscara] dev [interfaz] label [interfaz:alias]   " ); // Prompt vacío
   
   if (name === OPTION_THREE_bb) {
     alert("bien"); 
