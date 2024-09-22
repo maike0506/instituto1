@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title>
+    <style>
+      *{
+        background-image: url(https://www.shutterstock.com/image-vector/spy-agent-hacker-anonymous-white-600nw-1722014434.jpg);
+      }
+      button {
+            background-color: #4CAF50; /* Color de fondo */
+            color: white; /* Color del texto */
+            border: 3px solid white; /* Sin borde */
+            padding: 10px 20px; /* Espaciado */
+            text-align: center; /* Alineación del texto */
+            text-decoration: none; /* Sin subrayado */
+            display: inline-block; /* Se comporta como un bloque en línea */
+            font-size: 16px; /* Tamaño de la fuente */
+            margin: 4px 2px; /* Margen */
+            cursor: pointer; /* Cambia el cursor al pasar el ratón */
+            border-radius: 8px; /* Bordes redondeados */
+            transition: background-color 0.3s; /* Transición suave */
+        }
+        .sub{
+          color: white;
+        }
+      
+    </style>
+</head>
+<body> <div>
+  <h3 class="sub">cual es la funcion de:</h3>
+  <button id="a">ip</button> <br><br>
+  
+</div>
+  <button id="b">link</button><br><br>
+  <button id="c">addr</button> <br><br>
+  <button id="d">addrlabel</button><br><br>
+  <button id="e">neighbour</button><br><br>
+  <button id="f">rule</button><br><br>
+  <button id="g">route</button><br><br>
+  <button id="h">tunnel</button><br><br>
+  <button id="i">maddr</button><br><br>
+  <button id="j">maddr</button><br><br>
+  <button id="k">mrule</button><br><br>
+  <button id="l">monitor</button><br><br>
+  <button id="m">ntable</button><br><br>
+  <button id="n">tuntap</button><br><br>
+  <button id="o">maddress</button><br><br>
+  <button id="p">xfrm</button><br><br>
+  <button id="q">netns</button><br><br>
+  <button id="r">l2tp</button><br><br>
+  <button id="s">tcp_metrics</button><br><br>
+  <button id="t">token</button><br><br>
+  <button id="u">ss</button><br><br>
+  <button id="v">addr show</button><br><br>
+  <button id="w">link show</button><br><br>
+  <button id="x">Activar interfaz</button><br><br>
+  <button id="y">Desactivar interfaz</button><br><br>
+  <button id="z">Configurar IP</button><br><br>
+  
+  <!-- Combinaciones de letras después de la "z" -->
+  <button id="aa">Eliminar IP</button><br><br>
+  <button id="bb">Alias</button><br><br>
+  <button id="cc">Modo promiscuo</button><br><br>
+  <button id="dd">Cambiar MAC</button><br><br>
+  <button id="ee">ARP - Ver</button><br><br>
+  <button id="ff">ARP - Añadir</button><br><br>
+  <button id="gg">ARP - Quitar</button><br><br>
+  <button id="hh">route show</button><br><br>
+  <button id="ii">route add</button><br><br>
+  <button id="jj">route del</button><br><br>
+  <button id="kk">route chg</button><br><br>
+  <button id="ll">Agregar gateway</button><br><br>
+  <button id="mm">Borrar gateway</button><br><br>
+  <button id="nn">Estado de rutas</button><br><br>
+  <button id="oo">Ver sockets a la escucha</button><br><br>
+  <button id="pp">Ver TCP a la escucha sin resolución de nombres</button><br><br>
+  <button id="qq">Conexiones SSH establecidas</button><br><br>
+  <button id="rr">Conexiones HTTP establecidas</button><br><br>
+  <button id="ss">Coincidir direcciones remotas</button><br><br>
+  <button id="tt">Conexiones HTTP desde una IP específica</button><br><br>
+  <button id="uu">Contar conexiones activas</button><br><br>
+  <button id="vv">Listar puertos a la escucha con PID</button><br><br>
+  <button id="ww">Resumen de sockets</button><br><br>
+  
+</body>
+</html>
+<script>
+const a = document.querySelector("#a");
+const OPTION_ONE_a = "1"; // Definiendo la opción 1 como correcta
+
+a.onclick = function() {
+  let name = prompt("seleccione un valor numerico\n '1' para gestión de red\n o '2'  para dirección NAT");
+
+  if (name === OPTION_ONE_a) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const b = document.querySelector("#b");
+const OPTION_THREE_b = "3"; // Cambio el nombre para que coincida con el prompt
+
+b.onclick = function() {
+  let name = prompt("  '1' configuración de tablas de enrutamiento \n o '2' para dirección NAT o \n'3' configuración de interfaces de red" );
+  
+  if (name === OPTION_THREE_b) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const c = document.querySelector("#c");
+const OPTION_TWO_c = "2"; // Cambio el nombre para evitar duplicados
+
+c.onclick = function() {
+  let name = prompt("Escribe '1 gestiona la tabla de enrutamiento'\n o '2 gestiona direcciones ip en interfaces' o \n'3 Gestiona interfaces de red'");
+
+  if (name === OPTION_TWO_c) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const d = document.querySelector("#d");
+const OPTION_TWO_d = "2"; // Cambio el nombre para evitar duplicados
+
+d.onclick = function() {
+  let name = prompt("Escribe '1 Gestiona etiquetas para direcciones ip' o\n '2 gestiona políticas de enrutamiento' o\n '3 gestiona direcciones multienlace'");
+
+  if (name === OPTION_TWO_d) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const e = document.querySelector("#e");
+const OPTION_THREE_e = "3"; // Cambio el nombre para evitar duplicados
+
+e.onclick = function() {
+  let name = prompt("Escribe '1 Administra espacios de nombre de red'\n o '2 gestiona direcciones multienlace' o \n'3 Gestiona la tabla ARP y entradas de vecindad'");
+
+  if (name === OPTION_THREE_e) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const f = document.querySelector("#f");
+const OPTION_TWO_f = "2"; // Cambio el nombre para evitar duplicados
+
+f.onclick = function() {
+  let name = prompt("Escribe '1 gestiona el estado de la interfaz' o\n '2 Gestiona políticas de enrutamiento' o \n'3 gestiona la tabla de enrutamiento'");
+
+  if (name === OPTION_TWO_f) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const g = document.querySelector("#g");
+const OPTION_THREE_g = "3"; // Cambio el nombre para evitar duplicados
+
+g.onclick = function() {
+  let name = prompt("Escribe '1 gestiona las interfaces de la red' o \n'2 gestiona las direcciones de la red' o\n '3 gestiona la tabla de enrutamiento'");
+
+  if (name === OPTION_THREE_g) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+const h = document.querySelector("#h");
+const OPTION_TWO_h = "2";
+
+h.onclick = function() {
+  let name = prompt("Escribe '1'configura las tablas de enrutamiento o \n'2'Configura tuneles IP  o\n '3'gestiona los tuneles ip  " );
+  
+  
+  if (name === OPTION_TWO_h) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+const i = document.querySelector("#i");
+const OPTION_ONE_i = "1";
+
+i.onclick = function() {
+  let name = prompt("Escribe '1' gestion las interfaces  o\n '2' gestiona direcciones multienlace  o \n'3' gestiona direcciones ip  " );
+  
+  
+  if (name === OPTION_ONE) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const  j = document.querySelector("#j");
+const OPTION_TREE_j = "3";
+
+j.onclick = function() {
+  let name = prompt("Escribe '1' gestiona  la tabla de enrutamiento  o \n'2' gestiona direcciiones multienlaces  o \n'3' gestiona la tabla de enrutamiento multicast  " );
+  
+  
+  if (name === OPTION_TREE) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const  k = document.querySelector("#k");
+const OPTION_TWO_k = "2";
+
+k.onclick = function() {
+  let name = prompt("Escribe '1' gestiona las direcciones  multicast  o\n '2'gestiona las politas de enrutamiento multicast o\n '3' gestiona la direcciones ip  " );
+  
+  
+  if (name === OPTION_TWO_k) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const l = document.querySelector("#l");
+const OPTION_TWO_l= "2";
+
+l.onclick = function() {
+  let name = prompt(" '1' monitorea la tabla ARP o \n'2'monitorea el estado de las interfaces de red  o\n'3' Monitorea la tabla de enrutamiento " );
+  
+  
+  if (name === OPTION_TWO_l) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const m = document.querySelector("#m");
+const OPTION_TWO_m= "2";
+
+m.onclick = function() {
+  let name = prompt(" '1' gestiona la la tabla o \n'2'gestiona la cache de neighbour(ARP) \n o '3' gestiona los dominios " );
+  
+  
+  if (name === OPTION_TWO_m) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+const n = document.querySelector("#n");
+const OPTION_ONE_n = "1"; // Cambio de nombre a minúsculas
+
+n.onclick = function() {
+  let name = prompt("'1'Gestiona la interfaces TUN/TAP orientadas a VPN o\n '2' gestiona la tabla de enrutamiento TUN/TAP o \n'3' Gestiona los switch TUN/TAP ");
+  
+  if (name === OPTION_ONE_n) {
+    alert("bien");
+  } else {
+    alert("mal");  
+  }
+};
+
+const o = document.querySelector("#o");
+const OPTION_THREE_o= "3"; // Cambio de nombre a minúsculas
+
+o.onclick = function() {
+  let name = prompt(" '1'Gestiona las interfaces multicast o '2' gestiona la tabla de enrutamiento multicast o '3'configura las direccines multicast");
+  
+  if (name === OPTION_THREE_o) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const p = document.querySelector("#p");
+const OPTION_TWO_p = "2"; // Cambio de nombre a minúsculas
+
+p.onclick = function() {
+  let name = prompt("'1'gestiona las politicas de enrutamiento  o '2'Gestiona politicas IPsec o '3' gestiona los ATP");
+  
+  if (name === OPTION_TWO_p) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const q = document.querySelector("#q");
+const OPTION_TWO_q = "2"; // Cambio de nombre a minúsculas
+
+q.onclick = function() {
+  let name = prompt(" '1'Gestiona los dominios de espacios con nombre \n o '2'administra espacios de nombres de red \no '3'administra los dominios de las interfaces");
+  
+  if (name === OPTION_TWO_q) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const r = document.querySelector("#r");
+const OPTION_ONE_r = "1"; // Cambio a mayúsculas con guion bajo
+
+r.onclick = function() {
+  let name = prompt("'1' Configura L2TP o\n '2'GESTIONA LAS INTERFACES L2TP o \n'3'GESTIONA LAS METRICAS L2TP");
+  
+  if (name === OPTION_ONE_r) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const s = document.querySelector("#s");
+const OPTION_TWO_s = "2"; // Cambio a mayúsculas con guion bajo
+
+s.onclick = function() {
+  let name = prompt("'1' Configura las interfaces mediante TCP o\n '2' Gestiona métricas TCP o \n'3' ninguno");
+  
+  if (name === OPTION_TWO_s) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const t = document.querySelector("#t");
+const OPTION_THREE_t = "3"; // Cambio a mayúsculas con guion bajo
+
+t.onclick = function() {
+  let name = prompt("'1'gestiona las tablas ARP o \n'2'descativa los identificadores con token o\n '3' Gestiona identificadores con token de las interfaces");
+  
+  if (name === OPTION_THREE_t) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const u = document.querySelector("#u");
+const OPTION_ONE_u = "1"; // Cambio a mayúsculas con guion bajo
+
+u.onclick = function() {
+  let name = prompt("'1' muestra estadísticas de sockets o \n'2' muestra las configuracion de los sockets o \n'3' ninguno ");
+  
+  if (name === OPTION_ONE_u) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const v = document.querySelector("#v");
+const OPTION_THREE_v = "3"; // Cambio a mayúsculas con guion bajo
+
+v.onclick = function() {
+  let name = prompt(" '1'muestra dispositivos y su socket \n o '2'muestra solo los dispositivos  o \n'3' mostrar dispositivos de red y su configuración");
+  
+  if (name === OPTION_THREE_v) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const w = document.querySelector("#w");
+const OPTION_ONE_w = "1"; // Cambio a mayúsculas con guion bajo
+
+w.onclick = function() {
+  let name = prompt(" '1' mostrar el estado de la interfaz física o \n'2' muestra la configuracion de la interfaz o\n '3' mostrar la ip de la interfaz");
+  
+  if (name === OPTION_ONE_w) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const x = document.querySelector("#x");
+const OPTION_ONE_x = "ip_link set interfaz up";
+x.onclick = function() {
+  let name = prompt("'1' activar una interfaz");
+  
+  if (name=== OPTION_ONE_x) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const y = document.querySelector("#y");
+const OPTION_ONE_y="ip_link set interfaz down";
+y.onclick = function() {
+  let name = prompt("'1' Desactivar una interfaz");
+  
+  if (name=== OPTION_ONE_y) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const z = document.querySelector("#z");
+const OPTION_ONE_z= "ip addr add ip / mascara dev interfaz";
+z.onclick = function() {
+  let name = prompt("'1' configurar una dirección IP en una interfaz");
+  
+  if (name=== OPTION_ONE_z) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+const aa = document.querySelector("#aa");
+const OPTION_TWO_aa = "2"; // Definimos la constante
+
+aa.onclick = function() {
+  let name = prompt("elige '1' ip addr del IP/MASCARA dev interfaz   o  '2'ip addr del IP/MASCARA dev up  o '3'ip addr add IP/MASCARA dev interfaz "); // Prompt vacío
+  
+  if (name === OPTION_TWO_aa) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const bb = document.querySelector("#bb");
+const OPTION_THREE_bb = "3"; // Definimos la constante
+
+bb.onclick = function() {
+  let name = prompt("elige '1'ip addr add [IP] dev [interfaz] for [interfaz:alias]  o  '2'ip addr add [IP/fijo] dev [interfaz] label [alias]     o '3' ip addr add [IP/Máscara] dev [interfaz] label [interfaz:alias]   " ); // Prompt vacío
+  
+  if (name === OPTION_THREE_bb) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const cc = document.querySelector("#cc");
+const OPTION_TWO_cc = "2"; // Definimos la constante
+
+cc.onclick = function() {
+  let name = prompt("elige '1'ip link set del [interfaz] promisc [on] o  '2'ip link set dev [interfaz] promisc [on/off]    o '3' ip link set [interfaz] promisc  dev [on/off]"); // Prompt vacío
+  
+  if (name === OPTION_TWO_cc) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const dd = document.querySelector("#dd");
+const OPTION_THREE_dd = "3"; // Definimos la constante
+
+dd.onclick = function() {
+  let name = prompt("elige '1'ip link dev [interfaz] del [nueva_MAC] o  '2'ip link set  [interfaz] address [nueva_MAC]    o '3'ip link set dev [interfaz] address [nueva_MAC] "); // Prompt vacío
+  
+  if (name === OPTION_THREE_dd) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const ee = document.querySelector("#ee");
+const OPTION_TWO_ee = "2"; // Definimos la constante
+
+ee.onclick = function() {
+  let name = prompt("elige '1' ip neighbou show o  '2' 	ip neigh show  o '3'show ip neigh  "); // Prompt vacío
+  
+  if (name === OPTION_TWO_ee) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const ff = document.querySelector("#ff");
+const OPTION_THREE_ff = "3"; // Definimos la constante
+
+ff.onclick = function() {
+  let name = prompt("elige '1'ip neigh add [IP] lladdr [MAC] permanent  [interfaz] o  '2'ip neigh add [IP] lladdr (masca)nud permanent dev [interfaz]    o '3'ip neigh add [IP] lladdr [MAC] nud permanent dev [interfaz] "); // Prompt vacío
+  
+  if (name === OPTION_THREE_ff) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const gg= document.querySelector("#gg");
+const OPTION_TWO_gg = "2"; // Definimos la constante
+
+gg.onclick = function() {
+  let name = prompt("elige '1'ip neighbou del [IP] o  '2'ip neigh del [IP]    o '3'ip neigh add [IP] "); // Prompt vacío
+  
+  if (name === OPTION_TWO_gg) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const hh = document.querySelector("#hh");
+const OPTION_THREE_hh = "3"; // Definimos la constante
+
+hh.onclick = function() {
+  let name = prompt("elige '1'Ver la tabla de enrutamiento o  '2' Ver la tabla de las interfaces   o '3'	Ver la tabla  de rutas "); // Prompt vacío
+  
+  if (name === OPTION_THREE_hh) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const ii = document.querySelector("#ii");
+const OPTION_TWO_ii = "2"; // Definimos la constante
+
+ii.onclick = function() {
+  let name = prompt("elige '1'Añadir una ruta en la tabla de las interfaces o  '2'Añadir una ruta en la tabla de enrutamiento.    o '3'Añadir una ruta en la tabla "); // Prompt vacío
+  
+  if (name === OPTION_TWO_ii) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const jj= document.querySelector("#jj");
+const OPTION_ONE_jj = "1"; // Definimos la constante
+
+jj.onclick = function() {
+  let name = prompt("elige '1'	Borrar una ruta en la tabla de enrutamiento. o  '2'agregar tabla de enrutamiento   o '3'desconfigurar tabla de enrutamiento  "); // Prompt vacío
+  
+  if (name === OPTION_ONE_jj) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const kk = document.querySelector("#kk");
+const OPTION_ONE_kk = "1"; // Definimos la constante
+
+kk.onclick = function() {
+  let name = prompt("elige '1'Cambiar una ruta en la tabla de enrutamiento.  o  '2'Cambiar una ruta  de la tabla ARP    o '3'Cambiar una ruta de la interfaz"); // Prompt vacío
+  
+  if (name === OPTION_ONE_kk) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const ll = document.querySelector("#ll");
+const OPTION_TWO_ll = "2"; // Definimos la constante
+
+ll.onclick = function() {
+  let name = prompt("elige '1'ip route add  via [IP/mascara] dev [interfaz] o  '2'ip route add default via [IP] dev [interfaz]    o '3'ip route add  [IP] dev [interfaz] "); // Prompt vacío
+  
+  if (name === OPTION_TWO_ll) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const mm = document.querySelector("#mm");
+const OPTION_TWO_mm = "2"; // Definimos la constante
+
+mm.onclick = function() {
+  let name = prompt("elige '1'ip route down default via [IP] dev [interfaz]  o  '2' ip route del default via [IP] dev [interfaz]   o '3'ip route add default  [IP] dev [interfaz]  "); // Prompt vacío
+  
+  if (name === OPTION_TWO_mm) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const nn = document.querySelector("#nn");
+const OPTION_THREE_nn = "3"; // Definimos la constante
+
+nn.onclick = function() {
+  let name = prompt("elige '1'show ip route o  '2'ip route neihgbou    o '3'	ip route show "); // Prompt vacío
+  
+  if (name === OPTION_THREE_nn) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const oo = document.querySelector("#oo");
+const OPTION_TWO_oo = "2"; // Definimos la constante
+
+oo.onclick = function() {	
+  let name = prompt("elige '1'ss -u o  '2' 	ss -l  o '3'ss -o "); // Prompt vacío
+  
+  if (name === OPTION_TWO_oo) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const pp = document.querySelector("#pp");
+const OPTION_THREE_pp = "3"; // Definimos la constante
+
+pp.onclick = function() {
+  let name = prompt("elige '1'ss -lt o  '2' ss -tn   o '3'ss -ltn "); // Prompt vacío
+  
+  if (name === OPTION_THREE_pp) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const qq = document.querySelector("#qq");
+const OPTION_TWO_qq = "2"; // Definimos la constante
+
+qq.onclick = function() {
+  let name = prompt("elige '1'ss -u state  o  '2'ss -o state established '( dport = :ssh or sport = :ssh)'    o '3'ss -o state established "); // Prompt vacío
+  
+  if (name === OPTION_TWO_qq) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const rr = document.querySelector("#rr");
+const OPTION_THREE_rr = "3"; // Definimos la constante
+
+rr.onclick = function() {
+  let name = prompt("elige '1'ss -o add established ( dport = :http or sport = :http ) o  '2' ss -o state  ( dport = :http or sport = :http )   o '3'ss -o state established '( dport = :http or sport = :http )' "); // Prompt vacío
+  
+  if (name === OPTION_THREE_rr) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const ss = document.querySelector("#ss");
+const OPTION_TWO_ss = "2"; // Definimos la constante
+
+ss.onclick = function() {
+  let name = prompt(" '1'ss  [ADDRESS_PATTERN] o  '2'ss dst [ADDRESS_PATTERN]    o '3'ss add [ADDRESS_PATTERN] "); // Prompt vacío
+  
+  if (name === OPTION_TWO_ss) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const tt = document.querySelector("#tt");
+const OPTION_THREE_tt = "3"; // Definimos la constante
+
+tt.onclick = function() {
+  let name = prompt(" '1'stln -o  o  '2' ss dtn-o  o '3'	ss dst [IP]:http "); // Prompt vacío
+  
+  if (name === OPTION_THREE_tt) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const uu = document.querySelector("#uu");
+const OPTION_TWO_uu = "2"; // Definimos la constante
+
+uu.onclick = function() {
+  let name = prompt("elige '1'	ss -s o  '2''ss -ant | awk '{print $NF}'  | grep -v '[a-z]' | sort | uniq -c    o '3'	ss -tlnp "); // Prompt vacío
+  
+  if (name === OPTION_TWO_uu) {
+    alert("bien");
+  }
+
+    else {
+    alert("mal");  
+  }
+};
+
+const vv = document.querySelector("#vv");
+const OPTION_THREE_vv = "3"; // Definimos la constante
+
+vv.onclick = function() {
+  let name = prompt("elige '1'ss -tl o  '2'ss -tlpn    o '3'ss -tlnp "); // Prompt vacío
+  
+  if (name === OPTION_THREE_vv) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const ww = document.querySelector("#ww");
+const OPTION_TWO_ww = "2"; // Definimos la constante
+
+ww.onclick = function() {
+  let name = prompt("elige '1'ss -r  o  '2'	ss -s    o '3'ss -b  "); // Prompt vacío
+  
+  if (name === OPTION_TWO_ww) {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
