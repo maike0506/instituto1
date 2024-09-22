@@ -3,96 +3,881 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>document</title>
     <style>
-        .parrafo-1{
-            color: red;
-
-        }
-          
         
     </style>
 </head>
-<body>
-    <h1 class="parrafo-1">HTML APUNTES</h1>
-    <h3>enlaces </h3>
-    <p>conocidos tambien por links popularmente su objetivo es conectar una pagina web con otra pagina web,con un recurso tanto interno como externo , o con otro sito web <br>
-    tienen el atributo abligatorio href,donde la especificamos la ruta del recurso o sitio que queremos obtener<br>
-    tambien tiene el atributo target, que configura como queremos visualizar el recurso o sitio que solicitamos</p>
-    <h3>Diferencias entre rutas absolutas y rutas relativas</h3>
-    <h4>rutas absolutas</h4>
-    tiene un proto,http o https y son unicas en la red se suelen utilizar para rutas externas
-   <h5>ejemplo</h5>
-   <p>un ejemplo practico seria el siguiente
-    <a href="https:google.com">ir a google</a> <br>
-    en este tipo de rutas es obligatorio indicar el protocolo porque si no lo indicamos nos apareceria error <br>
-    pero en el caso que  nuestro enlace este dentro
-   </p>
-
-    <h4>rutas relativas</h4>
-    <p>pueden ser relativas al punto donde nos encontramos relativas a la raiz del proyecto <br>
-        -no usan un protocolo <br>
-        si el recurso se encuentra al mismo nivel en la misma carpeta pondremos unicamente el nombre del archivo <br>
-        si necesitamos salir de la carpeta actual usaremos ../ y se pone uno por cada nivel carpeta de la que queremos salir.
- </p>
- <h5>ejemplo</h5>
- <a href="/login/axel.html">ir a home</a>
- <h3>atributos que podemos incluir en los enlaces</h3>
- <h5>target</h5>
- <p>define donde se abrira el recurs solicitado por norma general siempre que <br>
-    useis rutas absolutas pondreis como valor "_blank" el valor por defecto es  "_self"</p>
- <h6>ejemplo</h6>
- <p>
-    <a href="https:google.com"target=_blank>ir a google</a>
-lo que hace el target es que la pestana donde esta nuestro documento no lo elimina si no que la lo deja y abre otra pestana para abrir google
- </p>
- <h5>download</h5>
-  <p>atrito boleano,sirve para descargar el recurso solicitado. IMPORTANTE, el recurso debe estar en tu mismo sercidor</p>
-  <h6>ejemplo</h6>
-  <p>
-     <a href="/login/axel.html"download>ir a home </a>
-     siempre que queremas descargar algo tenemos que tenerlo dentro de nuestro servidor si no se descargara por ejemplo si introducimos <br>
-     url de un gato  no se descargara por que no esta en nuestro servidor
-     -EL MODO PARA DESCARGAR SERIA EL siguiente
-     -primero tendremos que crear una carpeta assets  por que aqui es donde se guardan las imagenes,videos,musicas  y dentro de esta carpeta <br>
-     descargaremos la imagen  y para que se descargue con la url pondremos la siguiente sintaxis
-     <a href="/login/assets/victoria3.jpeg">descargar victoria</a></p>
-     <h3>navegacion por anclas</h3>
-     <p>utilizamos la etiqueta de nav</p>
-      <p> ejemplo en el siguiente enlace <br>
-        <a href="/login/axel.html">ejemplo de la etiqueta nav</a>
-    en la etiqueta nav puedes anadirle la ruta para que se vea en el inicio  como en las anteriores practicas
-    </p>
-    <h3>Introducion a las listas</h3>
-    <p>
-        las listas e HTML sirven para listar contenido.En funcion del tipo de contenido de nuestra lista tenemos tres tipos de lista; </p>
-    <h5>ul</h5>
-    <p>unordered list:se utilizan cuando el orden de los elementos no influye ejemplo kista de la compra</p>
-    <h5>ol</h5> 
-     <p>ordered list:se utilizan cuando el orden de los elementos es importante</p>
-     <h5>dl</h5>
-     <p>definition list:se utilizan para hacer una lista de definiciones ejemplo diccionario <br>
-        cada element de una lista de definicion lleva 2 etiquetas:
-        -dt=definition term:el termino que vamos a definir
-        -dd=definition description:la descripcion del termino
-    </p>
-     <p>aqui esta el enlace sobre la teoria de las listas
-
-     <a href="/login/listas.html">ir a listas</a>
-     </p>
-     <h2>TABLAS</h2>
-     <p>las tablas en HTML sirven para mostrar contenido tabulado
-        -la estructura basica de una tabla se compone de <br>
-        table= etiqueta que encierra una tabla <br>
-        tr=table row,etiqueta que construya una fila <br>
-        td=tabla data,etiqueta que construye una celda. <br>
-        
-        truco:el numero de celdas dentro de un td establecera el numero de columnas de la tabla
-        <a href="/login/tablas.html">ir a tablas</a> <br>
-        enlace hacia el documentacion sobre los ejemplos de las tablas y tambien sobre un poco de teoria
-     </p>
+<body> 
+    <button id="asno">IP 1</button> <br><br>
+    <button id="perro">link</button> <br><br>
+    <button id="gato">addr</button> <br><br>
+    <button id="elefante">addrlabel</button> <br><br>
+    <button id="jirafa">neighbour</button> <br><br>
+    <button id="leon">rute</button> <br><br>
+    <button id="tigre">router</button> <br><br>
+    <button id="oso">tunel</button> <br><br>
+    <button id="zorro">maddr</button> <br><br>
+    <button id="conejo">mroute</button> <br><br>
+    <button id="caballo"></button> <br><br>
+    <button id="pajaro"></button> <br><br>
+    <button id="pez"></button> <br><br>
+    <button id="tortuga"></button> <br><br>
+    <button id="serpiente"></button> <br><br>
+    <button id="rana"></button> <br><br>
+    <button id="gallo"></button> <br><br>
+    <button id="pato"></button> <br><br>
+    <button id="murcielago"></button> <br><br>
+    <button id="canguro"></button> <br><br>
+    <button id="pezpayaso"></button> <br><br>
+    <button id="delfin"></button> <br><br>
+    <button id="pingüino"></button> <br><br>
+    <button id="leopardo"></button> <br><br>
+    <button id="cocodrilo"></button> <br><br>
+    <button id="hipopotamo"></button> <br><br>
+    <button id="rinoceronte"></button> <br><br>
+    <button id="lobo"></button> <br><br>
+    <button id="buitre"></button> <br><br>
+    <button id="jaguar"></button> <br><br>
+    <button id="gacela"></button> <br><br>
+    <button id="lince"></button> <br><br>
+    <button id="ardilla"></button> <br><br>
+    <button id="raton"></button> <br><br>
+    <button id="mofeta"></button> <br><br>
+    <button id="castor"></button> <br><br>
+    <button id="ciervo"></button> <br><br>
+    <button id="flamenco"></button> <br><br>
+    <button id="foca"></button> <br><br>
+    <button id="ballena"></button> <br><br>
+    <button id="tiburón"></button> <br><br>
+    <button id="caracol"></button> <br><br>
+    <button id="mariposa"></button> <br><br>
+    <button id="libelula"></button> <br><br>
+    <button id="escorpion"></button> <br><br>
+    <button id="pulpo"></button> <br><br>
+    <button id="estrella"></button> <br><br>
+    <button id="ermitaño"></button> <br><br>
+    <button id="bisonte"></button> <br><br>
+    <button id="antilope"></button> <br><br>
+    <button id="puma"></button> <br><br>
+    <button id="hiena"></button> <br><br>
+    <button id="coyote"></button> <br><br>
+    <button id="panda"></button> <br><br>
+    <button id="koala"></button> <br><br>
 
 </body>
 </html>
+<script>
+
+const asno = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const perro = document.querySelector("#perro");
+
+perro.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
 
 
+const gato = document.querySelector("#gato");
+
+gato.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const elefante = document.querySelector("#elefante");
+
+elefante.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+
+const jirafa = document.querySelector("#jirafa");
+
+jirafa.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const leon = document.querySelector("#leon");
+
+leon.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+
+const tigre = document.querySelector("#tigre");
+
+tigre.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const oso = document.querySelector("#oso");
+
+oso.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const zorro = document.querySelector("#zorro");
+
+zorro.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const conejo = document.querySelector("#conejo");
+
+conejo.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const caballo = document.querySelector("#caballo");
+
+caballo.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const pajaro = document.querySelector("#pajaro");
+
+pajaro.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const pez = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const tortuga = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const serpiente = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const rana = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const gallo = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const pato = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const murcielago = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const canguro= document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const pezpayaso = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const delfin = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const pingüino = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const leopardo = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const cocodrilo  = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+const hipopotamo = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+const rinoceronte= document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+const lobo= document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+const buitre= document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+const jaguar = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+const gacela  = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+const lince = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+const ardilla= document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+const  raton  = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+const mofeta= document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+const castor = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+const ciervo = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+const flamenco = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+const foca= document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+const ballena  = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const tiburón= document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const caracol = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+const mariposa = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+const libelula = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+const escorpion= document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+const pulpo = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+const estrella = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+const ermitaño= document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const  bisonte= document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const antilope = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+const puma = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+const hiena = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+
+const coyote = document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+
+const panda= document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+const koala= document.querySelector("#asno");
+
+asno.onclick = function() {
+  let name = prompt("gestion de red direcion nat");
+
+  
+  if (name === "gestion de red") {
+    alert("bien"); 
+  } else {
+    alert("mal");  
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
