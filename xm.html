@@ -40,8 +40,8 @@
 </div>
 <button id="aaa">dmesg</button> <br><br>
 <button id="aab"> dmesg | grep eth0 </button><br><br>
-<button id="aac"> dmesg | grep wlo </button><br><br>
-<button id="aad"> lsmod</button><br><br>
+<button id="aacc"> dmesg | grep wlo </button><br><br>
+<button id="aac"> lsmod</button><br><br>
 <button id="aae"> lsmod | grep iwlwifi</button><br><br>
 <button id="aaf"> var/log/dmesg</button><br><br>
 <button id="aag">ifconfig  </button><br><br>
@@ -787,12 +787,12 @@ aab.onclick = function(){
 
 };
 
-const aac =document.querySelector("#aac");
-const OPTION_aac=""
+const aacc =document.querySelector("#aac");
+const OPTION_aacc=""
  aab.onclick= function(){
   let nombre=prompt("'1'filtrado por  targeta de wifi  '2' '3' ");
  
- if(name===OPTION_aac){
+ if(name===OPTION_aacc){
  alert("bien");
 }
 else{
@@ -803,7 +803,7 @@ else{
 
 
 const aac = document.querySelector("#aac");
-const OPTION_aac = "2";
+const OPTION_aac= "2";
 aac.onclick = function() {
     let nombre = prompt(" '1' '2'listado de los modulos del kernel actualmente  cargados en el sistema '3'");
     if (nombre === OPTION_aac) {
