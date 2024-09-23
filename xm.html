@@ -88,6 +88,8 @@
   <button id="uu">Contar conexiones activas</button><br><br>
   <button id="vv">Listar puertos a la escucha con PID</button><br><br>
   <button id="ww">Resumen de sockets</button><br><br>
+  <button id="aaa">source estatic o configura una interfaz a nat</button><br><br>
+  
   
 </body>
 </html>
@@ -731,6 +733,20 @@ ww.onclick = function() {
   }
 };
 
+const aaa= document.querySelector("name");
+const  OPTION_ONE_aaa="ip tables -t nat -A postrouting -s red -o interfaz -j snat --to ip";
+ 
+aaa.onclick = function(){
+   
+  let name= prompt(" Escribe el comado  \n  ");
+
+if(name === OPTION_ONE_aaa){
+   alert("sigue haci mano");
+}
+else{
+  alert("mal")
+}
+};
 
 
 
