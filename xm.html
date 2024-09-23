@@ -66,25 +66,25 @@
   <button id="aay"> linea auto </button><br><br>
   <button id="aaz"> allow-auto</button><br><br>
   <button id="aaaa">allow-hotplug</button>
-  <button id="aaaa">allow-hotplug</button>
-        <button id="aaab"> iface</button>
-        <button id="aaac"></button>
-        <button id="aaad"></button>
-        <button id="aaae"></button>
-        <button id="aaaf"></button>
-        <button id="aaag"></button>
-        <button id="aaah"></button>
-        <button id="aaai"></button>
-        <button id="aaaj"></button>
-        <button id="aaak"></button>
-        <button id="aaal"></button>
-        <button id="aaam"></button>
-        <button id="aaan"></button>
-        <button id="aaao"></button>
-        <button id="aaap"></button>
-        <button id="aaaq"></button>
-        <button id="aaar"></button>
-        <button id="aaas"></button>
+  <button id="aaaa">iface</button>
+        <button id="aaab"> lineas mapping</button>
+        <button id="aaac"> #</button>
+        <button id="aaad"> /</button>
+        <button id="aaae">ip address</button>
+        <button id="aaaf">netmask</button>
+        <button id="aaag">gateway/button>
+        <button id="aaah">network</button>
+        <button id="aaai">broadcast</button>
+        <button id="aaaj">hwasssress (interfaz) (direccion mac)</button>
+        <button id="aaak"> pre-up (comando)</button>
+        <button id="aaal">up (comando</button>
+        <button id="aaam">post-up(comando)</button>
+        <button id="aaan">pre-down(comando)</button>
+        <button id="aaao">down (comando)</button>
+        <button id="aaap">post-down (comando)</button>
+        <button id="aaaq">netplan generate</button>
+        <button id="aaar">netplan apply</button>
+        <button id="aaas">netplan try</button>
         <button id="aaat"></button>
         <button id="aaau"></button>
         <button id="aaav"></button>
@@ -1013,9 +1013,9 @@ aat.onclick = function() {
     }
 };
 const aau = document.querySelector("#aau");
-const OPTION_aau = "3";
+const OPTION_aau = "ifup interfaz";
 aau.onclick = function() {
-    let nombre = prompt("'1' muestra la tabla de enrutamiento sin intentar traducir las direcciones  \n '2' muestra la tabla de enrutamiento con sus direcciones IP \n '3' muestra la tabla de enrutamiento sin sus IP");
+    let nombre = prompt("escribe el comando");
     if (nombre === OPTION_aau) {
         alert("bien");
     } else {
@@ -1077,6 +1077,7 @@ aaz.onclick = function() {
         alert("mal");
     }
 };
+
 
 
 
