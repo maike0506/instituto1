@@ -758,11 +758,10 @@ ww.onclick = function() {
 };
 
 const aaa= document.querySelector("#aaa");
-const  OPTION_aaa="ip tables -t nat -A postrouting -s red -o interfaz -j snat --to ip";
- 
+const  OPTION_aaa="dmesg"
 aaa.onclick = function(){
    
-  let name= prompt(" escribe el comando");
+  let name= prompt(" muestra los mensajes del kernel generados durante el arranque dle sistema \n !escribe el comando!");
 
 if(name === OPTION_aaa){
    alert("sigue haci mano");
