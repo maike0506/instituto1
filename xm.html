@@ -776,7 +776,7 @@ const aab =document.querySelector("#aab");
 const OPTION_aab="3";
 
 aab.onclick = function(){
-  let nombre=prompt(" '1' filtrado por targeta ethernet  '2'  '3'");
+  let nombre=prompt(" '1' filtrado por targeta ethernet  '2' filtrado por targeta grafica '3' filtrado por interfaz");
   
   if(name === OPTION_aab){
     alert("bien");
@@ -790,7 +790,7 @@ aab.onclick = function(){
 const aacc =document.querySelector("#aac");
 const OPTION_aacc=""
  aab.onclick= function(){
-  let nombre=prompt("'1'filtrado por  targeta de wifi  '2' '3' ");
+  let nombre=prompt("'1'filtrado por  targeta de wifi  '2'filtrado por tarfe vpn '3' filtrado por targeta eth ");
  
  if(name===OPTION_aacc){
  alert("bien");
@@ -805,7 +805,7 @@ else{
 const aac = document.querySelector("#aac");
 const OPTION_aac= "2";
 aac.onclick = function() {
-    let nombre = prompt(" '1' '2'listado de los modulos del kernel actualmente  cargados en el sistema '3'");
+    let nombre = prompt(" '1'listadodo de los modulos del sistema actualmente '2'listado de los modulos del kernel actualmente  cargados en el sistema '3'listado de las interfaces en la red");
     if (nombre === OPTION_aac) {
         alert("bien");
     } else {
@@ -816,7 +816,7 @@ aac.onclick = function() {
 const aad = document.querySelector("#aad");
 const OPTION_aad = "3";
 aad.onclick = function() {
-    let nombre = prompt(" '1' '2' '3' filtrado por un modulo especifico");
+    let nombre = prompt(" '1'filtrado por una interfaz en especifico '2'filtrado por un dispositivo en especifico '3' filtrado por un modulo especifico");
     if (nombre === OPTION_aad) {
         alert("bien");
     } else {
@@ -827,7 +827,7 @@ aad.onclick = function() {
 const aae = document.querySelector("#aae");
 const OPTION_aae = "1";
 aae.onclick = function() {
-    let nombre = prompt(" '1' este archivo te muestra todos los mensajes generados por el kernmel durante el arranque '2' '3' ");
+    let nombre = prompt(" '1' este archivo te muestra todos los mensajes generados por el kernmel durante el arranque '2' el archivo nos muestra todas las interfaz que hay en el kernel '3' el archivo nos muestra la tabla mac del kernel ");
     if (nombre === OPTION_aae) {
         alert("bien");
     } else {
@@ -838,7 +838,7 @@ aae.onclick = function() {
 const aaf = document.querySelector("#aaf");
 const OPTION_aaf = "3";
 aaf.onclick = function() {
-    let nombre = prompt(" '1''2' '3'muestra configuracion de todas las interfaces de la red activas");
+    let nombre = prompt(" '1'ifcofig te muestra todas las direcciones ip de las interfaces'2'te muestra la tabla de enrutamiento de las interfaces '3'muestra configuracion de todas las interfaces de la red activas");
     if (nombre === OPTION_aaf) {
         alert("bien");
     } else {
@@ -849,7 +849,7 @@ aaf.onclick = function() {
 const aag = document.querySelector("#aag");
 const OPTION_aag = "1";
 aag.onclick = function() {
-    let nombre = prompt("'1' lista todas las interfaces de la red activas e inactivas  '2' '3'");
+    let nombre = prompt("'1' lista todas las interfaces de la red activas e inactivas  '2' te lista las interfaces por numeros '3' lista las interfaces por orden alfabetico");
     if (nombre === OPTION_aag) {
         alert("bien");
     } else {
@@ -860,7 +860,7 @@ aag.onclick = function() {
 const aah = document.querySelector("#aah");
 const OPTION_aah = "2";
 aah.onclick = function() {
-    let nombre = prompt(" '1' '2' muestra estadisticas de la informacion enviada y recibidad por las interfaces '3'");
+    let nombre = prompt(" '1'te muestra informacion detallada de las interfaces'2' muestra estadisticas de la informacion enviada y recibidad por las interfaces '3'lista todas las interfaces desactivadas");
     if (nombre === OPTION_aah) {
         alert("bien");
     } else {
@@ -871,7 +871,7 @@ aah.onclick = function() {
 const aai = document.querySelector("#aai");
 const OPTION_aai = "1";
 aai.onclick = function() {
-    let nombre = prompt(" '1' muestra la configuracion especifica de la interfaz eth0 '2' '3'");
+    let nombre = prompt(" '1' muestra la configuracion especifica de la interfaz eth0 '2' lista la configuracion de las interfaces activas '3' lista la configuracion de interfaces activa e inactivas");
     if (nombre === OPTION_aai) {
         alert("bien");
     } else {
@@ -882,7 +882,7 @@ aai.onclick = function() {
 const aaj = document.querySelector("#aaj");
 const OPTION_aaj = "3";
 aaj.onclick = function() {
-    let nombre = prompt(" '1' '2' '3' muestra la tabla ARP sin intentar traducir las direcciones IP a nombres");
+    let nombre = prompt(" '1'muestra la tabla ARP y las direcciones ip con sus nombres '2'muestra la tabla arp con numeros y nombres '3' muestra la tabla ARP sin intentar traducir las direcciones IP a nombres");
     if (nombre === OPTION_aaj) {
         alert("bien");
     } else {
@@ -893,7 +893,7 @@ aaj.onclick = function() {
 const aak = document.querySelector("#aak");
 const OPTION_aak = "2";
 aak.onclick = function() {
-    let nombre = prompt("'1' '2' muestra la tabla ARP en otro formato de salida  '3' ");
+    let nombre = prompt("'1'muestra la tabla arp con su formato de salidad por defecto'2' muestra la tabla ARP en otro formato de salida  '3'muestra la tabla arp con sus nombres ");
     if (nombre === OPTION_aak) {
         alert("bien");
     } else {
@@ -904,7 +904,7 @@ aak.onclick = function() {
 const aal = document.querySelector("#aal");
 const OPTION_aal = "1";
 aal.onclick = function() {
-    let nombre = prompt("'1'muestra la tabla de enrutamiento sin intentar traducir las direcciones  '2' '3' ");
+    let nombre = prompt("'1'muestra la tabla de enrutamiento sin intentar traducir las direcciones  '2'muestra la tabla de enrutamiento con sus direcciones ip '3' muestra la tabla de enrutamiento sin sus ip ");
     if (nombre === OPTION_aal) {
         alert("bien");
     } else {
@@ -915,7 +915,7 @@ aal.onclick = function() {
 const aam = document.querySelector("#aam");
 const OPTION_aam = "3";
 aam.onclick = function() {
-    let nombre = prompt("'1''2''3'muestra la lista de interfaces de red instaladas en el sistema ");
+    let nombre = prompt("'1'muestra  los dispositivos en la red'2'muestra una lista de todos los dispositivos en formato numero '3'muestra la lista de interfaces de red instaladas en el sistema ");
     if (nombre === OPTION_aam) {
         alert("bien");
     } else {
@@ -926,7 +926,7 @@ aam.onclick = function() {
 const aan = document.querySelector("#aan");
 const OPTION_aan = "2";
 aan.onclick = function() {
-    let nombre = prompt("'1''2'muestra las direcciones ip de las interfaces'3' ");
+    let nombre = prompt("'1' elimina una direccion ip'2'muestra las direcciones ip de las interfaces'3'agrega una interfaz con sus ip ");
     if (nombre === OPTION_aan) {
         alert("bien");
     } else {
@@ -937,7 +937,7 @@ aan.onclick = function() {
 const aao = document.querySelector("#aao");
 const OPTION_aao = "3";
 aao.onclick = function() {
-    let nombre = prompt(" '1''2''3'asignar una direccion ip a una interfaz y lo activa si lo especifica");
+    let nombre = prompt(" '1'asigna una direccion y no se le puede activar '2' asigna una direccion de red y lo activa por defecto'3'asignar una direccion ip a una interfaz y lo activa si lo especifica");
     if (nombre === OPTION_aao) {
         alert("bien");
     } else {
@@ -948,7 +948,7 @@ aao.onclick = function() {
 const aap = document.querySelector("#aap");
 const OPTION_aap = "2";
 aap.onclick = function() {
-    let nombre = prompt(" '1''2'activar o descativar una interfaz'3'");
+    let nombre = prompt(" '1'agregar o eliminar una interfaz'2'activar o descativar una interfaz'3' ninguno");
     if (nombre === OPTION_aap) {
         alert("bien");
     } else {
@@ -959,7 +959,7 @@ aap.onclick = function() {
 const aaq = document.querySelector("#aaq");
 const OPTION_aaq = "3";
 aaq.onclick = function() {
-    let nombre = prompt(" '1''2''3'asignar una direccion ip a una interfaz de red ");
+    let nombre = prompt(" '1'configurar un modulo '2' asignar una direccion ip y activarlo'3'asignar una direccion ip a una interfaz de red ");
     if (nombre === OPTION_aaq) {
         alert("bien");
     } else {
@@ -970,7 +970,7 @@ aaq.onclick = function() {
 const aar = document.querySelector("#aar");
 const OPTION_aar = "1";
 aar.onclick = function() {
-    let nombre = prompt("'1' eliminar  una direccion IP de una interfaz de red'2''3' ");
+    let nombre = prompt("'1' eliminar  una direccion IP de una interfaz de red'2'agregar una direccion ip y activarlo'3'desconfigurar una interfaz ");
     if (nombre === OPTION_aar) {
         alert("bien");
     } else {
@@ -981,7 +981,7 @@ aar.onclick = function() {
 const aas = document.querySelector("#aas");
 const OPTION_aas = "2";
 aas.onclick = function() {
-    let nombre = prompt(" '1''2'otra manera de activar o desactivar una interfaz de red '3'");
+    let nombre = prompt(" '1'eliminar o activar interfaz '2'otra manera de activar o desactivar una interfaz de red '3' ninguno");
     if (nombre === OPTION_aas) {
         alert("bien");
     } else {
