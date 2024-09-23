@@ -59,23 +59,23 @@
   <button id="aar"> ip address add (IP/fijo) dev interfaz </button><br><br>
   <button id="aas"> ip address del (IP/fijo) dev interfaz </button><br><br>
   <button id="aat"> ip link set interfa up/down</button><br><br>
-  <button id="aau"> ifup</button><br><br>
-  <button id="aav"> ifdown</button><br><br>
-  <button id="aaw"> ifquery</button><br><br>
-  <button id="aax"> cat /etc/network/interface</button><br><br>
-  <button id="aay"> linea auto </button><br><br>
-  <button id="aaz"> allow-auto</button><br><br>
-  <button id="aaaa">allow-hotplug</button>
-  <button id="aaaa">iface</button>
-        <button id="aaab"> lineas mapping</button>
-        <button id="aaac"> #</button>
-        <button id="aaad"> /</button>
-        <button id="aaae">ip address</button>
-        <button id="aaaf">netmask</button>
-        <button id="aaag">gateway/button>
-        <button id="aaah">network</button>
-        <button id="aaai">broadcast</button>
-        <button id="aaaj">hwasssress (interfaz) (direccion mac)</button>
+  <button id="aau"> relacion entre una interfaz fisica y una interfaz logica</button><br><br>
+  <button id="aav"> desactiva o desconfigura una interfaz</button><br><br>
+  <button id="aaw"> consulta las opciones de las interfaces logicas o activas</button><br><br>
+  <button id="aax"> muestra el contenido de configuracion de las interfaces/interface</button><br><br>
+  <button id="aay"> especifica interfaces fisicas que se activan al iniciar el sistema</button><br><br>
+  <button id="aaz"> permite activar las interfaces automaticamente</button><br><br>
+  <button id="aaaa">activa las interfaces fisicas al detectar un evento como la conexion con un cable</button>
+  <button id="aaaa">define nombres logicos de interfaces de red con su configuracion </button>
+        <button id="aaab"> define asociacion automatica entre una interfaz fisica y logica</button>
+        <button id="aaac"> permite anadir comentario al archivo es un simbolo</button>
+        <button id="aaad"> extiende la configuracion de la linea anterior es un simbolo</button>
+        <button id="aaae">estable una direccion ip</button>
+        <button id="aaaf">establece la mascara de subred</button>
+        <button id="aaag">anadir la puerta de enlace /button>
+        <button id="aaah">establece la direccion de red ala que pertenece la ip</button>
+        <button id="aaai">establece la direccion de broadcast de la red</button>
+        <button id="aaaj"></button>
         <button id="aaak"> pre-up (comando)</button>
         <button id="aaal">up (comando</button>
         <button id="aaam">post-up(comando)</button>
@@ -1024,9 +1024,9 @@ aau.onclick = function() {
 };
 
 const aav = document.querySelector("#aav");
-const OPTION_aav = "1";
+const OPTION_aav = "ifdown interfaz";
 aav.onclick = function() {
-    let nombre = prompt("'1' muestra los dispositivos en la red  \n '2' muestra una lista de todos los dispositivos en formato numérico  \n '3' muestra la lista de interfaces de red instaladas en el sistema");
+    let nombre = prompt("escribe el comando");
     if (nombre === OPTION_aav) {
         alert("bien");
     } else {
@@ -1035,9 +1035,9 @@ aav.onclick = function() {
 };
 
 const aaw = document.querySelector("#aaw");
-const OPTION_aaw = "2";
+const OPTION_aaw = "ifquery";
 aaw.onclick = function() {
-    let nombre = prompt("'1' asigna una dirección IP y no se puede activar  \n '2' asigna una dirección de red y lo activa por defecto  \n '3' asignar una dirección IP a una interfaz y lo activa si lo especifica");
+    let nombre = prompt("escribe el comando");
     if (nombre === OPTION_aaw) {
         alert("bien");
     } else {
@@ -1046,9 +1046,9 @@ aaw.onclick = function() {
 };
 
 const aax = document.querySelector("#aax");
-const OPTION_aax = "3";
+const OPTION_aax = "cat /etc/network/interface";
 aax.onclick = function() {
-    let nombre = prompt("'1' agregar o eliminar una interfaz \n '2' activar o desactivar una interfaz  \n '3' ninguno");
+    let nombre = prompt("escribe el comando");
     if (nombre === OPTION_aax) {
         alert("bien");
     } else {
@@ -1057,9 +1057,9 @@ aax.onclick = function() {
 };
 
 const aay = document.querySelector("#aay");
-const OPTION_aay = "1";
+const OPTION_aay = "linea-auto";
 aay.onclick = function() {
-    let nombre = prompt("'1' configurar un módulo  \n'2' asignar una dirección IP y activarlo  \n '3' asignar una dirección IP a una interfaz de red");
+    let nombre = prompt("escribe el comando");
     if (nombre === OPTION_aay) {
         alert("bien");
     } else {
@@ -1068,9 +1068,9 @@ aay.onclick = function() {
 };
 
 const aaz = document.querySelector("#aaz");
-const OPTION_aaz = "2";
+const OPTION_aaz = "allow-auto";
 aaz.onclick = function() {
-    let nombre = prompt("'1' eliminar una dirección IP de una interfaz de red \n '2' agregar una dirección IP y activarlo  \n '3' desconfigurar una interfaz");
+    let nombre = prompt("escribe el comando");
     if (nombre === OPTION_aaz) {
         alert("bien");
     } else {
