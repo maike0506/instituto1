@@ -30,8 +30,8 @@ const a = document.querySelector("#a");
 const OPTION_a = "var miarray = [63, 34, 5]; alert(miarray[0] + 10);";
 
 a.onclick = function() {
-    let name = prompt("Crea una variable miarray con los siguientes números: 63, 34, 5 y súmale 10 al primer valor.");
-    if (name === OPTION_a) {
+    let userInput = prompt("Crea una variable miarray con los siguientes números: 63, 34, 5 y súmale 10 al primer valor.");
+    if (userInput === OPTION_a) {
         alert("Bien");
     } else {
         alert("Mal");
