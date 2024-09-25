@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="a">1</button>
+    <button id="c">2</button>
+    <button id="d">3</button>
+    <button id="e">4</button>
+    <button id="f">5</button>
+    <button id="g">6</button>
+    <button id="h">7</button>
+    <button id="i">8</button>
+    <button id="j">9</button>
+    <button id="k">10</button>
+    <button id="m">11</button>
+    <button id="n">12</button>
+    <button id="o">13</button>
+    <button id="p">14</button>
+    <button id="q">15</button>
+
+</body>
+</html>
+<script>
+// Letra a
+const a = document.querySelector("#a");
+const OPTION_a = "var miarray = [63, 34, 5]; alert(miarray[0] + 10);";
+
+a.onclick = function() {
+    let name = prompt("Crea una variable miarray con los siguientes números: 63, 34, 5 y súmale 10 al primer valor.");
+    if (name === OPTION_a) {
+        alert("Bien");
+    } else {
+        alert("Mal");
+    }
+};
+
+// Letra b
+const b = document.querySelector("#b");
+const OPTION_b = ""; // Opción para 'b'
+
+b.onclick = function() {
+    let name = prompt("Escribe algo:");
+    if (name === OPTION_b) {
+        alert("Bien");
+    } else {
+        alert("Mal");
+    }
+};
+
+// Letra c
+const c = document.querySelector("#c");
+const OPTION_c = `var edad = 18; var inteligente = "si"; var edad = 19;
+if (edad < 21 && inteligente == "si") { alert("él es mayor"); }`;
+
+c.onclick = function() {
+    let name = prompt("Crea tres variables: 1. edad=18 2. inteligente='si' 3. var edad = 19. Usando if, verifica si es menor de 21 y es inteligente, y que el resultado sea 'él es mayor'.");
+    if (name === OPTION_c) {
+        alert("Bien");
+    } else {
+        alert("Mal");
+    }
+};
+
+// Letra d
+const d = document.querySelector("#d");
+const OPTION_d = `var sonso = 2; switch(sonso) {
+case 1: alert("es el nueve"); break;
+case 2: alert("es el dos"); break;
+default: alert("es el número " + sonso);
+}`;
+
+d.onclick = function() {
+    let name = prompt("Crea una variable llamada sonso con un valor de 2 y crea condiciones usando switch. Una de ellas tiene que coincidir con el 2 y debe mostrar 'es el número' más sonso.");
+    if (name === OPTION_d) {
+        alert("Bien");
+    } else {
+        alert("Mal");
+    }
+};
+
+// Letra e
+const e = document.querySelector("#e");
+const OPTION_e = `var total = 0; for (var f = 0; f < 5; f++) { total += 10; } alert("el total es " + total);`;
+
+e.onclick = function() {
+    let name = prompt("Escribe un código que sume el número 10 un total de 5 veces usando un bucle for. Muestra el total en un alert.");
+    if (name === OPTION_e) {
+        alert("Bien");
+    } else {
+        alert("Mal");
+    }
+};
+
+// Letra f
+const f = document.querySelector("#f");
+const OPTION_f = `var contador = 0; while (contador < 100) { contador++; } alert("el valor es " + contador);`;
+
+f.onclick = function() {
+    let name = prompt("Crea un contador que comience en 0. Usa un bucle while para incrementar el contador hasta que alcance 100. Muestra el valor del contador en un alert.");
+    if (name === OPTION_f) {
+        alert("Bien");
+    } else {
+        alert("Mal");
+    }
+};
+
+// Letra g
+const g = document.querySelector("#g");
+const OPTION_g = `var contador = 150; do { contador++; } while (contador < 100); alert("el valor es " + contador);`;
+
+g.onclick = function() {
+    let name = prompt("Crea un contador que empiece en 150. Usa un bucle do...while para incrementar el contador. El bucle debe continuar hasta que el contador sea menor que 100.");
+    if (name === OPTION_g) {
+        alert("Bien");
+    } else {
+        alert("Mal");
+    }
+};
+
+// Letra h
+const h = document.querySelector("#h");
+const OPTION_h = `var lista = [2, 4, 6, 8]; var total = 0; for (var f = 0; f < 4; f++) { var numero = lista[f]; if (numero == 6) { continue; } total += numero; } alert("el total es: " + total);`;
+
+h.onclick = function() {
+    let name = prompt("Crea una variable lista que contenga los números [2, 4, 6, 8]. Usa un bucle for para recorrer el arreglo. Si el número actual es 6, usa continue para omitirlo. Suma los números restantes y muestra el total en un alert.");
+    if (name === OPTION_h) {
+        alert("Bien");
+    } else {
+        alert("Mal");
+    }
+};
+
+// Letra i
+const i = document.querySelector("#i");
+const OPTION_i = `var lista = [2, 4, 6, 8]; var total = 0; for (var f = 0; f < lista.length; f++) { if (lista[f] == 6) { continue; } total += lista[f]; } alert("el total es: " + total);`;
+
+i.onclick = function() {
+    let name = prompt("Crea un arreglo llamado lista que contenga los números [2, 4, 6, 8]. Usa un bucle for para recorrer el arreglo. Si el número actual es 6, usa continue para omitirlo. Suma los números restantes y muestra el total en un alert.");
+    if (name === OPTION_i) {
+        alert("Bien");
+    } else {
+        alert("Mal");
+    }
+};
+
+// Letra j
+const j = document.querySelector("#j");
+const OPTION_j = `var lista = [2, 4, 6, 8]; var total = 0; for (var f = 0; f < lista.length; f++) { if (lista[f] == 6) { break; } total += lista[f]; } alert("el total es: " + total);`;
+
+j.onclick = function() {
+    let name = prompt("Crea un arreglo llamado lista que contenga los números [2, 4, 6, 8]. Usa un bucle for para recorrer el arreglo. Si el número actual es 6, utiliza break para salir del bucle. Suma los números que se encuentren antes de 6 y muestra el total en un alert.");
+    if (name === OPTION_j) {
+        alert("Bien");
+    } else {
+        alert("Mal");
+    }
+};
+
+// Letra k
+const k = document.querySelector("#k");
+const OPTION_k = `var total = 5; function calcularvariable() { total = total * 2; } for (var f = 0; f < 10; f++) { calcularvariable(); } alert("el total es: " + total);`;
+
+k.onclick = function() {
+    let name = prompt("Crea una variable total que comience con el valor 5. Define una función llamada calcularvariable que multiplique total por 2. Usa un bucle for para llamar a calcularvariable diez veces. Muestra el valor de total en un alert.");
+    if (name === OPTION_k) {
+        alert("Bien");
+    } else {
+        alert("Mal");
+    }
+};
+
+// Letra l
+const l = document.querySelector("#l");
+const OPTION_l = ""; // Opción para 'l'
+
+l.onclick = function() {
+    let name = prompt("Escribe algo:");
+    if (name === OPTION_l) {
+        alert("Bien");
+    } else {
+        alert("Mal");
+    }
+};
+
+// Letra m
+const m = document.querySelector("#m");
+const OPTION_m = ""; // Opción para 'm'
+
+m.onclick = function() {
+    let name = prompt("Escribe algo:");
+    if (name === OPTION_m) {
+        alert("Bien");
+    } else {
+        alert("Mal");
+    }
+};
+
+// Letra n
+const n = document.querySelector("#n");
+const OPTION_n = ""; // Opción para 'n'
+
+n.onclick = function() {
+    let name = prompt("Escribe algo:");
+    if (name === OPTION_n) {
+        alert("Bien");
+    } else {
+        alert("Mal");
+    }
+};
+
+// Letra o
+const o = document.querySelector("#o");
+const OPTION_o = `var lista = [2, 4, 6, 8]; var total = 0; for (var f = 0; f < 4; f++) { var numero = lista[f]; if (numero == 6) { break; } total += numero; } alert("el total es: " + total);`;
+
+o.onclick = function() {
+    let name = prompt("Crea un arreglo que contenga los números [2, 4, 6, 8]. Usa un bucle for para recorrer el arreglo. Si el número actual es 6, utiliza break para salir del bucle. Suma los números que se encuentren antes de 6 y muestra el total en un alert.");
+    if (name === OPTION_o) {
+        alert("Bien");
+    } else {
+        alert("Mal");
+    }
+};
+
+// Letra p
+const p = document.querySelector("#p");
+const OPTION_p = `var total = 0; 
+var precios = [1, 2, 3, 4, 5]; 
+for (var f = 0; f < precios.length; f++) { 
+    total += precios[f]; 
+} 
+alert("el total es " + total);`; // Opción para 'p'
+
+p.onclick = function() {
+    let name = prompt("Crea un arreglo que contenga algunos precios (puedes usar [1, 2, 3, 4, 5]). Escribe un código que sume todos los precios en el arreglo usando un bucle for. Muestra el total en un alert.");
+    if (name === OPTION_p) {
+        alert("Bien");
+    } else {
+        alert("Mal");
+    }
+};
+
+
+
+
+
+
+</script>
