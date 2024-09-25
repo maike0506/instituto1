@@ -38,18 +38,6 @@ a.onclick = function() {
     }
 };
 
-// Letra b
-const b = document.querySelector("#b");
-const OPTION_b = ""; // Opción para 'b'
-
-b.onclick = function() {
-    let name = prompt("Escribe algo:");
-    if (name === OPTION_b) {
-        alert("Bien");
-    } else {
-        alert("Mal");
-    }
-};
 
 // Letra c
 const c = document.querySelector("#c");
@@ -84,7 +72,7 @@ d.onclick = function() {
 
 // Letra e
 const e = document.querySelector("#e");
-const OPTION_e = `var total = 0; for (var f = 0; f < 5; f++) { total += 10; } alert("el total es " + total);`;
+const OPTION_e = `var total = 0; for (var f = 0; f < 5; f++) { total += 10; } alert("el total es " + total);
 
 e.onclick = function() {
     let name = prompt("Escribe un código que sume el número 10 un total de 5 veces usando un bucle for. Muestra el total en un alert.");
@@ -97,7 +85,7 @@ e.onclick = function() {
 
 // Letra f
 const f = document.querySelector("#f");
-const OPTION_f = `var contador = 0; while (contador < 100) { contador++; } alert("el valor es " + contador);`;
+const OPTION_f = `var contador = 0; while (contador < 100) { contador++; } alert("el valor es " + contador);
 
 f.onclick = function() {
     let name = prompt("Crea un contador que comience en 0. Usa un bucle while para incrementar el contador hasta que alcance 100. Muestra el valor del contador en un alert.");
@@ -110,7 +98,7 @@ f.onclick = function() {
 
 // Letra g
 const g = document.querySelector("#g");
-const OPTION_g = `var contador = 150; do { contador++; } while (contador < 100); alert("el valor es " + contador);`;
+const OPTION_g = `var contador = 150; do { contador++; } while (contador < 100); alert("el valor es " + contador);
 
 g.onclick = function() {
     let name = prompt("Crea un contador que empiece en 150. Usa un bucle do...while para incrementar el contador. El bucle debe continuar hasta que el contador sea menor que 100.");
@@ -123,7 +111,7 @@ g.onclick = function() {
 
 // Letra h
 const h = document.querySelector("#h");
-const OPTION_h = `var lista = [2, 4, 6, 8]; var total = 0; for (var f = 0; f < 4; f++) { var numero = lista[f]; if (numero == 6) { continue; } total += numero; } alert("el total es: " + total);`;
+const OPTION_h = `var lista = [2, 4, 6, 8]; var total = 0; for (var f = 0; f < 4; f++) { var numero = lista[f]; if (numero == 6) { continue; } total += numero; } alert("el total es: " + total);
 
 h.onclick = function() {
     let name = prompt("Crea una variable lista que contenga los números [2, 4, 6, 8]. Usa un bucle for para recorrer el arreglo. Si el número actual es 6, usa continue para omitirlo. Suma los números restantes y muestra el total en un alert.");
@@ -136,7 +124,7 @@ h.onclick = function() {
 
 // Letra i
 const i = document.querySelector("#i");
-const OPTION_i = `var lista = [2, 4, 6, 8]; var total = 0; for (var f = 0; f < lista.length; f++) { if (lista[f] == 6) { continue; } total += lista[f]; } alert("el total es: " + total);`;
+const OPTION_i = `var lista = [2, 4, 6, 8]; var total = 0; for (var f = 0; f < lista.length; f++) { if (lista[f] == 6) { continue; } total += lista[f]; } alert("el total es: " + total);
 
 i.onclick = function() {
     let name = prompt("Crea un arreglo llamado lista que contenga los números [2, 4, 6, 8]. Usa un bucle for para recorrer el arreglo. Si el número actual es 6, usa continue para omitirlo. Suma los números restantes y muestra el total en un alert.");
@@ -149,8 +137,7 @@ i.onclick = function() {
 
 // Letra j
 const j = document.querySelector("#j");
-const OPTION_j = `var lista = [2, 4, 6, 8]; var total = 0; for (var f = 0; f < lista.length; f++) { if (lista[f] == 6) { break; } total += lista[f]; } alert("el total es: " + total);`;
-
+const OPTION_j = `var lista = [2, 4, 6, 8]; var total = 0; for (var f = 0; f < lista.length; f++) { if (lista[f] == 6) { break; } total += lista[f]; } alert("el total es: " + total);
 j.onclick = function() {
     let name = prompt("Crea un arreglo llamado lista que contenga los números [2, 4, 6, 8]. Usa un bucle for para recorrer el arreglo. Si el número actual es 6, utiliza break para salir del bucle. Suma los números que se encuentren antes de 6 y muestra el total en un alert.");
     if (name === OPTION_j) {
@@ -162,8 +149,7 @@ j.onclick = function() {
 
 // Letra k
 const k = document.querySelector("#k");
-const OPTION_k = `var total = 5; function calcularvariable() { total = total * 2; } for (var f = 0; f < 10; f++) { calcularvariable(); } alert("el total es: " + total);`;
-
+const OPTION_k = `var total = 5; function calcularvariable() { total = total * 2; } for (var f = 0; f < 10; f++) { calcularvariable(); } alert("el total es: " + total);`
 k.onclick = function() {
     let name = prompt("Crea una variable total que comience con el valor 5. Define una función llamada calcularvariable que multiplique total por 2. Usa un bucle for para llamar a calcularvariable diez veces. Muestra el valor de total en un alert.");
     if (name === OPTION_k) {
@@ -173,48 +159,11 @@ k.onclick = function() {
     }
 };
 
-// Letra l
-const l = document.querySelector("#l");
-const OPTION_l = ""; // Opción para 'l'
 
-l.onclick = function() {
-    let name = prompt("Escribe algo:");
-    if (name === OPTION_l) {
-        alert("Bien");
-    } else {
-        alert("Mal");
-    }
-};
-
-// Letra m
-const m = document.querySelector("#m");
-const OPTION_m = ""; // Opción para 'm'
-
-m.onclick = function() {
-    let name = prompt("Escribe algo:");
-    if (name === OPTION_m) {
-        alert("Bien");
-    } else {
-        alert("Mal");
-    }
-};
-
-// Letra n
-const n = document.querySelector("#n");
-const OPTION_n = ""; // Opción para 'n'
-
-n.onclick = function() {
-    let name = prompt("Escribe algo:");
-    if (name === OPTION_n) {
-        alert("Bien");
-    } else {
-        alert("Mal");
-    }
-};
 
 // Letra o
 const o = document.querySelector("#o");
-const OPTION_o = `var lista = [2, 4, 6, 8]; var total = 0; for (var f = 0; f < 4; f++) { var numero = lista[f]; if (numero == 6) { break; } total += numero; } alert("el total es: " + total);`;
+const OPTION_o = `var lista = [2, 4, 6, 8]; var total = 0; for (var f = 0; f < 4; f++) { var numero = lista[f]; if (numero == 6) { break; } total += numero; } alert("el total es: " + total);
 
 o.onclick = function() {
     let name = prompt("Crea un arreglo que contenga los números [2, 4, 6, 8]. Usa un bucle for para recorrer el arreglo. Si el número actual es 6, utiliza break para salir del bucle. Suma los números que se encuentren antes de 6 y muestra el total en un alert.");
