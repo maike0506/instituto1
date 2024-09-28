@@ -13,7 +13,7 @@
          color: green;
          border: 5px solid green;
          border-radius: 24px 10px 24px 10px;
-         width: 700px;
+         width: 900px;
       }
       .ultima{
         border: 5px solid  black;
@@ -37,13 +37,13 @@
 <body>
    
   <h1 class="titulo"> CONCEPTOS BÁSICOS DE SEGURIDAD INFORMÁTICA</h1>
-     <h2><u>Integridad de datos MD5sum</u></h2>
+     <h2><u>1.Integridad de datos MD5sum</u></h2>
         <h5>Comprobación de los archivos "FranciscoGoya" y "saludo"</h5>
            <img src="ultima.png" alt="error al cargar la imagen" class="ultima">
        <h4><b>¿Qué evitaremos usando esta comprobación de integridad de datos en el fichero /etc/passwd?</b></h4>
              <p>Evitaríamos accesos no autorizados, podríamos saber si el archivo ha sido alterado o si ha habido alteraciones maliciosas. Nos permitirá detectar modificaciones que se hayan hecho en el archivo.</p>
 
-       <h4><b>¿Cómo comprobarías todos los días que los siguientes archivos no han sido modificados?</b></h4>
+       <h4><b>2.¿Cómo comprobarías todos los días que los siguientes archivos no han sido modificados?</b></h4>
 
             <ul>
                <li><b>/etc/passwd</b>: con el comando md5sum comprobaríamos si el archivo ha sido modificado.</li>
@@ -51,7 +51,7 @@
                <li><b>Un archivo cualquiera de tu directorio personal</b>: con el comando md5sum.</li>
             </ul>
 
-            <h4>Indicar pros y contras de desactivar los USB de los ordenadores de los empleados<br>
+            <h4>3.Indicar pros y contras de desactivar los USB de los ordenadores de los empleados<br>
               ¿Qué alternativas podemos ofrecer al trabajador para sacar la información del equipo?</h4>
           <ol>
               <li><b>PROS de desactivar los USB</b>
@@ -76,34 +76,34 @@
               </li>
           </ol>
           
-          <h4><b>Aunque un usuario tenga privilegios limitados en una máquina, ¿todavía es un peligro potencial?</b></h4>
+          <h4><b>4.Aunque un usuario tenga privilegios limitados en una máquina, ¿todavía es un peligro potencial?</b></h4>
           <p>No, porque ya no tiene privilegios para descargar o instalar software sospechoso.</p>
           
-          <h4><b>¿Resulta totalmente fiable utilizar las aplicaciones descargadas de Google Play?</b></h4>
+          <h4><b>5.¿Resulta totalmente fiable utilizar las aplicaciones descargadas de Google Play?</b></h4>
           <p>No, porque diversas aplicaciones logran pasar los sistemas de seguridad y corremos el riesgo de infectarnos con algún virus. Siempre que queramos instalarnos una <br>
           aplicación, hay que fijarnos en los comentarios y en la reputación que tenga dicha aplicación, que nos dirán si es fiable o no.</p>
           
-          <h4><b>¿Cómo detectarías un ataque DoS? ¿Qué harías para defenderte?</b></h4>
+          <h4><b>6.¿Cómo detectarías un ataque DoS? ¿Qué harías para defenderte?</b></h4>
           <ul>
               <li>Con el monitoreo del tráfico de red, utilizaría herramientas como Wireshark.</li>
               <li>Implementando cortafuegos para la detección y rechazo de las peticiones.</li>
           </ul>
           
-          <h4><b>Realiza una comprobación de la integridad de archivos del sistema con <br>
+          <h4><b>7.Realiza una comprobación de la integridad de archivos del sistema con <br>
           Windows. Utiliza el comando sfc. Lee la documentación que hay en el índice del curso. <br>
           Debes añadir las capturas de pantalla.</b></h4>
           <img src="window.png" alt="error al cargar la imagen" class="window">
           
-          <h4><b>Realiza lo mismo con Linux utilizando el comando rkhunter. Debes añadir las <br>
+          <h4><b>8.Realiza lo mismo con Linux utilizando el comando rkhunter. Debes añadir las <br>
           capturas de pantalla.</b></h4>
           <img src="sis.png" alt="error al cargar la imegen" class="sis">
           
-          <h4><b>Busca y detecta si hay rootkits en tu sistema Linux con la herramienta chkrootkit <br>
+          <h4><b>9.Busca y detecta si hay rootkits en tu sistema Linux con la herramienta chkrootkit <br>
           de Linux. Debes añadir las capturas de pantalla.</b></h4>
           <img src="sis2.png" alt="error al cargar la imagen" class="sis2">
           
 
-             <h4><b>Piensa en técnicas para:</b></h4>
+             <h4><b>10.Piensa en técnicas para:</b></h4>
               <ul>
                 <li>Robar la contraseña de correo de tu compañero de clase. <b>Con una técnica de phishing</b> que consiste en crear una interfaz de autenticación falsa que imita a la original de la página y hacer que la víctima introduzca los datos. </li>
                 <li>Robar el examen que tienes mañana, que está en el disco duro del profesor. <b>Payloads</b>, que consiste en insertar una USB en su ordenador, que contiene un código malicioso y que se cree una puerta trasera para que yo pueda tener acceso a sus documentos</li>
@@ -111,7 +111,7 @@
                 <li>Aumentar tu número de cuenta un cero a la derecha. <b>Diccionario y fuerza bruta</b> consiste en probar múltiples combinaciones con el diccionario.</li>
                 <li>Para estropear los datos del disco duro de tu jefe, que está en la red de tu empresa, por no pagarte las horas extra, <b>malware</b>: introducir un malware mediante un USB que contiene un virus el cual va a infectar todo el dispositivo</li>
               </ul>
-              <h4>Piensa en mecanismos de defensa para las siguientes amenazas</h4>
+              <h4>11.Piensa en mecanismos de defensa para las siguientes amenazas</h4>
 <ul>
     <li><b>Incendios</b>: 
         <ul>
