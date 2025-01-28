@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafío de Comandos Tar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: black;
+            color: green;
+            font-family: 'Courier New', monospace;
+        }
+        .terminal-input {
+            background-color: black;
+            color: green;
+            border: 1px solid green;
+            width: 100%;
+            padding: 0.5rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+        }
+        .terminal-button {
+            background-color: black;
+            color: green;
+            border: 1px solid green;
+            transition: all 0.3s ease;
+        }
+        .terminal-button:hover {
+            background-color: green;
+            color: black;
+        }
+        .challenge-container {
+            background-color: rgba(0, 0, 0, 0.9);
+            border: 1px solid green;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+        }
+        .progress-bar {
+            height: 4px;
+            background-color: green;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+    <div class="challenge-container p-8 rounded-lg w-full max-w-2xl">
+        <h1 class="text-2xl font-bold mb-4 text-center">Desafío de Comandos Tar</h1>
+        
+        <div class="progress-bar w-0 mb-4" id="progressBar"></div>
+        
+        <div id="question" class="mb-4 text-lg text-center"></div>
+        
+        <input 
+            type="text" 
+            id="commandInput" 
+            class="terminal-input rounded"
+            placeholder="Escribe tu comando tar aquí"
+            autocomplete="off"
+            spellcheck="false"
+        >
+        
+        <div class="flex gap-4">
+            <button 
+                id="checkButton" 
+                class="terminal-button w-full p-2 rounded"
+            >
+                Verificar Comando
+            </button>
+            <button 
+                id="skipButton" 
+                class="terminal-button w-1/4 p-2 rounded"
+            >
+                Saltar
+            </button>
+        </div>
+        
+        <div id="result" class="mt-4 text-center"></div>
+        <div id="score" class="mt-2 text-center"></div>
+        <div id="hint" class="mt-2 text-center text-sm opacity-70"></div>
+    </div>
+
+    <script>
+        const challenges = [
+            {
+                description: "Crear un archivo escritorio.tar en Linux que contenga /home/michael",
+                correctCommand: "tar -cvf escritorio.tar /home/michael",
+                hint: "Usa -c para crear, -v para verbose, -f para especificar archivo"
+            },
+            {
+                description: "Crear un archivo comprimido escritorio.tar.gz de /home/michael",
+                correctCommand: "tar -cvzf escritorio.tar.gz /home/michael",
+                hint: "Añade -z para comprimir con gzip"
+            },
+            {
+                description: "Crear un archivo escritorio.tar.bz2 del directorio /home/michael",
+                correctCommand: "tar -cvjf escritorio.tar.bz2 /home/michael",
+                hint: "Usa -j para comprimir con bzip2"
+            },
+            {
+                description: "Descomprimir el archivo escritorio.tar",
+                correctCommand: "tar -xvf escritorio.tar",
+                hint: "Usa -x para extraer archivos"
+            },
+            {
+                description: "Descomprimir escritorio.tar en el directorio /home/usuario",
+                correctCommand: "tar -xvf escritorio.tar -C /home/usuario",
+                hint: "Usa -C para especificar el directorio destino"
+            },
+            {
+                description: "Listar el contenido de escritorio.tar",
+                correctCommand: "tar -tvf escritorio.tar",
+                hint: "Usa -t para listar el contenido"
+            },
+            {
+                description: "Extraer un único archivo /home/michael/mensaje.txt de escritorio.tar",
+                correctCommand: "tar -xvf escritorio.tar /home/michael/mensaje.txt",
+                hint: "Especifica la ruta exacta del archivo a extraer"
+            },
+            {
+                description: "Extraer file1 y file2 de samplearchive.tar.gz",
+                correctCommand: "tar -zxvf samplearchive.tar.gz file1 file2",
+                hint: "Lista los archivos a extraer después del nombre del archivo tar"
+            },
+            {
+                description: "Extraer todos los archivos .jpg de escritorio.tar",
+                correctCommand: "tar -xvf escritorio.tar --wildcards '*.jpg'",
+                hint: "Usa --wildcards con un patrón"
+            },
+            {
+                description: "Agregar example.jpg a un archivo escritorio.tar existente",
+                correctCommand: "tar -rvf escritorio.tar example.jpg",
+                hint: "Usa -r para añadir archivos"
+            },
+            {
+                description: "Verificar el tamaño del archivo escritorio.tar",
+                correctCommand: "tar -czf escritorio.tar | wc -c",
+                hint: "usa el fifo para indicar el recuendo"
+            },
+            {
+                description: "Crear copias incrementales con tar el archivo se va llama backup.tgz /home/usuario/",
+                correctCommand: "tar -cpvzf backup.tgz -g /home/usuario/",
+                hint: "usa la una letra para indicar el directoriio"
+            },
+            {
+                   description: "Analizar el contenido de un archvio backup.tar",
+                   correctCommand: "tar -tWGf backup.tar",
+                   hint: " utiza 4 letras para indicar el archivo"
+
+
+            },
+            {
+               description: "comando para resturar un archivo backup.tar incremental",
+               correctCommand:"tar -xvGf backup.tar",
+               hint: "inidica 4 letrar para indicar el directorio"
+            }
+        ];
+
+        let currentChallenge = 0;
+        let score = 0;
+        let mistakes = 0;
+
+        const elements = {
+            question: document.getElementById('question'),
+            commandInput: document.getElementById('commandInput'),
+            checkButton: document.getElementById('checkButton'),
+            skipButton: document.getElementById('skipButton'),
+            result: document.getElementById('result'),
+            score: document.getElementById('score'),
+            hint: document.getElementById('hint'),
+            progressBar: document.getElementById('progressBar')
+        };
+
+        function updateProgressBar() {
+            const progress = (currentChallenge / challenges.length) * 100;
+            elements.progressBar.style.width = `${progress}%`;
+        }
+
+        function loadChallenge() {
+            const challenge = challenges[currentChallenge];
+            elements.question.textContent = challenge.description;
+            elements.commandInput.value = '';
+            elements.result.textContent = '';
+            elements.hint.textContent = '';
+            updateProgressBar();
+            updateScore();
+        }
+
+        function updateScore() {
+            elements.score.textContent = `Puntuación: ${score}/${challenges.length} | Desafío: ${currentChallenge + 1}/${challenges.length}`;
+        }
+
+        function showHint() {
+            elements.hint.textContent = `Pista: ${challenges[currentChallenge].hint}`;
+        }
+
+        function checkCommand() {
+            const userCommand = elements.commandInput.value.trim();
+            const challenge = challenges[currentChallenge];
+            
+            if (userCommand === challenge.correctCommand) {
+                score++;
+                elements.result.textContent = '✅ ¡Correcto!';
+                elements.result.style.color = '#00ff00';
+                nextChallenge();
+            } else {
+                mistakes++;
+                elements.result.textContent = '❌ Incorrecto. ¡Intenta de nuevo!';
+                elements.result.style.color = '#ff0000';
+                if (mistakes >= 2) {
+                    showHint();
+                }
+            }
+            
+            updateScore();
+        }
+
+        function nextChallenge() {
+            setTimeout(() => {
+                mistakes = 0;
+                if (currentChallenge < challenges.length - 1) {
+                    currentChallenge++;
+                    loadChallenge();
+                } else {
+                    finishGame();
+                }
+            }, 1500);
+        }
+
+        function finishGame() {
+            elements.question.textContent = `¡Juego completado! Puntuación final: ${score}/${challenges.length}`;
+            elements.commandInput.style.display = 'none';
+            elements.checkButton.style.display = 'none';
+            elements.skipButton.style.display = 'none';
+            elements.progressBar.style.width = '100%';
+        }
+
+        function skipChallenge() {
+            currentChallenge = (currentChallenge + 1) % challenges.length;
+            mistakes = 0;
+            loadChallenge();
+        }
+
+        // Event Listeners
+        elements.checkButton.addEventListener('click', checkCommand);
+        elements.skipButton.addEventListener('click', skipChallenge);
+        elements.commandInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') checkCommand();
+        });
+
+        // Initialize game
+        loadChallenge();
+    </script>
+</body>
+</html>

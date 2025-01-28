@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Comandos TAR</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #000;
+        }
+        .quiz-container {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: #000;
+            color:#3c763d;
+            font-size: 20px;
+              text-align: center;
+        }
+        .option-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .option-btn:hover {
+            background: #e9e9e9;
+        }
+        .option-btn.selected {
+            background: #b3e0ff;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin: 10px 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+        }
+        .check-btn { background: #4CAF50; }
+        .next-btn { background: #2196F3; }
+        .feedback {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .correct { 
+            background: #dff0d8; 
+            color: #3c763d;
+        }
+        .incorrect { 
+            background: #f2dede; 
+            color: #a94442;
+        }
+        .score {
+            font-size: 1.2em;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+        }
+        .contenido {
+             position: absolute;
+             margin:  20px 0;
+             display: none;
+             color: #3c763d;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Quiz de Comandos TAR</h1>
+        <div class="score">Puntuación: <span id="score">0</span> / <span id="total">0</span></div>
+        <div id="question-container">
+            <h3 id="question-text"></h3>
+            <div id="options"></div>
+            <button class="btn check-btn" onclick="checkAnswer()">Comprobar</button>
+            <button class="btn next-btn" onclick="nextQuestion()" style="display:none">Siguiente</button>
+            <div id="feedback"></div>
+        </div>
+
+
+    <script>
+        
+        const preguntas = [
+            {
+                pregunta: "¿Qué comando usarías para crear un nuevo archivo tar comprimido?",
+                opciones: [
+                    "tar -cvzf backup.tgz datos/",
+                    "tar -xvf backup.tgz",
+                    "tar -tvf backup.tgz",
+                    "tar -rvf backup.tgz datos/"
+                ],
+                correcta: 0,
+                explicacion: "-c para crear, -v para ver progreso, -z para comprimir, -f para nombre del archivo"
+            },
+            {
+                pregunta: "¿Cómo verías el contenido de un archivo tar sin extraerlo?",
+                opciones: [
+                    "tar -xvf archivo.tar",
+                    "tar -cvf archivo.tar",
+                    "tar -tvf archivo.tar",
+                    "tar -rvf archivo.tar"
+                ],
+                correcta: 2,
+                explicacion: "-t para listar contenido, -v para ver detalles, -f para especificar archivo"
+            },
+            {
+                pregunta: "¿Qué comando usarías para extraer un archivo tar en un directorio diferente?",
+                opciones: [
+                    "tar -cvf archivo.tar -C /destino",
+                    "tar -xvf archivo.tar -C /destino",
+                    "tar -tvf archivo.tar /destino",
+                    "tar -rvf archivo.tar /destino"
+                ],
+                correcta: 1,
+                explicacion: "-x para extraer, -C para especificar directorio destino"
+            },
+            {
+                pregunta: "¿Cómo crearías una copia de seguridad incremental?",
+                opciones: [
+                    "tar -cvf backup.tar datos/",
+                    "tar -xvf backup.tar datos/",
+                    "tar -cvzf backup.tgz -g historico.snap datos/",
+                    "tar -tvf backup.tar datos/"
+                ],
+                correcta: 2,
+                explicacion: "-g para especificar el archivo histórico de la copia incremental"
+            },
+            {
+                pregunta: "¿Para qué se utiliza la opción -G?",
+                opciones: [
+                    "Indicar un directorio",
+                    "Indicar que estamos trabajando con un backup incremental",
+                    "Indicar donde está ubicado el archivo"
+                ],
+                correcta: 1,
+                explicacion: "-G se usa para trabajar con backups incrementales"
+            },
+            {
+                pregunta: "¿Qué le indicamos con la opción -f?",
+                opciones: [
+                    "Le indicamos que estamos trabajando con un backup diferencial",
+                    "Le indicamos el nombre del archivo",
+                    "Le indicamos el archivo a comprimir"
+                ],
+                correcta: 1,
+                explicacion: "-f especifica el nombre del archivo tar que se va a crear o manipular"
+            },
+            {
+                pregunta: "¿Qué le indicamos con la opción -x?",
+                opciones: [
+                    "Le indicamos que queremos extraer el archivo",
+                    "Le indicamos que queremos comprimir el archivo",
+                    "Le indicamos que queremos ver el contenido del archivo"
+                ],
+                correcta: 0,
+                explicacion: "-x indica que queremos extraer/descomprimir el archivo"
+            },
+            {
+                pregunta: "¿Qué le indicamos con la opción -v?",
+                opciones: [
+                    "Le indicamos que queremos ver el proceso de compresión del archivo",
+                    "Le indicamos que queremos observar el archivo comprimido",
+                    "Le indicamos que queremos ver las líneas del archivo"
+                ],
+                correcta: 0,
+                explicacion: "-v (verbose) muestra el progreso de la operación"
+            },
+            {
+                pregunta: "¿Qué le indicamos con la opción -z?",
+                opciones: [
+                    "Le indicamos que queremos comprimir en formato .tar.tgz",
+                    "Le indicamos que queremos comprimir en formato gzip",
+                    "Le indicamos que queremos que nos muestre el proceso de compresión"
+                ],
+                correcta: 1,
+                explicacion: "-z indica compresión usando gzip"
+            },
+            {
+                pregunta: "¿Qué le indicamos con la opción -j?",
+                opciones: [
+                    "Le indicamos que queremos comprimirlo en formato bzip2",
+                    "Le indicamos que queremos comprimirlo en formato zipb2",
+                    "Le indicamos que queremos comprimirlo en formato zip2"
+                ],
+                correcta: 0,
+                explicacion: "-j indica compresión usando bzip2"
+            },
+            {
+                pregunta: "¿Con la opción -C qué le indicamos?",
+                opciones: [
+                    "Le indicamos que queremos extraer el archivo en otro directorio diferente",
+                    "Le indicamos que queremos extraer el archivo",
+                    "Le indicamos que queremos extraer el archivo en otro formato"
+                ],
+                correcta: 0,
+                explicacion: "-C permite especificar un directorio diferente para la extracción"
+            },
+            {
+                pregunta: " crear un archivo .tar.bz2 ",
+                opciones: [
+                        " tar -cvjf escriotio.tar.bz2 /home/michael ",
+                         " tar -cvzf escritorio.tar.bz2 /home/michael",
+                          "tar -jcv escritorio.tar.bz2 /home/michael2"        
+            ],
+                correcta: 0,
+                explicacion: "permite crear un archivo tar.bz2"            }
+                ,
+            {
+                pregunta: "como descomprimir archivo .tar en linux  ",
+                opciones: [
+                     "tar -xfc  escritorio.tar",
+                     " tar -xcf  escriotorio.tar",
+                      " tar -xvf  escritorio.tar "       
+            ],
+                correcta: 2,
+                explicacion: "permite crear un archivo tar.bz2"            }
+                ,
+            {
+                pregunta: " como descomprimir un unico archivo .tar",
+                opciones: [
+                    "tar -xvf  escriotiro.tar /home/michael/mensaje.txt",
+                     " tar -xvcf escritorio.tar /home/michael/mensaje.txt",
+                     " tar -xvzf escritorio.tar /home/michael/mensaje.txt"
+                ],
+                correcta: 0,
+                explicacion: "permite descomprimir un unico archivo .tar "            }
+                ,
+            {
+                pregunta: " como extraer multiples archivos de los archivos.tar",
+                opciones: [
+                     " tar -xfv  samplearchvio.tar.gz  'file1' 'file 2'  ",      
+                      " tar -zxvf samplearchive.tar.gz 'file1 'file2' ",
+                       " tar -zxcf samplearchiv.tar.gz 'file1 'file2 "   
+            ],
+                correcta: 1,
+                explicacion: "permite extraer multiples archivo tar "            }
+                ,
+                
+            {
+                pregunta: " como  extraer multiples archivos con un patron  ",
+                opciones: [
+                     " tar -xvf escritorio.tar --wildcards '*.jpg' ",
+                     
+                     " tar -cvf escritorio.tar --wildcards '*.jpg' ",
+                     
+                     " tar -Cvf escritorio.tar --wildcards '*.jpg' "   
+            ],
+                correcta: 0,
+                explicacion: "permite extraer archivos con formato en especifico "            }
+                ,
+                
+                {
+                    pregunta: " como  agregar un archivo a un archivo .tar  ",
+                    opciones: [
+                         " tar -rvfx samplearchvive.tar  example.jpg ",
+                         
+                         " tar -rvfz samplearchvive.tar  example.jpg ",
+                         
+                         " tar -rvf samplearchvive.tar  example.jpg "
+                ],
+                    correcta: 2,
+                    explicacion: "permite agregar un archivo a un archivo tar en especifico "            }
+              
+                    ,
+                
+                {
+                    pregunta: " como verificar el tamano del archivo .tar",
+                    opciones: [
+                         " tar -czfx escritorio.tar | wc -c ",
+                         " tar -czfc escritorio.tar | wc -c ",
+                         " tar -czf escritorio.tar | wc -c ",                        
+                        ],
+                    correcta: 2,
+                    explicacion: "permite contar las lineas que hay en el archivo tar  "            }
+              
+                    ,
+                
+                {
+                    pregunta: "realizar copias incrementales con que comando ",
+                    opciones: [
+                         " tar -cpvzf backup.tgz -g ficherohistorico.snap directorioimportante",
+                         
+                         " tar -cpvzf backup.tgz -C ficherohistorico.snap directorioimportante",
+                         
+                         " tar -cpvzf backup.tgz -C ficherohistorico.snap directorioimportante", 
+
+                     ],
+                    correcta: 0,
+                    explicacion: "permite contar las lineas que hay en el archivo tar  "            }
+              
+                    ,
+                
+                {
+                    pregunta: "que tipo de copia de seguridad guarda todos los archivo y directorios seleccionados ",
+                    opciones: [
+                          "completa",
+                          "incremental",
+                          "diferencil"
+
+                     ],
+                    correcta: 0,
+                    explicacion: "  "            }    
+
+                    ,
+                
+                {
+                    pregunta: "cual es la principal desventaja de las copia de seguridad completas ",
+                    opciones: [
+                         "consumen muchao espacio y tiempo",
+                         "dificeles de recfuperar",
+                         "son rapidas",
+
+                        
+
+                     ],
+                    correcta: 0,
+                    explicacion: "  "            }    
+         
+
+                    ,
+                
+                {
+                    pregunta: "que tipo de copia de seguridad almacena solo los archivos que han  cambiado desde la ultima copia sea comple o incremental?",
+                    opciones: [
+                         "completa",
+                         "incremental",
+                         " diferencial "
+
+                     ],
+                    correcta: 1,
+                    explicacion: "  "            }    
+                    ,
+                
+                {
+                    pregunta: "En una copia de seguridad incremental, si quiero restaurar los datos del miércoles, ¿qué debo recuperar primero?",
+                    opciones: [
+                          " la copia completa del lunes y todas las incrementales posteriores ",
+                          " solo la  copia del miercoles ",
+                          " solo la copia del amrtes"
+
+                     ],
+                    correcta: 0,
+                    explicacion: "  "            }    
+                    ,
+                
+                {
+                    pregunta: "¿Qué tipo de copia guarda los archivos modificados desde la última copia completa?",
+                    opciones: [
+                         "diferencial",
+                          "incremental",
+                          "completa "
+
+                     ],
+                    correcta: 0,
+                    explicacion: "  "            }    
+                    ,
+                
+                {
+                    pregunta: "una ventaja de la copia diferencial es :",
+                    opciones: [
+                          "solo necesita la ultima copia completa y la ultima diferencial para la restauracion",
+                          " es la mas rapida para realizarse",
+                          " es la mas sensilla"
+
+                     ],
+                    correcta: 0,
+                    explicacion: "  "            }    
+                    ,
+                
+                {
+                    pregunta: "cual es la mayor desventaja de las copias incrementales ",
+                    opciones: [
+                         "requieren mucho espacio",
+                          " la restauracion completa puede ser complaja y lenta",
+                         " toman mucho tiempo en realizarse"
+
+
+                     ],
+                    correcta: 1,
+                    explicacion: "  "            }    
+                    ,
+                
+                {
+                    pregunta: "¿Qué tipo de copia suele usarse para datos que cambian frecuentemente y ocupan más de 50 GB?",
+                    opciones: [
+                         "incremental",
+                         " diferancial",
+                         "completa"
+
+                     ],
+                    correcta: 0,
+                    explicacion: "  "            }    
+                    ,
+                
+                {
+                    pregunta: "¿Cuál de los siguientes métodos ocupa más espacio de almacenamiento?",
+                    opciones: [
+                         "diferencial",
+                         "incremental",
+                         "completa"
+
+                     ],
+                    correcta: 2,
+                    explicacion: "  "            }    
+                      ,
+                
+                {
+                    pregunta: "¿Qué copia se recomienda realizar con datos que no cambian mucho y son menores a 4 GB?",
+                    opciones: [
+                         "completa ",
+                         " diferencial",
+                         "incremental"
+
+                     ],
+                    correcta: 0,
+                    explicacion: "  "            }    
+                    ,
+                
+                {
+                    pregunta: "En una restauración de copia diferencial, ¿qué se necesita?",
+                    opciones: [
+                         " la ultima copia completa y la ultima  diferencial",
+                        "Solo la última copia diferencial",
+                         "Todas las copias incrementales"
+                     ],
+                    correcta: 0,
+                    explicacion: "  "            }    
+                    ,
+                
+                {
+                    pregunta: "que tipo de copia de seguridad es ideal para un sistema operativo ",
+                    opciones: [
+                          " completa",
+                           "incremental",
+                           "diferencial"
+
+                     ],
+                    correcta: 0,
+                    explicacion: "  "            }    
+                    ,
+                
+                {
+                    pregunta: "que metodo permite la restauracion mas rapida",
+                    opciones: [
+                         
+                           "diferencial",
+                            "incremental",
+                            "completa"
+
+                     ],
+                    correcta: 0,
+                    explicacion: "  "            }    
+                    ,
+                
+                {
+                    pregunta: "cual es el principal inconveninente de una copia diferencial",
+                    opciones: [
+                         "requiere mas tiempo si los datos cambian mucho ",
+                          " consume menos espacion que la incremental",
+                          " necesita varios soportes"
+
+                     ],
+                    correcta: 0,
+                    explicacion: "  "            }    
+                    ,
+                
+                {
+                    pregunta: "cual es una ventaja de los resplados incrementales",
+                    opciones: [
+                          "requiere menos espacio y tiempo para realizarse ",
+                          " restauracion rapida",
+                          " restauracion sensilla"
+
+                     ],
+                    correcta: 0,
+                    explicacion: "  "            }    
+                    ,
+                
+                {
+                    pregunta: "¿Qué copia requiere restaurar la última copia completa y todas las incrementales desde entonces?",
+                    opciones: [
+                         "completa",
+                         "difencial",
+                          "incremental",
+                          "ninguna de las anteriores"
+
+                     ],
+                    correcta: 2,
+                    explicacion: "  "            }    
+                    ,
+                
+                {
+                    pregunta: "Qué tipo de respaldo puede utilizarse con sistemas remotos para minimizar el uso de ancho de banda?",
+                    opciones: [
+                               "incremental ",
+                               "completa",
+                               "diferencial"
+
+                     ],
+                    correcta: 0,
+                    explicacion: "  "            }    
+                    ,
+                
+                {
+                    pregunta: "¿Qué tipo de soporte es más eficiente para realizar copias incrementales en redes remotas",
+                    opciones: [
+                         "discos duros ",
+                          "cinstas magneticas",
+                          "disquetes"
+
+                     ],
+                    correcta: 0,
+                    explicacion: "  "            }    
+                    ,
+                
+                {
+                    pregunta: "¿Qué se recomienda cuando se manejan respaldos en redes de alta carga?",
+                    opciones: [
+                         " realizar copias completa unicamente",
+                         " utilizar solo cintas magneticas",
+"optimizar el flujo de datos y evitar cuellos de botella"
+                         
+                     ],
+                    correcta: 2,
+                    explicacion: "  "            }    
+                    ,
+                
+                {
+                    pregunta: "¿Qué tipo de copia requiere la mayor cantidad de espacio de almacenamiento?",
+                    opciones: [
+                         "diferencial",
+                         "completa",
+                         "incremental"
+
+                     ],
+                    correcta: 1,
+                    explicacion: "  "            }    
+                    ,
+                
+                {
+                    pregunta: "¿Qué ventaja tiene la copia completa frente a las otras?",
+                    opciones: [
+                         "recuperacion sensilla",
+                         "mas rapida",
+                         "mas economica"
+
+                     ],
+                    correcta: 0,
+                    explicacion: "  "            }    
+                    ,
+                
+                {
+                    pregunta: "¿Qué tipo de copia se recomienda cuando los cambios diarios son muy pequeños?",
+                    opciones: [
+                         "diferencial",
+                         "incremental",
+                         "completa"
+
+                     ],
+                    correcta: 0,
+                    explicacion: "  "            }    
+                    ,
+                
+                {
+                    pregunta: "¿Qué se necesita para realizar respaldos diferenciales rápidos?",
+                    opciones: [
+                         " Mayor tiempo disponible",
+                         "Discos SSD",
+                         " Copias completas periódicas"
+
+                     ],
+                    correcta: 2,
+                    explicacion: "  "            }    
+
+                    ,
+                
+                {
+                    pregunta: "¿Cuál es la recomendación para respaldos programados en servidores en producción?",
+                    opciones: [
+                         "Solo respaldos diferenciales",
+                         " Realizarlos durante períodos de menor uso",
+                         "Realizarlos en redes locales"
+
+
+                     ],
+                    correcta: 1,
+                    explicacion: "  "            } 
+                    ,
+                
+                {
+                    pregunta: "¿Qué se recomienda hacer con los datos guardados en discos para estrategias a largo plazo?",
+                    opciones: [
+                         "Transferirlos a cintas magnéticas",
+                         "Dejarlos en discos siempre",
+                         "Copiar cada semana"
+
+
+                     ],
+                    correcta: 0,
+                    explicacion: "  "            } 
+                    ,
+                
+                {
+                    pregunta: "Si hay un gran cambio en los archivos respaldados, ¿qué copia puede tardar más tiempo?",
+                    opciones: [
+                         " DIFERENCIAL",
+                         "incremental",
+                         "completa"
+
+
+                     ],
+                    correcta: 0,
+                    explicacion: "  "            } 
+                    ,
+                
+                {
+                    pregunta: "¿Qué se necesita para recuperar datos respaldados de forma incremental?",
+                    opciones: [
+                         
+                         "Solo la última copia incremental",
+                         "Todas las copias incrementales y la última completa",
+                         "Última copia completa"
+
+                     ],
+                    correcta: 1,
+                    explicacion: "  "            } 
+                    ,
+                
+                {
+                    pregunta: "¿Qué tipo de copia puede complicarse si falta un medio de respaldo?",
+                    opciones: [
+                         "diferencial",
+                         "completa",
+                         "Incremental"
+
+
+                     ],
+                    correcta: 2,
+                    explicacion: "  "            } 
+                    ,
+                
+                {
+                    pregunta: "En respaldos remotos, ¿qué tipo de dispositivo evita bloquear la unidad de escritura?",
+                    opciones: [
+                         "usb",
+                         "disquetes",
+                         "Discos duros"
+
+
+                     ],
+                    correcta: 2,
+                    explicacion: "  "            } 
+                    ,
+                
+                {
+                    pregunta: "¿Qué respaldo se recomienda si los cambios no son frecuentes y el espacio no es un problema?",
+                    opciones: [
+                         "incremental",
+                         "Completa",
+                         "diferencial"
+
+                     ],
+                    correcta: 1,
+                    explicacion: "  "            } 
+
+        ];
+
+        let preguntaActual = 0;
+        let puntaje = 0;
+        let opcionSeleccionada = null;
+
+        function mostrarPregunta() {
+            const pregunta = preguntas[preguntaActual];
+            document.getElementById('question-text').textContent = pregunta.pregunta;
+            document.getElementById('options').innerHTML = '';
+            document.querySelector('.check-btn').style.display = 'block';
+            document.querySelector('.next-btn').style.display = 'none';
+            document.getElementById('feedback').innerHTML = '';
+
+            pregunta.opciones.forEach((opcion, index) => {
+                const button = document.createElement('button');
+                button.className = 'option-btn';
+                button.textContent = opcion;
+                button.onclick = () => seleccionarOpcion(index, button);
+                document.getElementById('options').appendChild(button);
+            });
+        }
+
+        function seleccionarOpcion(index, button) {
+            document.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('selected'));
+            button.classList.add('selected');
+            opcionSeleccionada = index;
+              
+        }
+
+        function checkAnswer() {
+            if (opcionSeleccionada === null) {
+                document.getElementById('feedback').textContent = 'Por favor, selecciona una respuesta';
+                document.getElementById('feedback').className = 'feedback incorrect';
+                return;
+            }
+
+            const pregunta = preguntas[preguntaActual];
+            const esCorrecta = opcionSeleccionada === pregunta.correcta;
+
+            if (esCorrecta) {
+                puntaje++;
+                document.getElementById('score').textContent = puntaje;
+                document.getElementById('feedback').textContent = '¡Correcto! ' + (pregunta.explicacion || '');
+                document.getElementById('feedback').className = 'feedback correct';
+            } else {
+                document.getElementById('feedback').textContent = 'Incorrecto. ' + (pregunta.explicacion || '');
+                document.getElementById('feedback').className = 'feedback incorrect';
+            }
+
+            document.querySelector('.check-btn').style.display = 'none';
+            document.querySelector('.next-btn').style.display = 'block';
+        }
+
+        function nextQuestion() {
+            preguntaActual++;
+            opcionSeleccionada = null;
+
+            if (preguntaActual < preguntas.length) {
+                mostrarPregunta();
+            } else {
+                document.getElementById('question-text').textContent = '¡Juego terminado!';
+                document.getElementById('options').innerHTML =
+                    `<p>Puntuación final: ${puntaje} de ${preguntas.length}</p>`;
+                document.querySelector('.check-btn').style.display = 'none';
+                document.querySelector('.next-btn').style.display = 'none';
+            }
+        }
+
+        document.getElementById('total').textContent = preguntas.length;
+        mostrarPregunta();
+    </script>
+</body>
+</html>
